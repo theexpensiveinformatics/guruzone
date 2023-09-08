@@ -63,7 +63,7 @@ class _homeBottomState extends State<homeBottom> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: Container(
-        color: background,
+        color: background,//notch
         child: BottomAppBar(
 
           notchMargin: 12,

@@ -45,7 +45,7 @@ class _homeScreenState extends State<homeScreen> {
       'locationLink':'',
       'linkedin':'https://',
       'liked':'true',
-      'imgUrl':'https://firebasestorage.googleapis.com/v0/b/error404-948dd.appspot.com/o/Broadcast%2Fd.png?alt=media&token=d5b07446-7fdf-48a1-855a-beee5f5a4822',
+      'imgUrl':'https://img.freepik.com/free-photo/young-pretty-woman-outdoor_624325-1053.jpg',
     },
     {
       'mentorName':'Magan Murji',
@@ -56,7 +56,7 @@ class _homeScreenState extends State<homeScreen> {
       'locationLink':'',
       'linkedin':'https://',
       'liked':'true',
-      'imgUrl':'https://firebasestorage.googleapis.com/v0/b/error404-948dd.appspot.com/o/Broadcast%2Fd.png?alt=media&token=d5b07446-7fdf-48a1-855a-beee5f5a4822',
+      'imgUrl':'https://img.freepik.com/free-photo/young-pretty-woman-outdoor_624325-1053.jpg',
     },
     {
       'mentorName':'Magan Murji',
@@ -67,7 +67,7 @@ class _homeScreenState extends State<homeScreen> {
       'locationLink':'',
       'linkedin':'https://',
       'liked':'true',
-      'imgUrl':'https://firebasestorage.googleapis.com/v0/b/error404-948dd.appspot.com/o/Broadcast%2Fd.png?alt=media&token=d5b07446-7fdf-48a1-855a-beee5f5a4822',
+      'imgUrl':'https://img.freepik.com/free-photo/young-pretty-woman-outdoor_624325-1053.jpg',
     },
     {
       'mentorName':'Magan Murji',
@@ -78,7 +78,7 @@ class _homeScreenState extends State<homeScreen> {
       'locationLink':'',
       'linkedin':'https://',
       'liked':'true',
-      'imgUrl':'https://firebasestorage.googleapis.com/v0/b/error404-948dd.appspot.com/o/Broadcast%2Fd.png?alt=media&token=d5b07446-7fdf-48a1-855a-beee5f5a4822',
+      'imgUrl':'https://img.freepik.com/free-photo/young-pretty-woman-outdoor_624325-1053.jpg',
     },
 
   ];
@@ -321,7 +321,7 @@ class _homeScreenState extends State<homeScreen> {
                    height: 90,
                    padding: EdgeInsets.only(top: 10,right: 25,left: 25),
                    child: Container(
-                     decoration: backgroundWhite,
+                     // decoration: backgroundWhite,
                      child: guruForYou(imgUrl: e['imgUrl'].toString(),rating: e['rating'].toString(),liked: e['liked'].toString(),linkedinUrl: e['linkedUrl'].toString(),location: e['location'].toString(),mentorName: e['mentorName'].toString(),post: e['post'].toString(),reviewsCount: e['reviewsCount'].toString(), locationLink: e['locationLink'].toString(),onPressed: (){}),
 
                    ),

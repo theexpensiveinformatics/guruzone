@@ -39,34 +39,48 @@ class guruForYou extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  height: double.infinity,
-                  width: 60,
+                  height: 54,
+                  width: 54,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: background,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xFFEFEFEF),
+                        blurRadius: 15,
+                        spreadRadius: 5,
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(100),
+                    color: Colors.white,
                   ),
-                  child: Image.network(
-                    '$imgUrl',
-                    loadingBuilder: (BuildContext context, Widget child,
-                        ImageChunkEvent? loadingProgress) {
-                      if (loadingProgress == null) {
-                        return child;
-                      }
-                      return Center(
-                        child: Container(
-                          width: 50,
-                          child: LinearProgressIndicator(
-                            borderRadius: BorderRadius.circular(100),
-                            color: blue,
+                  child: Padding(
+                    padding: const EdgeInsets.all(1.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(1000),
+                      child: Image.network(
+                        fit: BoxFit.fitHeight,
+                        '$imgUrl',
+                        loadingBuilder: (BuildContext context, Widget child,
+                            ImageChunkEvent? loadingProgress) {
+                          if (loadingProgress == null) {
+                            return child;
+                          }
+                          return Center(
+                            child: Container(
+                              width: 50,
+                              child: LinearProgressIndicator(
+                                borderRadius: BorderRadius.circular(100),
+                                color: blue,
 
-                            value: loadingProgress.expectedTotalBytes != null
-                                ? loadingProgress.cumulativeBytesLoaded /
-                                loadingProgress.expectedTotalBytes!
-                                : null,
-                          ),
-                        ),
-                      );
-                    },
+                                value: loadingProgress.expectedTotalBytes != null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes!
+                                    : null,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
                   ),
                 ),
 
@@ -117,7 +131,11 @@ class guruForYou extends StatelessWidget {
 
             Padding(
               padding: const EdgeInsets.only(right: 20),
-              child: Icon(Icons.chevron_right,color: lightText,size: 20,),
+              child: Container(
+                  width:45,
+                  height: 45,
+                  decoration: backgroundWhite,
+                  child: Icon(Icons.chevron_right,color: lightText,size: 20,)),
             )
 
           ],
