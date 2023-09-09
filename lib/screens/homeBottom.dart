@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:guruzone/screens/doubtScreen.dart';
+import 'package:guruzone/screens/guruScreen.dart';
 import 'package:guruzone/screens/homeScreen.dart';
 import 'package:guruzone/screens/profileScreen.dart';
 import 'package:guruzone/screens/searchScreen.dart';
@@ -56,7 +57,12 @@ class _homeBottomState extends State<homeBottom> {
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(100)
           ),
-          onPressed: () {  },
+          onPressed: (){
+            setState(() {
+              currentScreen=guruScreen();
+              currentTab = 0;
+            });
+          },
           backgroundColor: blue,
           child: Container(height:36,width:36,child: Image.asset('assets/images/guru_white.png')),
         ),
