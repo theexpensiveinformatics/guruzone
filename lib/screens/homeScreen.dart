@@ -37,7 +37,7 @@ class _homeScreenState extends State<homeScreen> {
 
   var arrGuruForYou = [
     {
-      'mentorName':'Magan Murji',
+      'mentorName':'Radhe Shyam ',
       'post' : 'IT Engineer',
       'rating':'4.5',
       'reviewsCount':'100',
@@ -45,10 +45,10 @@ class _homeScreenState extends State<homeScreen> {
       'locationLink':'',
       'linkedin':'https://',
       'liked':'true',
-      'imgUrl':'https://img.freepik.com/free-photo/young-pretty-woman-outdoor_624325-1053.jpg',
+      'imgUrl':'https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcT102smwP3i_8JvPTdQLKx3s9FQl42bP6q5HIzKoWGMchz0s3EMOYAGCgPkz-QrQ4IOxARMChyDj0WBgQ4',
     },
     {
-      'mentorName':'Magan Murji',
+      'mentorName':'Radhe Shyam ',
       'post' : 'IT Engineer',
       'rating':'4.5',
       'reviewsCount':'100',
@@ -56,10 +56,10 @@ class _homeScreenState extends State<homeScreen> {
       'locationLink':'',
       'linkedin':'https://',
       'liked':'true',
-      'imgUrl':'https://img.freepik.com/free-photo/young-pretty-woman-outdoor_624325-1053.jpg',
+      'imgUrl':'https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcT102smwP3i_8JvPTdQLKx3s9FQl42bP6q5HIzKoWGMchz0s3EMOYAGCgPkz-QrQ4IOxARMChyDj0WBgQ4',
     },
     {
-      'mentorName':'Magan Murji',
+      'mentorName':'Radhe Shyam ',
       'post' : 'IT Engineer',
       'rating':'4.5',
       'reviewsCount':'100',
@@ -67,10 +67,10 @@ class _homeScreenState extends State<homeScreen> {
       'locationLink':'',
       'linkedin':'https://',
       'liked':'true',
-      'imgUrl':'https://img.freepik.com/free-photo/young-pretty-woman-outdoor_624325-1053.jpg',
+      'imgUrl':'https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcT102smwP3i_8JvPTdQLKx3s9FQl42bP6q5HIzKoWGMchz0s3EMOYAGCgPkz-QrQ4IOxARMChyDj0WBgQ4',
     },
     {
-      'mentorName':'Magan Murji',
+      'mentorName':'Radhe Shyam ',
       'post' : 'IT Engineer',
       'rating':'4.5',
       'reviewsCount':'100',
@@ -78,7 +78,7 @@ class _homeScreenState extends State<homeScreen> {
       'locationLink':'',
       'linkedin':'https://',
       'liked':'true',
-      'imgUrl':'https://img.freepik.com/free-photo/young-pretty-woman-outdoor_624325-1053.jpg',
+      'imgUrl':'https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcT102smwP3i_8JvPTdQLKx3s9FQl42bP6q5HIzKoWGMchz0s3EMOYAGCgPkz-QrQ4IOxARMChyDj0WBgQ4',
     },
 
   ];
@@ -86,7 +86,7 @@ class _homeScreenState extends State<homeScreen> {
   var arrFeaturedCourse =[
     {
       'rating':'4.5',
-      'mentorName':'Mr. Magan Murji',
+      'mentorName':'Mr. Radhe Shyam ',
       'courseTitle':'Basic Figma to Advance Figma complete course',
       'language':'English',
       'rate':'5',
@@ -95,7 +95,7 @@ class _homeScreenState extends State<homeScreen> {
     },
     {
       'rating':'4.5',
-      'mentorName':'Mr. Magan Murji2',
+      'mentorName':'Mr. Radhe Shyam 2',
       'courseTitle':'Basic Figma to Advance Figma complete course',
       'language':'Hindi',
       'rate':'5',
@@ -104,7 +104,7 @@ class _homeScreenState extends State<homeScreen> {
     },
     {
       'rating':'4.5',
-      'mentorName':'Mr. Magan Murji3',
+      'mentorName':'Mr. Radhe Shyam 3',
       'courseTitle':'Basic Figma to Advance Figma complete course',
       'language':'English',
       'rate':'5',
@@ -113,7 +113,7 @@ class _homeScreenState extends State<homeScreen> {
     },
     {
       'rating':'4.5',
-      'mentorName':'Mr. Magan Murji',
+      'mentorName':'Mr. Radhe Shyam ',
       'courseTitle':'Basic Figma to Advance Figma complete course',
       'language':'English',
       'rate':'5',
@@ -122,7 +122,7 @@ class _homeScreenState extends State<homeScreen> {
     },
     {
       'rating':'4.5',
-      'mentorName':'Mr. Magan Murji',
+      'mentorName':'Mr. Radhe Shyam ',
       'courseTitle':'Basic Figma to Advance Figma complete course',
       'language':'English',
       'rate':'5',
@@ -131,7 +131,7 @@ class _homeScreenState extends State<homeScreen> {
     },
     {
       'rating':'4.5',
-      'mentorName':'Mr. Magan Murji',
+      'mentorName':'Mr. Radhe Shyam ',
       'courseTitle':'Basic Figma to Advance Figma complete course',
       'language':'English',
       'rate':'5',
