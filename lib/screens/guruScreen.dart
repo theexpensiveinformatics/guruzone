@@ -20,7 +20,7 @@ class _guruScreenState extends State<guruScreen> {
             width: 300,
             decoration: backgroundWhite,child: Column(
               children: [
-                Image.asset('assets/images/guru_white.png'),
+                Image.asset('assets/images/img.png',height: 130),
                 Center(child: TextButton(
 
           child: Text("Post Requirement for Guru",style: TextStyle(color: Colors.grey),),
