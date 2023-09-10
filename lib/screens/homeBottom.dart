@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:guruzone/screens/doubtScreen.dart';
+import 'package:guruzone/screens/DoubtChatScreen.dart';
 import 'package:guruzone/screens/guruScreen.dart';
 import 'package:guruzone/screens/homeScreen.dart';
 import 'package:guruzone/screens/profileScreen.dart';
@@ -24,7 +24,7 @@ class _homeBottomState extends State<homeBottom> {
   final List<Widget> screens = [
     homeScreen(),
     searchScreen(),
-    doubtScreen(),
+    DoubtChatScreen(),
     profileScreen()
   ];
 
@@ -120,7 +120,7 @@ class _homeBottomState extends State<homeBottom> {
                       shape: CircleBorder(eccentricity: 0),
                       onPressed: (){
                         setState(() {
-                          currentScreen=doubtScreen();
+                          currentScreen=DoubtChatScreen();
                           currentTab = 2;
                         });
                       },
