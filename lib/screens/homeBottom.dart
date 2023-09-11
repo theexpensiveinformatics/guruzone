@@ -59,7 +59,7 @@ class _homeBottomState extends State<homeBottom> {
           ),
           onPressed: (){
             setState(() {
-              currentScreen=guruScreen();
+              currentScreen=homeScreen();
               currentTab = 0;
             });
           },
