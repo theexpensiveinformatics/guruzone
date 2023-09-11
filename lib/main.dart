@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:guruzone/screens/DoubtChatScreen.dart';
 import 'package:guruzone/screens/RequestReplyScreen.dart';
+import 'package:guruzone/screens/choiceScreen.dart';
 import 'package:guruzone/screens/homeBottom.dart';
 import 'package:guruzone/screens/homeScreen.dart';
 import 'package:guruzone/screens/list.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         )
       ),
 
-      home: homeBottom(),
+      home: choiceScreen(),
     );
   }
 }
