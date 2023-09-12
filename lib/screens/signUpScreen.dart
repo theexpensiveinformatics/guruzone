@@ -730,12 +730,27 @@ class _signUpScreenState extends State<signUpScreen> {
               ),
 
               SizedBox(height: 20,),
-              Container(
-                decoration: roundedBlue,
-                height: 55,
-                alignment: Alignment.center,
-                child: Text('SignUp',style: TextStyle(color: Colors.white,fontSize: 17,fontFamily: 'semibold')),
 
+              InkWell(
+                onTap: (){
+
+                  String textValue = controllerName.text;
+                  if (textValue != null && textValue.isNotEmpty) {
+                    print('not null and not empty');
+                    print(textValue);
+
+                  } else {
+                    print('Text field is empty');
+                  }
+
+                  },
+                child: Container(
+                  decoration: roundedBlue,
+                  height: 55,
+                  alignment: Alignment.center,
+                  child: Text('SignUp',style: TextStyle(color: Colors.white,fontSize: 17,fontFamily: 'semibold')),
+
+                ),
               ),
               SizedBox(height: 50,)
 
