@@ -118,7 +118,7 @@ Widget build(BuildContext context) {
           CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
-                expandedHeight: 275.0,
+                expandedHeight: 300.0,
                 floating: false,
                 pinned: true,
                 snap: false,
@@ -139,7 +139,7 @@ Widget build(BuildContext context) {
                       personalization: arrTopContainer['personalization'].toString(),
                       mode: arrTopContainer['mode'].toString(),
                       location: arrTopContainer['location'].toString(),
-                      skill: arrTopContainer['skill'].toString(),
+                      gridData: arrTopContainer['gridView'] as List<String>,
                       price: arrTopContainer['price'].toString()
                   ),
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guruzone/styles/colors.dart';
 
 import 'package:guruzone/styles/components/searchScreenCard.dart';
 
@@ -32,7 +33,7 @@ class _searchScreenState extends State<searchScreen> {
 
   var SearchHeight = 40.0;
 
-  var filterTags = ['All','Flutter','Android','Ui/Ux'];
+  var filterTags = ['All','Flutter','Android','Ui/Ux','Node.js','Framer'];
 
 
   // var arrSearch = [
@@ -68,11 +69,10 @@ class _searchScreenState extends State<searchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Color(0xB5B6C2DF),
+        color: background,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -247,10 +247,12 @@ class _searchScreenState extends State<searchScreen> {
                   ),
                 ),
               ),
-          ListView.builder(
+
+
+            ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-            itemBuilder: (BuildContext context, int index) {
+              itemBuilder: (BuildContext context, int index) {
                 final item = cardData[index];
                 final name = item['name'].toString();
                 final profession = item['ratings'].toString();
@@ -260,36 +262,17 @@ class _searchScreenState extends State<searchScreen> {
                 final linkin = item['linkin'].toString();
                 final language = item['language'].toString();
                 final personalization = item['personalization'].toString();
-                final gridData = item['skills'];
+                final gridData = item['skills'] as List<String>;
                 final price = item['price'].toString();
 
-                return searchScreenCard(name: name, profession: profession, ratings: ratings, reviewCount: reviewCount, location: location, linkin: linkin, language: language, personalization: personalization, gridData: gridData, price: price);
-            }
+                return searchScreenCard(name: name, profession: profession, ratings: ratings, reviewCount: reviewCount, location: location, linkin: linkin, language: language, personalization: personalization, price: price, gridData: gridData,);
+              }
               )
+
             ],
           ),
         ),
       ),
-
-      // body:
-        // Container(
-      //   height: double.infinity,
-      //     width: double.infinity,
-      //     color: background,
-      //     child:Column(
-      //       children: [
-      //         ListView(
-      //           shrinkWrap: true,
-      //           children: arrSearch.map((e) => Container(
-      //            // height: 150,
-      //            width: double.infinity,
-      //            padding: EdgeInsets.only(right: 25,left: 25,top: 10),
-      //             child: searchCard(onPressed: (){},name: e['name'].toString(),location: e['location'].toString(),rating: e['rating'].toString(),teachingType: e['teachingType'].toString(),rate: e['rate'].toString(),language: e['language'].toString(),linkedin: e['linkedin'].toString(),profession: e['profession'].toString(),reviewCount: e['reviewCount'].toString(), liked: e['liked'].toString(), imgUrl: e['imgUrl'].toString(),),
-      //           )).toList(),
-      //         )
-      //       ],
-      //     )
-      // ),
 
     );
   }

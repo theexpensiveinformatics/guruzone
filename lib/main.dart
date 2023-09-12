@@ -6,6 +6,7 @@ import 'package:guruzone/screens/choiceScreen.dart';
 import 'package:guruzone/screens/homeBottom.dart';
 import 'package:guruzone/screens/homeScreen.dart';
 import 'package:guruzone/screens/list.dart';
+import 'package:guruzone/screens/signUpScreen.dart';
 import 'package:guruzone/styles/colors.dart';
 
 void main() {
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF2492FF)),
         useMaterial3: true,
         textTheme: TextTheme(
 
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         )
       ),
 
-      home: homeBottom(),
+      home: signUpScreen(),
 
 
     );
@@ -44,14 +45,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  //
 
 
 

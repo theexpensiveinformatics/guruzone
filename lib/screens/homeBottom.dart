@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:guruzone/screens/DoubtChatScreen.dart';
+import 'package:guruzone/screens/RequestReplyScreen.dart';
 import 'package:guruzone/screens/guruScreen.dart';
 import 'package:guruzone/screens/homeScreen.dart';
 import 'package:guruzone/screens/profileScreen.dart';
@@ -31,6 +32,7 @@ class _homeBottomState extends State<homeBottom> {
   final PageStorageBucket bucket = PageStorageBucket();
   Widget currentScreen =homeScreen();
 
+
   @override
   Widget build(BuildContext context) {
 
@@ -39,7 +41,7 @@ class _homeBottomState extends State<homeBottom> {
         toolbarHeight: 0,
       systemOverlayStyle: SystemUiOverlayStyle(
       systemNavigationBarColor: Colors.white, // Navigation bar
-      statusBarColor: background,
+      statusBarColor: currentTab ==  2 ? Colors.white : background,
       statusBarIconBrightness: Brightness.dark)),
       body: Container(
         height: double.infinity,
@@ -59,8 +61,9 @@ class _homeBottomState extends State<homeBottom> {
           ),
           onPressed: (){
             setState(() {
-              currentScreen=homeScreen();
-              currentTab = 0;
+
+              Navigator.push(context, MaterialPageRoute(builder: (context) => guruScreen(),));
+
             });
           },
           backgroundColor: blue,
