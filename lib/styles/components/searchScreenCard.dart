@@ -10,8 +10,8 @@ class searchScreenCard extends StatelessWidget{
   final String linkin;
   final String language;
   final String personalization;
-  final Object? gridData;
   final String price;
+  final List<String> skills;
 
   const searchScreenCard({super.key,
   required this.name,
@@ -22,8 +22,8 @@ class searchScreenCard extends StatelessWidget{
   required this.linkin,
   required this.language,
   required this.personalization,
-  required this. gridData,
-  required this.price});
+  required this.price,
+  required this.skills});
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +73,7 @@ class searchScreenCard extends StatelessWidget{
                             Container(
                                 width: 13,
                                 height: 13,
-                                child: Image.asset('assets/icons/star.png')
+                                child: Image.asset('assets/images/star_fill.png')
                             ),
                             SizedBox(
                               width: 4,
@@ -97,7 +97,7 @@ class searchScreenCard extends StatelessWidget{
                             Container(
                                 width: 13,
                                 height: 13,
-                                child: Image.asset('assets/icons/location.png')
+                                child: Image.asset('assets/images/location_fill.png')
                             ),
                             SizedBox(
                               width: 4,
@@ -114,12 +114,12 @@ class searchScreenCard extends StatelessWidget{
                     ),
                   ),
                   Container(
-                    width: 40,
+                    width: 30,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Container(
-                          child: Image.asset('assets/icons/linkedin.png'),
+                          child: Image.asset('assets/images/linkedin.png'),
                           width: 32,
                           height: 32,
                           decoration: BoxDecoration(
@@ -131,7 +131,10 @@ class searchScreenCard extends StatelessWidget{
                           height: 17,
                         ),
                         Container(
-                          child: Image.asset('assets/icons/Heart.png'),
+                          child: Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: Image.asset('assets/images/heart.png'),
+                          ),
                           width: 32,
                           height: 32,
                           decoration: BoxDecoration(
@@ -161,7 +164,7 @@ class searchScreenCard extends StatelessWidget{
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            child: Image.asset('assets/icons/Global.png'),
+                            child: Image.asset('assets/images/global_blue.png'),
                             width: 15,
                             height: 15,
                           ),
@@ -199,24 +202,24 @@ class searchScreenCard extends StatelessWidget{
                 padding: const EdgeInsets.only(top: 9),
                 child: Container(
                     height: 61,
-                    // child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 6,childAspectRatio: 3.5,mainAxisSpacing: 6),
-                    //   itemBuilder: (context,index){
-                    //     return Container(
-                    //       alignment: Alignment.center,
-                    //       height: 10,
-                    //       decoration: BoxDecoration(
-                    //           border: Border.all(color: Color(0x333D521A)),
-                    //           borderRadius: BorderRadius.circular(8)
-                    //       ),
-                    //       child: Text(gridData[index],
-                    //         style: TextStyle(
-                    //             fontFamily: 'RegularFont',
-                    //             color: Color(0xff333D52)
-                    //         ),),
-                    //     );
-                    //   },
-                    //   itemCount: gridData.length,
-                    // )
+                    child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 6,childAspectRatio: 3.5,mainAxisSpacing: 6),
+                      itemBuilder: (context,index){
+                        return Container(
+                          alignment: Alignment.center,
+                          height: 10,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Color(0x333D521A)),
+                              borderRadius: BorderRadius.circular(8)
+                          ),
+                          child: Text(skills[index],
+                            style: TextStyle(
+                                fontFamily: 'RegularFont',
+                                color: Color(0xff333D52)
+                            ),),
+                        );
+                      },
+                      itemCount: skills.length,
+                    )
                 ),
               ),
               Padding(
