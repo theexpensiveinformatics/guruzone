@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/components/searchScreenCard.dart';
 
 
@@ -20,36 +19,11 @@ class _searchScreenState extends State<searchScreen> {
       'linkin' : 'https://in.linkedin.com',
       'language' : 'English',
       'personalization' : '100% Personalized',
-      'price' : 5,
-
-    },
-    {
-      'name' : 'Riya Patel',
-      'profession' : 'IT Engineer',
-      'ratings' : 4.7,
-      'reviewCount' : 100,
-      'location' : 'Vapi, Gujarat',
-      'linkin' : 'https://in.linkedin.com',
-      'language' : 'English',
-      'personalization' : '100% Personalized',
-      'price' : 5,
-
-    },
-    {
-      'name' : 'Riya Patel',
-      'profession' : 'IT Engineer',
-      'ratings' : 4.7,
-      'reviewCount' : 100,
-      'location' : 'Vapi, Gujarat',
-      'linkin' : 'https://in.linkedin.com',
-      'language' : 'English',
-      'personalization' : '100% Personalized',
+      'skills' : ['Flutter','Android','Java','M.L.','Node.js'],
       'price' : 5,
 
     },
   ];
-
-  List<String> skills = ['Flutter','Android','Java','M.L.','Node.js'];
 
   var SearchHeight = 40.0;
 
@@ -61,7 +35,7 @@ class _searchScreenState extends State<searchScreen> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: background,
+        color: Color(0xB5B6C2DF),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -79,7 +53,7 @@ class _searchScreenState extends State<searchScreen> {
                               Container(
                                 width: 25,
                                 height: 25,
-                                child: Image.asset('assets/images/arrow.png'),
+                                child: Image.asset('assets/icons/Arrow.png'),
                               ),
                               SizedBox(
                                 width: 10,
@@ -115,7 +89,7 @@ class _searchScreenState extends State<searchScreen> {
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
-                                  child: Image.asset('assets/images/guru_for_search.png'),
+                                  child: Image.asset('assets/icons/Vectorguru.png'),
                                 ),
                               ),
                             ),
@@ -146,7 +120,7 @@ class _searchScreenState extends State<searchScreen> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: Image.asset('assets/images/mentor_for_search.png'),
+                                    child: Image.asset('assets/icons/Vectormentor.png'),
                                   ),
                                 ),
                               ),
@@ -172,7 +146,7 @@ class _searchScreenState extends State<searchScreen> {
                               child: Padding(
                                 padding: const EdgeInsets.all(9.0),
                                 child: Container(
-                                  child: Image.asset('assets/images/search.png'),
+                                  child: Image.asset('assets/icons/Search.png'),
                                 ),
                               ),
                             ),
@@ -203,7 +177,7 @@ class _searchScreenState extends State<searchScreen> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Container(
-                                    child: Image.asset('assets/images/filter.png'),
+                                    child: Image.asset('assets/icons/fliter.png'),
                                   ),
                                 ),
                               ),
@@ -236,21 +210,25 @@ class _searchScreenState extends State<searchScreen> {
                   ),
                 ),
               ),
-          ListView(
+          ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              children: cardData.map((e) => searchScreenCard(name: e['name'].toString(),
-                  profession: e['profession'].toString(),
-                  ratings: e['ratings'].toString(),
-                  reviewCount: e['reviewCount'].toString(),
-                  location: e['location'].toString(),
-                  linkin: e['linkin'].toString(),
-                  language: e['language'].toString(),
-                  personalization: e['personalization'].toString(),
-                  price: e['price'].toString(),
-                  skills: skills)
-              ).toList()
-          ),
+            itemBuilder: (BuildContext context, int index) {
+                final item = cardData[index];
+                final name = item['name'].toString();
+                final profession = item['ratings'].toString();
+                final ratings = item['ratings'].toString();
+                final reviewCount = item['reviewCount'].toString();
+                final location = item['location'].toString();
+                final linkin = item['linkin'].toString();
+                final language = item['language'].toString();
+                final personalization = item['personalization'].toString();
+                final gridData = item['skills'];
+                final price = item['price'].toString();
+
+                return searchScreenCard(name: name, profession: profession, ratings: ratings, reviewCount: reviewCount, location: location, linkin: linkin, language: language, personalization: personalization, gridData: gridData, price: price);
+            }
+              )
             ],
           ),
         ),
