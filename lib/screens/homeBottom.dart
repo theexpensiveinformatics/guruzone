@@ -8,6 +8,8 @@ import 'package:guruzone/screens/profileScreen.dart';
 import 'package:guruzone/screens/searchScreen.dart';
 import 'package:guruzone/styles/colors.dart';
 
+import 'newSearchScreen.dart';
+
 
 //statefull
 class homeBottom extends StatefulWidget
@@ -23,7 +25,7 @@ class _homeBottomState extends State<homeBottom> {
   int currentTab = 0;
   final List<Widget> screens = [
     homeScreen(),
-    searchScreen(),
+    newSearchScreen(),
     DoubtChatScreen(),
     profileScreen()
   ];
@@ -102,7 +104,7 @@ class _homeBottomState extends State<homeBottom> {
                       shape: CircleBorder(eccentricity: 0),
                       onPressed: (){
                         setState(() {
-                          currentScreen=searchScreen();
+                          currentScreen=newSearchScreen();
                           currentTab = 1;
                         });
                       },
