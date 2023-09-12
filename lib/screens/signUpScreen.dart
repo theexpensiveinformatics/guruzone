@@ -29,6 +29,12 @@ class SkillSet {
     required this.id,
     required this.name,
   });
+
+  @override
+  String toString() {
+    // TODO: implement toString
+    return name;
+  }
 }
 
 class _signUpScreenState extends State<signUpScreen> {
@@ -87,7 +93,7 @@ class _signUpScreenState extends State<signUpScreen> {
   var controllerLinkedIn = TextEditingController();
   var controllerSkillSet = TextEditingController();
   var teachingType ='empty';
-
+  var notEmpty='noOne';
 
   FocusNode _focusNode = FocusNode();
   @override
@@ -204,7 +210,7 @@ class _signUpScreenState extends State<signUpScreen> {
                         controller: controllerName,
                         style:TextStyle(fontFamily: 'regular',fontSize: 16,overflow:TextOverflow.ellipsis),
                         textAlignVertical: TextAlignVertical.bottom,
-                        decoration: InputDecoration(border: OutlineInputBorder(borderSide: BorderSide(color: borderColor,width: 1)),
+                        decoration: InputDecoration(border: OutlineInputBorder(borderSide: BorderSide(color: notEmpty=='name'? Colors.red:borderColor,width: 1)),
                           hintText: 'Name',hintStyle: TextStyle(fontFamily: 'regular'),
                           filled: true,
                           fillColor: _focusNode.hasFocus ? Colors.white : Colors.white,
@@ -219,14 +225,14 @@ class _signUpScreenState extends State<signUpScreen> {
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(14),
                               borderSide:  BorderSide(
-                                color: Colors.white,
+                                color: notEmpty == 'name' ? Colors.red:Colors.white,
                               )
                           ),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(14),
                               borderSide:  BorderSide(
                                 width: 1,
-                                color: Colors.white,
+                                color:notEmpty == 'name' ? Colors.red:Colors.white
                               )
                           ),
 
@@ -271,14 +277,14 @@ class _signUpScreenState extends State<signUpScreen> {
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(14),
                               borderSide:  BorderSide(
-                                color: Colors.white,
+                                color: notEmpty == 'qualification' ? Colors.red:Colors.white,
                               )
                           ),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(14),
                               borderSide:  BorderSide(
                                 width: 1,
-                                color: Colors.white,
+                                color: notEmpty == 'qualification' ? Colors.red:Colors.white,
                               )
                           ),
 
@@ -317,7 +323,7 @@ class _signUpScreenState extends State<signUpScreen> {
                         style:TextStyle(fontFamily: 'regular',fontSize: 16,overflow:TextOverflow.ellipsis),
                         textAlignVertical: TextAlignVertical.top,
                         maxLines: 5,
-                        decoration: InputDecoration(border: OutlineInputBorder(borderSide: BorderSide(color: borderColor,width: 1)),
+                        decoration: InputDecoration(border: OutlineInputBorder(borderSide: BorderSide(color: notEmpty == 'name' ? red:borderColor,width: 1)),
                           hintText: 'Small description about you\nEx: I can teach very easily with\ndeep examination, And I am also good in Local language',hintStyle: TextStyle(fontFamily: 'regular',),
                           filled: true,
                           fillColor: _focusNode.hasFocus ? Colors.white : Colors.white,
@@ -332,14 +338,14 @@ class _signUpScreenState extends State<signUpScreen> {
                           focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(14),
                               borderSide:  BorderSide(
-                                color: Colors.white,
+                                color:  notEmpty == 'qualification' ? Colors.red:Colors.white,
                               )
                           ),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(14),
                               borderSide:  BorderSide(
                                 width: 1,
-                                color: Colors.white,
+                                color: notEmpty == 'qualification' ? Colors.red:Colors.white,
                               )
                           ),
 
@@ -670,6 +676,8 @@ class _signUpScreenState extends State<signUpScreen> {
                                 backgroundColor: background,
                                 onConfirm: (values) {
                                   _selectedSkillSets2 = values;
+                                  List<String> selectedNames = _selectedSkillSets2.map((skillSet) => skillSet.name).toList();
+                                  print("Selected items: $selectedNames");
                                 },
                               ),
                             ),
@@ -734,14 +742,28 @@ class _signUpScreenState extends State<signUpScreen> {
               InkWell(
                 onTap: (){
 
-                  String textValue = controllerName.text;
-                  if (textValue != null && textValue.isNotEmpty) {
-                    print('not null and not empty');
-                    print(textValue);
+                  String name = controllerName.text;
+                  String qualification = controllerQualification.text;
+                  String des=controllersmallDes.text;
+                  String email=controllerEmail.text;
+                  String phone=controllerNum.text;
+                  String linkedin=controllerLinkedIn.text;
+                  String teacheType =teachingType.toString();
 
-                  } else {
-                    print('Text field is empty');
-                  }
+
+                  if(name != null && name.isNotEmpty && qualification !=null && qualification.isNotEmpty && des!=null && des.isNotEmpty && email!=null && email.isNotEmpty && phone!=null && phone.isNotEmpty && linkedin!=null && linkedin.isNotEmpty)
+                 {
+
+                 }
+                  else
+                    {
+                      setState(() {
+                       // harsh
+                      });
+
+                    }
+
+
 
                   },
                 child: Container(
