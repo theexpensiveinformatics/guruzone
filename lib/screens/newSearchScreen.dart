@@ -115,18 +115,20 @@ class _newSearchScreenState extends State<newSearchScreen> {
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
-                                  child: Image.asset('assets/images/guru_for_search.png'),
+                                  child: Image.asset('assets/images/guru.png'),
                                 ),
                               ),
                             ),
                             Container(
                               height: 30,
                               width: 245,
+                              alignment: Alignment.center,
                               child: TextField(
+                                textAlign: TextAlign.start,
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    labelText: 'Send Request to All Mentors',
-                                    labelStyle: TextStyle(
+                                    hintText: 'Send Request to All Mentors',
+                                    hintStyle: TextStyle(
                                       fontFamily: 'RegularFont',
                                       color: Color(0xff8A98B1),
                                       fontSize: 14,

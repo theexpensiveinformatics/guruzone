@@ -28,7 +28,7 @@ class _logInScreenStudentState extends State<logInScreenStudent> {
   Widget build(BuildContext context) {
     return Scaffold(
       body:Container(
-        padding: EdgeInsets.only(top: 20,left: 25,right: 25),
+
         alignment: Alignment.topLeft,
         height: double.infinity,
         width: double.infinity,
@@ -39,9 +39,10 @@ class _logInScreenStudentState extends State<logInScreenStudent> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
 
-              SizedBox(height:80,),
-              Container(width:120,
-                  height: 120,
+
+              Container(width:double.infinity,
+                  height: 260,
+
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(40),
@@ -53,7 +54,10 @@ class _logInScreenStudentState extends State<logInScreenStudent> {
                             offset: Offset(0.0, 40.20)
                         )]
                   ),
-                  child: Image.asset('assets/images/guru.png',cacheHeight: 50,)),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 35),
+                    child: Hero(tag:'student',child: Image.asset('assets/images/student.png',cacheHeight: 190,)),
+                  )),
               SizedBox(height: 20,),
               Text('Welcome Back',style: TextStyle(fontFamily: 'bold',fontSize: 25,color: darkText),),
               Text('Let\'s ready to gain knowledge!',style: TextStyle(fontFamily: 'regular',fontSize: 16,color: darkText),),
@@ -62,6 +66,7 @@ class _logInScreenStudentState extends State<logInScreenStudent> {
               //email
               SizedBox(height: 20,),
               Container(
+                margin: EdgeInsets.only(right: 25,left: 25),
                 decoration: boxTextInput,
                 height: 55,width: double.infinity,
                 child: Row(
@@ -119,6 +124,7 @@ class _logInScreenStudentState extends State<logInScreenStudent> {
               //password
               SizedBox(height: 8,),
               Container(
+                margin: EdgeInsets.only(right: 25,left: 25),
                 decoration: boxTextInput,
                 height: 55,width: double.infinity,
                 child: Row(
@@ -182,6 +188,7 @@ class _logInScreenStudentState extends State<logInScreenStudent> {
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>signUpScreenStudent()));
                 },
                 child: Container(
+                  margin: EdgeInsets.only(right: 25,left: 25),
                   alignment: Alignment.topRight,
                   child: Text('Don\'t have an account?',style: blueRegular),
                 ),
@@ -208,6 +215,7 @@ class _logInScreenStudentState extends State<logInScreenStudent> {
                   }
                 },
                 child: Container(
+                  margin: EdgeInsets.only(right: 25,left: 25),
                   decoration: roundedBlue,
                   height: 55,
                   alignment: Alignment.center,
@@ -220,6 +228,7 @@ class _logInScreenStudentState extends State<logInScreenStudent> {
               //back to choice
               SizedBox(height: 20,),
               Container(
+                margin: EdgeInsets.only(right: 25,left: 25),
                 alignment: Alignment.topLeft,
                 child: InkWell(
                   onTap: ()
