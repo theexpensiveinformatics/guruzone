@@ -2,6 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:guruzone/screens/postList.dart';
 import 'package:guruzone/styles/backgrounds/backgroundWhite.dart';
+import 'package:guruzone/styles/backgrounds/boxTextInput.dart';
+import 'package:guruzone/styles/colors.dart';
+import 'package:guruzone/styles/texts/d1.dart';
+import 'package:guruzone/styles/texts/h1.dart';
+import 'package:guruzone/styles/texts/h2.dart';
 
 final GlobalKey<ScaffoldState> _scaffoldKey =GlobalKey<ScaffoldState>();
 
@@ -34,270 +39,473 @@ class _guruScreenState extends State<guruScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(title: Row(
+      appBar: AppBar(backgroundColor: background,shadowColor: Color(0xFFF8F8F8) ,surfaceTintColor: background,title: Row(
         children: [
-          Text("Post Requiremnets"),
-          SizedBox(width:70.0),
-          ElevatedButton(
-            onPressed: (){
-              String topic = _topic.text.trim();
-              String desc = _desc.text.trim();
-              String lang = _lang.text.trim();
-              String amount = _amount.text.trim();
-              String type= _type.text.trim();
-              String platform = _platform.text.trim();
-              String city = _city.text.trim();
-              String category = _category.text.trim();
-              if(topic.isNotEmpty && desc.isNotEmpty && lang.isNotEmpty && amount.isNotEmpty && type.isNotEmpty && platform.isNotEmpty && city.isNotEmpty && category.isNotEmpty)
-              {
+          Expanded(child: Text("Post Requiremnets",style: h1)),
+          
+          Container(
+            width: 55,
+            height: 50,
+            decoration: boxTextInput,
+            child: TextButton(
+              onPressed: (){
+                String topic = _topic.text.trim();
+                String desc = _desc.text.trim();
+                String lang = _lang.text.trim();
+                String amount = _amount.text.trim();
+                String type= _type.text.trim();
+                String platform = _platform.text.trim();
+                String city = _city.text.trim();
+                String category = _category.text.trim();
+                if(topic.isNotEmpty && desc.isNotEmpty && lang.isNotEmpty && amount.isNotEmpty && type.isNotEmpty && platform.isNotEmpty && city.isNotEmpty && category.isNotEmpty)
+                {
 
-                setState(() {
-
-
-                  _topic.text="";
-                  _desc.text="";
-                  _lang.text="";
-                  _amount.text="";
-                  _type.text="";
-                  _platform.text="";
-                  _city.text="";
-                  _category.text="";
-                  postlists[selectedIndex].topic=topic;
-                  postlists[selectedIndex].desc=desc;
-                  postlists[selectedIndex].lang=lang;
-                  postlists[selectedIndex].amount=amount;
-                  postlists[selectedIndex].type=type;
-                  postlists[selectedIndex].platform=platform;
-                  postlists[selectedIndex].city=city;
-                  postlists[selectedIndex].category=category;
-                  selectedIndex = -1;
+                  setState(() {
 
 
-                });
-              }
+                    _topic.text="";
+                    _desc.text="";
+                    _lang.text="";
+                    _amount.text="";
+                    _type.text="";
+                    _platform.text="";
+                    _city.text="";
+                    _category.text="";
+                    postlists[selectedIndex].topic=topic;
+                    postlists[selectedIndex].desc=desc;
+                    postlists[selectedIndex].lang=lang;
+                    postlists[selectedIndex].amount=amount;
+                    postlists[selectedIndex].type=type;
+                    postlists[selectedIndex].platform=platform;
+                    postlists[selectedIndex].city=city;
+                    postlists[selectedIndex].category=category;
+                    selectedIndex = -1;
 
 
-            },
-            child: const Text("Update"),
+                  });
+                }
+
+
+              },
+              child: const Icon(Icons.add,color: Colors.grey),
+            ),
           ),
         ],
       ), ),
       resizeToAvoidBottomInset: true,
-      body: Column(
-        children: [
-          Center(
-            child: Container(
-                height: 200,
-                width: 300,
-                decoration: backgroundWhite,child: Column(
-                  children: [
-                    Image.asset('assets/images/img.png',height: 130),
-                    Center(child: TextButton(
+      body: Container(
+        color: background,
+        child: Column(
+          children: [
+            InkWell(
+              onTap: (){
+                showModalBottomSheet<dynamic>(
+                    isScrollControlled: true,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20),)
 
-              child: Text("Post Requirement for Guru",style: TextStyle(color: Colors.grey),),
-              onPressed: (){
-                    showModalBottomSheet<dynamic>(
-                        isScrollControlled: true,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20),)
-
-                        ),
-                        elevation: 0,
-                        isDismissible: false,
-                        enableDrag: true,
-                        context: context,
-                        builder:( context){
-                          return SingleChildScrollView(
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
+                    ),
+                    elevation: 0,
+                    isDismissible: false,
+                    enableDrag: true,
+                    context: context,
+                    builder:( context){
+                      return SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Container(
+                            height: 700,
+                            child: SingleChildScrollView(
                               child: Container(
-                                height: 700,
-                                child: SingleChildScrollView(
-                                  child: Container(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        ListTile(
-                                          title: Text("*The request will be sent to all mentors.",style: TextStyle(color: Colors.blue),),
-                                        ),
-                                        ListTile(
-                                          title: Text("What do you want to learn?",style: TextStyle(fontWeight: FontWeight.bold),),
-                                          subtitle: TextField(
-                                          controller: _topic,
-                                            decoration: InputDecoration(
-                                              hintText: "Android App Development",
-                                                border: OutlineInputBorder(
-                                                  borderRadius: BorderRadius.all(
-                                                  Radius.circular(10),
-                                                  )
-                                                ),
-
-                                            ),
-
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    ListTile(
+                                      title: Text("*The request will be sent to all mentors.",style: TextStyle(color: Colors.blue),),
+                                    ),
+                                    ListTile(
+                                      title: Text("What do you want to learn?",style: TextStyle(fontWeight: FontWeight.bold),),
+                                      subtitle: TextField(
+                                        controller: _topic,
+                                        decoration: InputDecoration(
+                                          hintText: "Android App Development",
+                                          border: OutlineInputBorder(
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(10),
+                                              )
                                           ),
+
                                         ),
-                                        ListTile(
-                                          title: Text("Description",style: TextStyle(fontWeight: FontWeight.bold),),
-                                          subtitle: TextField(
-                                            controller: _desc,
-                                            maxLength: 200,
-                                            decoration: InputDecoration(
-                                                hintText: "I want to learn Backend in Android App Development",
-                                                border: OutlineInputBorder(
+
+                                      ),
+                                    ),
+                                    ListTile(
+                                      title: Text("Description",style: TextStyle(fontWeight: FontWeight.bold),),
+                                      subtitle: TextField(
+                                        controller: _desc,
+                                        maxLength: 200,
+                                        decoration: InputDecoration(
+                                          hintText: "I want to learn Backend in Android App Development",
+                                          border: OutlineInputBorder(
                                             borderRadius: BorderRadius.all(
-                                            Radius.circular(10),
-                                          ),
-                                        ),
+                                              Radius.circular(10),
                                             ),
                                           ),
                                         ),
-                                        ListTile(
-                                          title: Text("Language",style: TextStyle(fontWeight: FontWeight.bold),),
-                                          subtitle: TextField(
-                                            controller: _lang,
-                                            decoration: InputDecoration(
-                                                hintText: "English",
-                                              border: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(10),
-                                                ),
-                                              ),
+                                      ),
+                                    ),
+                                    ListTile(
+                                      title: Text("Language",style: TextStyle(fontWeight: FontWeight.bold),),
+                                      subtitle: TextField(
+                                        controller: _lang,
+                                        decoration: InputDecoration(
+                                          hintText: "English",
+                                          border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(10),
                                             ),
                                           ),
                                         ),
-                                        ListTile(
-                                          title: Text("How much you can pay per hour?",style: TextStyle(fontWeight: FontWeight.bold),),
-                                          subtitle: TextField(
-                                            controller: _amount,
-                                            keyboardType: TextInputType.number,
-                                            decoration: InputDecoration(
-                                                hintText: "200",
-                                              border: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(10),
-                                                ),
-                                              ),
+                                      ),
+                                    ),
+                                    ListTile(
+                                      title: Text("How much you can pay per hour?",style: TextStyle(fontWeight: FontWeight.bold),),
+                                      subtitle: TextField(
+                                        controller: _amount,
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                          hintText: "200",
+                                          border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(10),
                                             ),
                                           ),
                                         ),
-                                        ListTile(
-                                          title: Text("Type",style: TextStyle(fontWeight: FontWeight.bold),),
-                                          subtitle: TextField(
-                                            controller: _type,
-                                            decoration: InputDecoration(
-                                                hintText: "100% Personalized",
-                                              border: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(10),
-                                                ),
-                                              ),
+                                      ),
+                                    ),
+                                    ListTile(
+                                      title: Text("Type",style: TextStyle(fontWeight: FontWeight.bold),),
+                                      subtitle: TextField(
+                                        controller: _type,
+                                        decoration: InputDecoration(
+                                          hintText: "100% Personalized",
+                                          border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(10),
                                             ),
                                           ),
                                         ),
+                                      ),
+                                    ),
 
 
-                                        ListTile(
-                                          title: Text("Offline/Online/Both",style: TextStyle(fontWeight: FontWeight.bold),),
-                                          subtitle: TextField(
-                                            controller: _platform,
-                                            decoration: InputDecoration(
-                                                hintText: "Online",
-                                              border: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(10),
-                                                ),
-                                              ),
+                                    ListTile(
+                                      title: Text("Offline/Online/Both",style: TextStyle(fontWeight: FontWeight.bold),),
+                                      subtitle: TextField(
+                                        controller: _platform,
+                                        decoration: InputDecoration(
+                                          hintText: "Online",
+                                          border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(10),
                                             ),
                                           ),
                                         ),
-                                        ListTile(
-                                          title: Text("City",style: TextStyle(fontWeight: FontWeight.bold),),
-                                          subtitle: TextField(
-                                            controller: _city,
+                                      ),
+                                    ),
+                                    ListTile(
+                                      title: Text("City",style: TextStyle(fontWeight: FontWeight.bold),),
+                                      subtitle: TextField(
+                                        controller: _city,
 
-                                            decoration: InputDecoration(
-                                                hintText: "Vadodara",
-                                              border: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(10),
-                                                ),
-                                              ),
+                                        decoration: InputDecoration(
+                                          hintText: "Vadodara",
+                                          border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(10),
                                             ),
                                           ),
                                         ),
-                                        ListTile(
-                                          title: Text("Category",style: TextStyle(fontWeight: FontWeight.bold),),
-                                          subtitle: TextField(
-                                            controller: _category,
+                                      ),
+                                    ),
+                                    ListTile(
+                                      title: Text("Category",style: TextStyle(fontWeight: FontWeight.bold),),
+                                      subtitle: TextField(
+                                        controller: _category,
 
-                                            decoration: InputDecoration(
-                                                hintText: "Select",
-                                              border: OutlineInputBorder(
-                                                borderRadius: BorderRadius.all(
-                                                  Radius.circular(10),
-                                                ),
-                                              ),
+                                        decoration: InputDecoration(
+                                          hintText: "Select",
+                                          border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(10),
                                             ),
                                           ),
                                         ),
-                                        Center(
-                                          child: ElevatedButton(onPressed: (){
-                                            String topic= _topic.text.trim();
-                                            String desc= _desc.text.trim();
-                                            String lang= _lang.text.trim();
-                                            String amount= _amount.text.trim();
-                                            String type= _type.text.trim();
-                                            String platform= _platform.text.trim();
-                                            String city= _city.text.trim();
-                                            String category= _category.text.trim();
+                                      ),
+                                    ),
+                                    Center(
+                                      child: ElevatedButton(onPressed: (){
+                                        String topic= _topic.text.trim();
+                                        String desc= _desc.text.trim();
+                                        String lang= _lang.text.trim();
+                                        String amount= _amount.text.trim();
+                                        String type= _type.text.trim();
+                                        String platform= _platform.text.trim();
+                                        String city= _city.text.trim();
+                                        String category= _category.text.trim();
 
-                                            if(topic.isNotEmpty && desc.isNotEmpty && lang.isNotEmpty && amount.isNotEmpty && type.isNotEmpty && platform.isNotEmpty && city.isNotEmpty && category.isNotEmpty)
-                                            {
+                                        if(topic.isNotEmpty && desc.isNotEmpty && lang.isNotEmpty && amount.isNotEmpty && type.isNotEmpty && platform.isNotEmpty && city.isNotEmpty && category.isNotEmpty)
+                                        {
 
-                                              setState(() {
+                                          setState(() {
 
-                                                _topic.text="";
-                                                _desc.text="";
-                                                _lang.text="";
-                                                _amount.text="";
-                                                _type.text="";
-                                                _platform.text="";
-                                                _city.text="";
-                                                _category.text="";
-                                                postlists.add(PostList(topic: topic, desc: desc, lang: lang, amount: amount, type: type, platform: platform, city: city, category: category));
-                                              });
-                                            }
+                                            _topic.text="";
+                                            _desc.text="";
+                                            _lang.text="";
+                                            _amount.text="";
+                                            _type.text="";
+                                            _platform.text="";
+                                            _city.text="";
+                                            _category.text="";
+                                            postlists.add(PostList(topic: topic, desc: desc, lang: lang, amount: amount, type: type, platform: platform, city: city, category: category));
+                                          });
+                                        }
 
-                                            Navigator.of(context).pop();
-                                          }, child: Text("Post Requirement")),
+                                        Navigator.of(context).pop();
+                                      }, child: Text("Post Requirement")),
 
-                                        )
+                                    )
 
 
-                                      ],),
-                                  ),
-                                ),
+                                  ],),
                               ),
                             ),
-                          );
+                          ),
+                        ),
+                      );
 
-                        });
+                    });
 
-              },),
+              },
+              child: Container(
+                alignment: Alignment.center,
+                  height: 150,
+                  margin: EdgeInsets.only(left: 25,right: 25),
+                  width: double.infinity,
+                  decoration: backgroundWhite,child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 25),
+                        child: Image.asset('assets/images/img.png',height: 50),
+                      ),
+                      Center(child:
+                      TextButton(
 
+                        child: Text("Post Requirement for Guru",style: h2,),
+                        onPressed: (){
+                              showModalBottomSheet<dynamic>(
+                                  isScrollControlled: true,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20),)
+
+                                  ),
+                                  elevation: 0,
+                                  isDismissible: false,
+                                  enableDrag: true,
+                                  context: context,
+                                  builder:( context){
+                                    return SingleChildScrollView(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Container(
+                                          height: 700,
+                                          child: SingleChildScrollView(
+                                            child: Container(
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  ListTile(
+                                                    title: Text("*The request will be sent to all mentors.",style: TextStyle(color: Colors.blue),),
+                                                  ),
+                                                  ListTile(
+                                                    title: Text("What do you want to learn?",style: TextStyle(fontWeight: FontWeight.bold),),
+                                                    subtitle: TextField(
+                                                    controller: _topic,
+                                                      decoration: InputDecoration(
+                                                        hintText: "Android App Development",
+                                                          border: OutlineInputBorder(
+                                                            borderRadius: BorderRadius.all(
+                                                            Radius.circular(10),
+                                                            )
+                                                          ),
+
+                                                      ),
+
+                                                    ),
+                                                  ),
+                                                  ListTile(
+                                                    title: Text("Description",style: TextStyle(fontWeight: FontWeight.bold),),
+                                                    subtitle: TextField(
+                                                      controller: _desc,
+                                                      maxLength: 200,
+                                                      decoration: InputDecoration(
+                                                          hintText: "I want to learn Backend in Android App Development",
+                                                          border: OutlineInputBorder(
+                                                      borderRadius: BorderRadius.all(
+                                                      Radius.circular(10),
+                                                    ),
+                                                  ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  ListTile(
+                                                    title: Text("Language",style: TextStyle(fontWeight: FontWeight.bold),),
+                                                    subtitle: TextField(
+                                                      controller: _lang,
+                                                      decoration: InputDecoration(
+                                                          hintText: "English",
+                                                        border: OutlineInputBorder(
+                                                          borderRadius: BorderRadius.all(
+                                                            Radius.circular(10),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  ListTile(
+                                                    title: Text("How much you can pay per hour?",style: TextStyle(fontWeight: FontWeight.bold),),
+                                                    subtitle: TextField(
+                                                      controller: _amount,
+                                                      keyboardType: TextInputType.number,
+                                                      decoration: InputDecoration(
+                                                          hintText: "200",
+                                                        border: OutlineInputBorder(
+                                                          borderRadius: BorderRadius.all(
+                                                            Radius.circular(10),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  ListTile(
+                                                    title: Text("Type",style: TextStyle(fontWeight: FontWeight.bold),),
+                                                    subtitle: TextField(
+                                                      controller: _type,
+                                                      decoration: InputDecoration(
+                                                          hintText: "100% Personalized",
+                                                        border: OutlineInputBorder(
+                                                          borderRadius: BorderRadius.all(
+                                                            Radius.circular(10),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+
+
+                                                  ListTile(
+                                                    title: Text("Offline/Online/Both",style: TextStyle(fontWeight: FontWeight.bold),),
+                                                    subtitle: TextField(
+                                                      controller: _platform,
+                                                      decoration: InputDecoration(
+                                                          hintText: "Online",
+                                                        border: OutlineInputBorder(
+                                                          borderRadius: BorderRadius.all(
+                                                            Radius.circular(10),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  ListTile(
+                                                    title: Text("City",style: TextStyle(fontWeight: FontWeight.bold),),
+                                                    subtitle: TextField(
+                                                      controller: _city,
+
+                                                      decoration: InputDecoration(
+                                                          hintText: "Vadodara",
+                                                        border: OutlineInputBorder(
+                                                          borderRadius: BorderRadius.all(
+                                                            Radius.circular(10),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  ListTile(
+                                                    title: Text("Category",style: TextStyle(fontWeight: FontWeight.bold),),
+                                                    subtitle: TextField(
+                                                      controller: _category,
+
+                                                      decoration: InputDecoration(
+                                                          hintText: "Select",
+                                                        border: OutlineInputBorder(
+                                                          borderRadius: BorderRadius.all(
+                                                            Radius.circular(10),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Center(
+                                                    child: ElevatedButton(onPressed: (){
+                                                      String topic= _topic.text.trim();
+                                                      String desc= _desc.text.trim();
+                                                      String lang= _lang.text.trim();
+                                                      String amount= _amount.text.trim();
+                                                      String type= _type.text.trim();
+                                                      String platform= _platform.text.trim();
+                                                      String city= _city.text.trim();
+                                                      String category= _category.text.trim();
+
+                                                      if(topic.isNotEmpty && desc.isNotEmpty && lang.isNotEmpty && amount.isNotEmpty && type.isNotEmpty && platform.isNotEmpty && city.isNotEmpty && category.isNotEmpty)
+                                                      {
+
+                                                        setState(() {
+
+                                                          _topic.text="";
+                                                          _desc.text="";
+                                                          _lang.text="";
+                                                          _amount.text="";
+                                                          _type.text="";
+                                                          _platform.text="";
+                                                          _city.text="";
+                                                          _category.text="";
+                                                          postlists.add(PostList(topic: topic, desc: desc, lang: lang, amount: amount, type: type, platform: platform, city: city, category: category));
+                                                        });
+                                                      }
+
+                                                      Navigator.of(context).pop();
+                                                    }, child: Text("Post Requirement")),
+
+                                                  )
+
+
+                                                ],),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+
+                                  });
+
+                        },),
+
+              ),
+                    ],
+                  )),
             ),
-                  ],
-                )),
-
-          ),
-          postlists.isEmpty ? Text("No Posted Requiremnets yet...", style: TextStyle(fontSize: 22),)
-          : Expanded(
-            child: ListView.builder(
-              itemCount: postlists.length,
-                itemBuilder: (context, index) => getRow(index)
-                ),
-          )
-        ],
+            SizedBox(height: 10,),
+            postlists.isEmpty ? Text("No Posted Requiremnets yet...", style: d1)
+            : Expanded(
+              child: ListView.builder(
+                itemCount: postlists.length,
+                  itemBuilder: (context, index) => getRow(index)
+                  ),
+            )
+          ],
+        ),
       ));
   }
 

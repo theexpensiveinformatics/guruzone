@@ -1,5 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:guruzone/styles/backgrounds/boxTextInput.dart';
+import 'package:guruzone/styles/colors.dart';
+import 'package:guruzone/styles/texts/blueRegular.dart';
+import 'package:guruzone/styles/texts/blueSmall.dart';
+import 'package:guruzone/styles/texts/d1.dart';
+import 'package:guruzone/styles/texts/d1Light.dart';
+import 'package:guruzone/styles/texts/h2.dart';
+import 'package:guruzone/styles/texts/r1.dart';
 
 class searchScreenCard extends StatelessWidget{
   final String name;
@@ -30,7 +38,7 @@ class searchScreenCard extends StatelessWidget{
     return Padding(
       padding: const EdgeInsets.fromLTRB(15, 9, 15, 9),
       child: Container(
-        height: 291,
+
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20)
@@ -56,17 +64,10 @@ class searchScreenCard extends StatelessWidget{
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(name,
-                          style: TextStyle(
-                              color: Color(0xff333D52),
-                              fontFamily: 'SemiBoldFont',
-                              fontSize: 16
-                          ),
+                          style: h2
                         ),
                         Text(profession,
-                          style: TextStyle(
-                              color: Color(0xff586172),
-                              fontFamily: 'RegularFont'
-                          ),
+                          style: d1Light
                         ),
                         Row(
                           children: [
@@ -79,16 +80,10 @@ class searchScreenCard extends StatelessWidget{
                               width: 4,
                             ),
                             Text(ratings,
-                              style: TextStyle(
-                                  color: Color(0xff586172),
-                                  fontFamily: 'RegularFont'
-                              ),
+                              style: d1,
                             ),
                             Text(' ('+reviewCount+' Reviews)',
-                              style: TextStyle(
-                                  color: Color(0xff586172),
-                                  fontFamily: 'RegularFont'
-                              ),
+                              style: d1
                             )
                           ],
                         ),
@@ -103,63 +98,59 @@ class searchScreenCard extends StatelessWidget{
                               width: 4,
                             ),
                             Text(location,
-                              style: TextStyle(
-                                  color: Color(0xff586172),
-                                  fontFamily: 'RegularFont'
-                              ),
+                              style: d1
                             ),
                           ],
                         )
                       ],
                     ),
                   ),
-                  Container(
-                    width: 30,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Container(
-                          child: Image.asset('assets/images/linkedin.png'),
-                          width: 32,
-                          height: 32,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(color: Color(0xff0095FF))
+
+                  Expanded(
+                    child: Container(
+                      width: 30,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Container(
+                            child: Image.asset('assets/images/linkedin.png'),
+                            width: 32,
+                            height: 32,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                border: Border.all(color: Color(0xff0095FF))
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 17,
-                        ),
-                        Container(
-                          child: Padding(
-                            padding: const EdgeInsets.all(3.0),
-                            child: Image.asset('assets/images/heart.png'),
+                          SizedBox(
+                            height: 17,
                           ),
-                          width: 32,
-                          height: 32,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(color: Color(0xffFF7070))
-                          ),
-                        )
-                      ],
+                          Container(
+                            child: Padding(
+                              padding: const EdgeInsets.all(3.0),
+                              child: Image.asset('assets/images/heart.png'),
+                            ),
+                            width: 32,
+                            height: 32,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                border: Border.all(color: Color(0xffFF7070))
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 13),
+                padding: const EdgeInsets.only(top: 15),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                   children: [
                     Container(
                       alignment: Alignment.center,
-                      width: 90,
-                      height: 30,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Color(0x333D521A))
-                      ),
+                      padding: EdgeInsets.only(top: 4,bottom: 4,left: 10,right: 10),
+                      decoration: boxTextInput,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -172,50 +163,41 @@ class searchScreenCard extends StatelessWidget{
                             width: 4,
                           ),
                           Text(language,
-                            style: TextStyle(
-                                fontFamily: 'RegularFont',
-                                color: Color(0xff0095FF)
-                            ),
+                            style:blueSmall
                           ),
                         ],
                       ),
                     ),
+                    SizedBox(width: MediaQuery.of(context).size.width/60,),
                     Container(
-                      width: 190,
-                      height: 30,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Color(0x333D521A))
-                      ),
+                      padding: EdgeInsets.only(top: 4,bottom: 4,right: 10,left: 10),
+                      decoration: boxTextInput,
                       alignment: Alignment.center,
                       child: Text(personalization,
-                        style: TextStyle(
-                            fontFamily: 'RegularFont',
-                            color: Color(0xff0095FF)
-                        ),
+                        style: blueSmall
                       ),
                     ),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 9),
+                padding: const EdgeInsets.only(top: 7),
                 child: Container(
-                    height: 61,
+
                     child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 6,childAspectRatio: 3.5,mainAxisSpacing: 6),
+                      shrinkWrap: true,
+
                       itemBuilder: (context,index){
                         return Container(
                           alignment: Alignment.center,
                           height: 10,
                           decoration: BoxDecoration(
-                              border: Border.all(color: Color(0x333D521A)),
+                              border: Border.all(color: borderColor),
                               borderRadius: BorderRadius.circular(8)
                           ),
                           child: Text(skills[index],
-                            style: TextStyle(
-                                fontFamily: 'RegularFont',
-                                color: Color(0xff333D52)
-                            ),),
+                            style: d1
+                          ),
                         );
                       },
                       itemCount: skills.length,
@@ -228,7 +210,7 @@ class searchScreenCard extends StatelessWidget{
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: 140,
+                      width: MediaQuery.of(context).size.width/3,
                       height: 36,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
@@ -237,13 +219,13 @@ class searchScreenCard extends StatelessWidget{
                       alignment: Alignment.center,
                       child: Text("From \$"+price+'/hour',
                         style: TextStyle(
-                            fontFamily: 'RegularFont',
+                            fontFamily: 'semibold',
                             color: Color(0xff0095FF)
                         ),
                       ),
                     ),
                     Container(
-                      width: 140,
+                      width:  MediaQuery.of(context).size.width/3,
                       height: 36,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
@@ -253,7 +235,7 @@ class searchScreenCard extends StatelessWidget{
                       alignment: Alignment.center,
                       child: Text('Pull Request',
                         style: TextStyle(
-                            fontFamily: 'RegularFont',
+                            fontFamily: 'semibold',
                             color: Colors.white
                         ),
                       ),

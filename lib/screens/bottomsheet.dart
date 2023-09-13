@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:guruzone/styles/texts/blueRegular.dart';
+import 'package:guruzone/styles/texts/h2.dart';
 
 
 class BottomSheetwidget extends StatelessWidget{
@@ -30,10 +32,10 @@ class BottomSheetwidget extends StatelessWidget{
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       ListTile(
-                        title: Text("*The request will be sent to all mentors.",style: TextStyle(color: Colors.blue),),
+                        title: Text("*The request will be sent to all mentors.",style: blueRegular,),
                       ),
                       ListTile(
-                        title: Text("What do you want to learn?",style: TextStyle(fontWeight: FontWeight.bold),),
+                        title: Text("What do you want to learn?",style: h2),
                         subtitle: TextField(
                           decoration: InputDecoration(
                               hintText: "Android App Development"

@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         )
       ),
 
-      home: choiceScreen(),
+      home: homeBottom(),
 
 
     );
