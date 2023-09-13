@@ -5,6 +5,6 @@ final BoxDecoration boxTextInput =BoxDecoration(
     borderRadius: BorderRadius.circular(8),
     border:Border.all(
         color: Color(0x1a000000),
-        width: 0.5
+        width: 0.8
     )
 );

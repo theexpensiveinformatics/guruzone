@@ -6,7 +6,8 @@ import 'package:guruzone/screens/choiceScreen.dart';
 import 'package:guruzone/screens/homeBottom.dart';
 import 'package:guruzone/screens/homeScreen.dart';
 import 'package:guruzone/screens/list.dart';
-import 'package:guruzone/screens/signUpScreen.dart';
+import 'package:guruzone/screens/logInScreenMentor.dart';
+import 'package:guruzone/screens/signUpScreenMentor.dart';
 import 'package:guruzone/styles/colors.dart';
 
 void main() {
@@ -19,6 +20,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var controllerPass = TextEditingController();
+    var controllerEmail = TextEditingController();
+
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
@@ -34,7 +38,7 @@ class MyApp extends StatelessWidget {
         )
       ),
 
-      home: signUpScreen(),
+      home: choiceScreen(),
 
 
     );

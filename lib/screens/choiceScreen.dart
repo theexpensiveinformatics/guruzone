@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:guruzone/screens/homeScreen.dart';
-import 'package:guruzone/screens/signUpScreen.dart';
+import 'package:guruzone/screens/logInScreenMentor.dart';
+import 'package:guruzone/screens/logInScreenStudent.dart';
+import 'package:guruzone/screens/signUpScreenMentor.dart';
+import 'package:guruzone/screens/signUpScreenStudent.dart';
 import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/texts/d1.dart';
 import 'package:guruzone/styles/texts/h1.dart';
@@ -33,7 +36,7 @@ class _choiceScreenState extends State<choiceScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => signUpScreen(),)),
+                  onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => logInScreenStudent(),)),
                   child: Container(
                     height: 110,
                     width: 110,
@@ -64,7 +67,7 @@ class _choiceScreenState extends State<choiceScreen> {
                   ),
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => signUpScreen(),));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => logInScreenMentor(),));
                     },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
