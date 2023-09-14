@@ -36,7 +36,7 @@ class _choiceScreenState extends State<choiceScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => logInScreenStudent(),)),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => logInScreenMentor(),)),
                   child: Container(
                     height: MediaQuery.of(context).size.height/4,
                     width: double.infinity,

@@ -8,8 +8,10 @@ import 'package:guruzone/screens/homeBottom.dart';
 import 'package:guruzone/screens/homeScreen.dart';
 import 'package:guruzone/screens/list.dart';
 import 'package:guruzone/screens/logInScreenMentor.dart';
+import 'package:guruzone/screens/mentorProfileScreen.dart';
 import 'package:guruzone/screens/signUpScreenMentor.dart';
 import 'package:guruzone/styles/colors.dart';
+import 'package:guruzone/styles/components/mentorProfile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
         )
       ),
 
-      home: homeBottom(),
+      home:choiceScreen(),
 
 
     );
