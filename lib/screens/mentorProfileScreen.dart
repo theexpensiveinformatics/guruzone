@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/components/mentorProfile.dart';
+import 'package:guruzone/styles/components/mentorProfileReview.dart';
 import 'package:guruzone/styles/texts/h1.dart';
 import 'package:guruzone/styles/texts/r1.dart';
 import 'package:guruzone/styles/texts/redSmall.dart';
@@ -29,8 +30,30 @@ class _mentorProfileScreenState extends State<mentorProfileScreen> {
    var reviews = [
      {
        'name' : 'Riya Patel',
+       'rating' : 4,
        'review' : 'Take one of Udemy’s range of Python courses and learn how to code using this incredibly useful language. Its simple syntax and readability makes Python perfect for Flask, Django, data science, and machine learning. '
      },
+     {
+       'name' : 'Riya Patel',
+       'rating' : 2,
+       'review' : 'Take one of Udemy’s range of Python courses and learn how to code using this incredibly useful language. Its simple syntax and readability makes Python perfect for Flask, Django, data science, and machine learning. '
+     },
+     {
+       'name' : 'Riya Patel',
+       'rating' : 1,
+       'review' : 'Take one of Udemy’s range of Python courses and learn how to code using this incredibly useful language. Its simple syntax and readability makes Python perfect for Flask, Django, data science, and machine learning. '
+     },
+     {
+       'name' : 'Riya Patel',
+       'rating' : 3,
+       'review' : 'Take one of Udemy’s range of Python courses and learn how to code using this incredibly useful language. Its simple syntax and readability makes Python perfect for Flask, Django, data science, and machine learning. '
+     },
+     {
+       'name' : 'Riya Patel',
+       'rating' : 5,
+       'review' : 'Take one of Udemy’s range of Python courses and learn how to code using this incredibly useful language. Its simple syntax and readability makes Python perfect for Flask, Django, data science, and machine learning. '
+     },
+
    ];
 
   final List<String> ratingNumber = ['5','4','3','2','1'];
@@ -143,6 +166,7 @@ class _mentorProfileScreenState extends State<mentorProfileScreen> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 90),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                 children:
                   [mentorProfile(name: cardData['mentorName'].toString(),
                       profession: cardData['profession'].toString(),
@@ -156,7 +180,17 @@ class _mentorProfileScreenState extends State<mentorProfileScreen> {
                     reviewCount: cardData['reviewCount'].toString(),
                     ratingNumber: ratingNumber,
                   ),
+                    Container(
+                      color: Colors.white,
+                      child: ListView(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        children: reviews.map((e) => mentorProfileReview(name: e['name'].toString(), rating: double.parse(e['rating'].toString()), review: e['review'].toString()),
+                      ).toList()
+                      ),
+                    )
                 ],
+
           ),
               ),
             ),

@@ -5,7 +5,7 @@ import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/texts/d1.dart';
 import 'package:guruzone/styles/texts/d1Light.dart';
 import 'package:guruzone/styles/texts/d2Light.dart';
-import 'package:guruzone/styles/texts/h1.dart';
+import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/texts/h2.dart';
 
 class mentorProfile extends StatelessWidget{
@@ -36,6 +36,10 @@ class mentorProfile extends StatelessWidget{
 
   final double iconSide = 16.0;
   final double iconText = 6.0;
+  final double starContainerHeight = 25;
+  final double starContainerWidth = 45;
+  final double starContainerBorderRadius = 6;
+  final double starSide = 12;
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +110,7 @@ class mentorProfile extends StatelessWidget{
         ),
 
         Container(
-          height: 400,
+          height: 330,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20)),
@@ -176,9 +180,6 @@ class mentorProfile extends StatelessWidget{
                     )
                   ],
                 ),
-                SizedBox(
-                  height: 10,
-                ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -203,7 +204,7 @@ class mentorProfile extends StatelessWidget{
                                 borderRadius: BorderRadius.circular(8)
                             ),
                             child: Text(skills[index],
-                              style: d2Light,
+                              style: d1,
                             ),
                           );
                         },
@@ -213,29 +214,133 @@ class mentorProfile extends StatelessWidget{
                   ],
                 ),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Ratings '+ratings+' ('+reviewCount+')',
-                      style: d1,
+                    SizedBox(
+                      width: double.infinity,
+                      child: Text('Ratings '+ratings+' ('+reviewCount+')',
+                        style: h2,
+                      ),
                     ),
-                    // ListView.builder(
-                    //   scrollDirection: Axis.horizontal,
-                    //     shrinkWrap: true,
-                    //     physics: NeverScrollableScrollPhysics(),
-                    //     itemBuilder: (context,index)
-                    // {return Container(
-                    //   height: 30,
-                    //   width: 50,
-                    //   child: Row(
-                    //     children: [
-                    //       Image.asset('assets/images/star_grey.png'),
-                    //       Text(ratingNumber[index],
-                    //         style: d1Light,
-                    //       ),
-                    //     ],
-                    //   ),
-                    // );
-                    //     }
-                    // )
+                    SizedBox(
+                      width: 250,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            height: starContainerHeight,
+                            width: starContainerWidth,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(starContainerBorderRadius),
+                              border: Border.all(color: borderColor1),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                              width: starSide,
+                                    height: starSide,
+                                    child: Image.asset('assets/images/star_grey.png'),
+                                ),
+                                Text('5',
+                                  style: d1Light,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            height: starContainerHeight,
+                            width: starContainerWidth,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(starContainerBorderRadius),
+                              border: Border.all(color: borderColor1),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: starSide,
+                                  height: starSide,
+                                  child: Image.asset('assets/images/star_grey.png'),
+                                ),
+                                Text('4',
+                                  style: d1Light,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            height: starContainerHeight,
+                            width: starContainerWidth,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(starContainerBorderRadius),
+                              border: Border.all(color: borderColor1),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: starSide,
+                                  height: starSide,
+                                  child: Image.asset('assets/images/star_grey.png'),
+                                ),
+                                Text('3',
+                                  style: d1Light,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            height: starContainerHeight,
+                            width: starContainerWidth,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(starContainerBorderRadius),
+                              border: Border.all(color: borderColor1),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: starSide,
+                                  height: starSide,
+                                  child: Image.asset('assets/images/star_grey.png'),
+                                ),
+                                Text('2',
+                                  style: d1Light,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            height: starContainerHeight,
+                            width: starContainerWidth,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(starContainerBorderRadius),
+                              border: Border.all(color: borderColor1),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: starSide,
+                                  height: starSide,
+                                  child: Image.asset('assets/images/star_grey.png'),
+                                ),
+                                Text('1',
+                                  style: d1Light,
+                                ),
+                              ],
+                            ),
+                          ),
+
+                        ],
+                      ),
+                    ),
                   ],
                 )
               ],

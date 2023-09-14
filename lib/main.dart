@@ -5,6 +5,9 @@ import 'package:guruzone/screens/RequestReplyScreen.dart';
 import 'package:guruzone/screens/homeBottom.dart';
 import 'package:guruzone/screens/homeScreen.dart';
 import 'package:guruzone/screens/list.dart';
+import 'package:guruzone/screens/mentorProfileScreen.dart';
+import 'package:guruzone/screens/mentorStudentRequestScreen.dart';
+import 'package:guruzone/screens/studentProfileSelf.dart';
 import 'package:guruzone/styles/colors.dart';
 
 void main() {
@@ -32,7 +35,7 @@ class MyApp extends StatelessWidget {
         )
       ),
 
-      home: homeBottom(),
+      home: mentorStudentRequestScreen(),
     );
   }
 }
