@@ -58,7 +58,7 @@ class _newSearchScreenState extends State<newSearchScreen> {
     },
   ];
 
-  List<String> skills = ['Flutter','Android','Java','M.L.','Node.js'];
+  List<String> skills = ['Flutter','Android','Java','M.L.','Node.js','Politics','Philosophy','Machine Learning'];
 
   var SearchHeight = 50.0;
 

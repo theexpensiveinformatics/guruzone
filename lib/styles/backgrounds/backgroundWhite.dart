@@ -5,6 +5,6 @@ final BoxDecoration backgroundWhite =BoxDecoration(
   borderRadius: BorderRadius.circular(15),
   border:Border.all(
     color: Color(0x1a000000),
-    width: 0.5
+    width: 1.0
   )
 );

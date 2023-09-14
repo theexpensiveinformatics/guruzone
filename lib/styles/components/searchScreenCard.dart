@@ -196,7 +196,8 @@ class searchScreenCard extends StatelessWidget{
                               borderRadius: BorderRadius.circular(8)
                           ),
                           child: Text(skills[index],
-                            style: d1
+                            style: d1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         );
                       },

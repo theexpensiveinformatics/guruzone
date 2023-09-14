@@ -48,6 +48,61 @@ class DoubtChatScreen extends StatelessWidget{
       'time' : '12:30pm',
       'action' : 'onPressed',
     },
+    {
+      'topic' : 'Flutter Dev',
+      'message' : 'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi..',
+      'count' : 5,
+      'time' : '12:30pm',
+      'action' : 'onPressed',
+    },
+    {
+      'topic' : 'Flutter Dev',
+      'message' : 'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi..',
+      'count' : 5,
+      'time' : '12:30pm',
+      'action' : 'onPressed',
+    },
+    {
+      'topic' : 'Flutter Dev',
+      'message' : 'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi..',
+      'count' : 5,
+      'time' : '12:30pm',
+      'action' : 'onPressed',
+    },
+    {
+      'topic' : 'Flutter Dev',
+      'message' : 'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi..',
+      'count' : 5,
+      'time' : '12:30pm',
+      'action' : 'onPressed',
+    },{
+      'topic' : 'Flutter Dev',
+      'message' : 'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi..',
+      'count' : 5,
+      'time' : '12:30pm',
+      'action' : 'onPressed',
+    },
+    {
+      'topic' : 'Flutter Dev',
+      'message' : 'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi..',
+      'count' : 5,
+      'time' : '12:30pm',
+      'action' : 'onPressed',
+    },
+    {
+      'topic' : 'Flutter Dev',
+      'message' : 'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi..',
+      'count' : 5,
+      'time' : '12:30pm',
+      'action' : 'onPressed',
+    },
+    {
+      'topic' : 'Flutter Dev',
+      'message' : 'Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi..',
+      'count' : 5,
+      'time' : '12:30pm',
+      'action' : 'onPressed',
+    },
 
 
 
@@ -91,7 +146,7 @@ class DoubtChatScreen extends StatelessWidget{
                         SizedBox(
                           width: iconSide,
                           height: iconSide,
-                          child: Image.asset('assets/images/arrow.png'),
+                          child: Image.asset('assets/images/arrow.png',color: darkText,),
                         ),
                         SizedBox(
                           width: 15,
@@ -114,13 +169,13 @@ class DoubtChatScreen extends StatelessWidget{
                         SizedBox(
                           width: iconSide,
                           height: iconSide,
-                          child: Image.asset('assets/images/search_black.png'),
+                          child: Image.asset('assets/images/search_black.png',color: darkText),
                         ),
                         SizedBox(width: 20,),
                         SizedBox(
                           width: iconSide,
                           height: iconSide,
-                          child: Image.asset('assets/images/plus.png'),
+                          child: Image.asset('assets/images/plus.png',color:darkText),
                         ),
                       ],
                     ),
@@ -128,17 +183,19 @@ class DoubtChatScreen extends StatelessWidget{
                 ),
               ),
             ),
-            SingleChildScrollView(
-              child: Container(
-                child: ListView(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  children: chatData.map((e) => DoubtListTile(topic: e['topic'].toString(),
-                      message: e['message'].toString(),
-                      count: e['count'].toString(),
-                      time: e['time'].toString(),
-                  action: (){})
-                  ).toList(),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Container(
+                  child: ListView(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    children: chatData.map((e) => DoubtListTile(topic: e['topic'].toString(),
+                        message: e['message'].toString(),
+                        count: e['count'].toString(),
+                        time: e['time'].toString(),
+                    action: (){})
+                    ).toList(),
+                  ),
                 ),
               ),
             ),

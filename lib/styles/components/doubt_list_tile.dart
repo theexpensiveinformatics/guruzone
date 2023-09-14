@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/texts/d1.dart';
+import 'package:guruzone/styles/texts/d1Light.dart';
 import 'package:guruzone/styles/texts/d2Light.dart';
 import 'package:guruzone/styles/texts/h2.dart';
 
@@ -39,9 +40,9 @@ class DoubtListTile extends StatelessWidget{
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(topic),
+                    Text(topic,style: h2),
                     Text(message,
-                    style: d2Light,
+                    style: d1Light,
                     overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         softWrap: true,)
