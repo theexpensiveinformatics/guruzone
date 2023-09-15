@@ -19,7 +19,7 @@ class searchScreenCard extends StatelessWidget{
   final String language;
   final String personalization;
   final String price;
-  final List<String> skills;
+  final List<dynamic> skills;
 
   const searchScreenCard({super.key,
     required this.name,
@@ -66,8 +66,11 @@ class searchScreenCard extends StatelessWidget{
                         Text(name,
                           style: h2
                         ),
-                        Text(profession,
-                          style: d1Light
+                        Container(
+                          width: 150,
+                          child: Text(profession,
+                            style: d1Light,overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                         Row(
                           children: [

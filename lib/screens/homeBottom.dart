@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:guruzone/screens/DoubtChatScreen.dart';
+import 'package:guruzone/screens/ItemListScreen.dart';
 import 'package:guruzone/screens/RequestReplyScreen.dart';
 import 'package:guruzone/screens/guruScreen.dart';
 import 'package:guruzone/screens/homeScreen.dart';
