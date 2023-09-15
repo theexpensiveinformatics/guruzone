@@ -14,6 +14,7 @@ import 'package:guruzone/styles/texts/blueRegular.dart';
 import 'package:guruzone/styles/texts/d1.dart';
 import 'package:guruzone/styles/texts/d1Light.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> loginUser(BuildContext context, String email, String password) async {
   final url = Uri.parse('https://vadodara-hackthon-4-0.vercel.app/api/v1/auth/login');
@@ -35,7 +36,11 @@ Future<void> loginUser(BuildContext context, String email, String password) asyn
       // Successful login
       final Map<String, dynamic> responseData = json.decode(response.body);
       final String token = responseData['accessToken'];
+
       print(token);
+      // Store the token in SharedPreferences
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('token', token);
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -97,6 +102,8 @@ class logInScreenMentor extends StatefulWidget {
 }
 
 class _logInScreenMentorState extends State<logInScreenMentor> {
+
+
 
   var controllerEmail = TextEditingController();
   var controllerPass = TextEditingController();
@@ -257,6 +264,8 @@ class _logInScreenMentorState extends State<logInScreenMentor> {
               //signup Btn
               InkWell(
                 onTap: (){
+
+
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>signUpScreenMentor()));
                 },
                 child: Container(

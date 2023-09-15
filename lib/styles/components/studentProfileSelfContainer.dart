@@ -120,11 +120,12 @@ class studentProfileSelfContainer extends StatelessWidget{
                     Column(
                       children: [
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SizedBox(
                               width: iconSide,
                               height: iconSide,
-                              child: Image.asset('assets/images/location_blue.png'),
+                              child: Icon(Icons.location_on_outlined,color: blue,size: 18),
                             ),
                             SizedBox(width: iconText,),
                             Text(location,

@@ -12,8 +12,12 @@ import 'package:guruzone/styles/texts/d1Light.dart';
 import 'package:guruzone/styles/texts/d2Light.dart';
 import 'package:guruzone/styles/texts/h1.dart';
 import 'package:guruzone/styles/texts/h2.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class homeScreen extends StatefulWidget {
+   // Add this field
+
+
 
   @override
   State<homeScreen> createState() => _homeScreenState();
@@ -21,7 +25,21 @@ class homeScreen extends StatefulWidget {
 
 class _homeScreenState extends State<homeScreen> {
 
+  String token = '';
+  @override
+  void initState() {
+    super.initState();
+    getToken(); // Call this method to retrieve the token when the widget initializes
+  }
 
+  Future<void> getToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    final storedToken = prefs.getString('token') ?? ''; // Use a default value if the token is not found
+    setState(() {
+      token = storedToken;
+      print('CHECKKKKKKKKKK : $token');
+    });
+  }
 
   // var username =  👋"; // username
   var letsStart = "Let's start learning";

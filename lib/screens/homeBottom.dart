@@ -10,10 +10,11 @@ import 'package:guruzone/screens/homeScreen.dart';
 import 'package:guruzone/screens/newSearchScreen.dart';
 import 'package:guruzone/screens/profileScreen.dart';
 import 'package:guruzone/screens/searchScreen.dart';
+import 'package:guruzone/screens/studentProfileSelf.dart';
 import 'package:guruzone/styles/colors.dart';
 import 'package:http/http.dart' as http;
 
-late String username;
+String? username;
 Future<void> fetchUserData(String token) async {
   final url = Uri.parse('https://vadodara-hackthon-4-0.vercel.app/api/v1/auth/user');
 
@@ -30,6 +31,7 @@ Future<void> fetchUserData(String token) async {
       final Map<String, dynamic> userData = json.decode(response.body);
       print('User Data: $userData');
       username = userData['username'];
+      print('///////////////////                $username');
     } else {
       // Request failed
       print('Request failed with status: ${response.statusCode}');
@@ -175,7 +177,7 @@ class _homeBottomState extends State<homeBottom> {
                       shape: CircleBorder(eccentricity: 0),
                       onPressed: (){
                         setState(() {
-                          currentScreen=profileScreen();
+                          currentScreen=studentProfileSelf();
                           currentTab = 3;
                         });
                       },

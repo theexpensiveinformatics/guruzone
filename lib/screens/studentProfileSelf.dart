@@ -118,11 +118,12 @@ class _studentProfileSelfState extends State<studentProfileSelf> {
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(
                                   width: 17,
                                   height: 17,
-                                  child: Image.asset('assets/images/logout.png'),
+                                  child: Icon(Icons.logout,color: red,size: 15),
                                 ),
                                 SizedBox(
                                   width: 5,
