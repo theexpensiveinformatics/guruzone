@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:guruzone/screens/homeBottom.dart';
 import 'package:guruzone/styles/backgrounds/backgroundWhite.dart';
 import 'package:guruzone/styles/backgrounds/roundedBlue.dart';
 import 'package:guruzone/styles/colors.dart';
@@ -13,7 +14,6 @@ import 'package:guruzone/styles/texts/h1.dart';
 import 'package:guruzone/styles/texts/h2.dart';
 
 class homeScreen extends StatefulWidget {
-  const homeScreen({super.key});
 
   @override
   State<homeScreen> createState() => _homeScreenState();
@@ -22,7 +22,8 @@ class homeScreen extends StatefulWidget {
 class _homeScreenState extends State<homeScreen> {
 
 
-  var username = "Krushang"+"👋"; // username
+
+  // var username =  👋"; // username
   var letsStart = "Let's start learning";
   var search="Search Mentors";
   var ongoing = "Ongoing Learning";
@@ -163,7 +164,7 @@ class _homeScreenState extends State<homeScreen> {
                    Column(
                      crossAxisAlignment: CrossAxisAlignment.start,
                      children: [
-                       Text('Hi $username',style: h1),
+                       Text('Hi ',style: h1),
                        Text('$letsStart',style: d1,)
                      ],
                    ),

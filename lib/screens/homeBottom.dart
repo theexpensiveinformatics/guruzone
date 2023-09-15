@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,11 +11,40 @@ import 'package:guruzone/screens/newSearchScreen.dart';
 import 'package:guruzone/screens/profileScreen.dart';
 import 'package:guruzone/screens/searchScreen.dart';
 import 'package:guruzone/styles/colors.dart';
+import 'package:http/http.dart' as http;
+
+late String username;
+Future<void> fetchUserData(String token) async {
+  final url = Uri.parse('https://vadodara-hackthon-4-0.vercel.app/api/v1/auth/user');
+
+  try {
+    final response = await http.get(
+      url,
+      headers: <String, String>{
+        'Authorization': 'bearer $token',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      // Successful request
+      final Map<String, dynamic> userData = json.decode(response.body);
+      print('User Data: $userData');
+      username = userData['username'];
+    } else {
+      // Request failed
+      print('Request failed with status: ${response.statusCode}');
+    }
+  } catch (e) {
+    print('Error: $e');
+  }
+}
 
 
 //statefull
-class homeBottom extends StatefulWidget
-{
+class homeBottom extends StatefulWidget {
+  final String token;
+  homeBottom({required this.token});
+
   @override
   State<homeBottom> createState() => _homeBottomState();
 }
@@ -29,6 +60,13 @@ class _homeBottomState extends State<homeBottom> {
     DoubtChatScreen(),
     profileScreen()
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    // Call fetchUserData in the initState method
+    fetchUserData(widget.token);
+  }
 
   final PageStorageBucket bucket = PageStorageBucket();
   Widget currentScreen =homeScreen();
