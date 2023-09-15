@@ -268,11 +268,12 @@ class _newSearchScreenState extends State<newSearchScreen> {
             SizedBox(height: 10,),
             Expanded(
               child: SingleChildScrollView(
+
                 
                 child: ListView(
 
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: ScrollPhysics(),
                     children: cardData.map((e) => searchScreenCard(name: e['name'].toString(),
                         profession: e['profession'].toString(),
                         ratings: e['ratings'].toString(),

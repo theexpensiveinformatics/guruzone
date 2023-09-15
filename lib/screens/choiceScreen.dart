@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guruzone/screens/homeBottom.dart';
 import 'package:guruzone/screens/homeScreen.dart';
 import 'package:guruzone/screens/logInScreenMentor.dart';
 import 'package:guruzone/screens/logInScreenStudent.dart';
@@ -8,6 +9,7 @@ import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/texts/d1.dart';
 import 'package:guruzone/styles/texts/h1.dart';
 import 'package:guruzone/styles/texts/h2.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class choiceScreen extends StatefulWidget {
   const choiceScreen({super.key});
@@ -17,6 +19,26 @@ class choiceScreen extends StatefulWidget {
 }
 
 class _choiceScreenState extends State<choiceScreen> {
+
+  String token = '';
+  @override
+  void initState() {
+    super.initState();
+    getToken(); // Call this method to retrieve the token when the widget initializes
+  }
+
+  Future<void> getToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    final storedToken = prefs.getString('token') ?? ''; // Use a default value if the token is not found
+    setState(() {
+      token = storedToken;
+      print('CHECKKKKKKKKKK : $token');
+      if(token!='')
+      {
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>homeBottom(token: token)));
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
