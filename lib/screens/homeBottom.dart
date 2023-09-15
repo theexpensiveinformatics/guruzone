@@ -58,7 +58,7 @@ class _homeBottomState extends State<homeBottom> {
 
   int currentTab = 0;
   final List<Widget> screens = [
-    homeScreen(),
+    homeScreen(username: '$username',),
     newSearchScreen(),
     DoubtChatScreen(),
     profileScreen()
@@ -72,7 +72,7 @@ class _homeBottomState extends State<homeBottom> {
   }
 
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen =homeScreen();
+  Widget currentScreen =homeScreen(username: '$username');
 
 
   @override
@@ -134,7 +134,7 @@ class _homeBottomState extends State<homeBottom> {
                       shape: CircleBorder(eccentricity: 0),
                       onPressed: (){
                         setState(() {
-                          currentScreen=homeScreen();
+                          currentScreen=homeScreen(username: '$username');
                           currentTab = 0;
                         });
                       },

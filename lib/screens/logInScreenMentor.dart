@@ -117,7 +117,7 @@ class _logInScreenMentorState extends State<logInScreenMentor> {
       print('CHECKKKKKKKKKK : $token');
       if(token!='')
       {
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>homeBottom(token: token)));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>homeBottom(token: token)));
       }
     });
   }

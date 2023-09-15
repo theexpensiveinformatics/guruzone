@@ -15,6 +15,9 @@ import 'package:guruzone/styles/texts/h2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class homeScreen extends StatefulWidget {
+  final String username; // Add the username parameter
+  homeScreen({required this.username});
+
    // Add this field
 
 
@@ -38,6 +41,7 @@ class _homeScreenState extends State<homeScreen> {
     setState(() {
       token = storedToken;
       print('CHECKKKKKKKKKK : $token');
+      print('//////////// home screen /////////// $username');
     });
   }
 
