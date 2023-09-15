@@ -41,7 +41,7 @@ class _homeScreenState extends State<homeScreen> {
     setState(() {
       token = storedToken;
       print('CHECKKKKKKKKKK : $token');
-      print('//////////// home screen /////////// $username');
+
     });
   }
 
