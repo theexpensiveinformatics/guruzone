@@ -20,25 +20,7 @@ class choiceScreen extends StatefulWidget {
 
 class _choiceScreenState extends State<choiceScreen> {
 
-  String token = '';
-  @override
-  void initState() {
-    super.initState();
-    getToken(); // Call this method to retrieve the token when the widget initializes
-  }
 
-  Future<void> getToken() async {
-    final prefs = await SharedPreferences.getInstance();
-    final storedToken = prefs.getString('token') ?? ''; // Use a default value if the token is not found
-    setState(() {
-      token = storedToken;
-      print('CHECKKKKKKKKKK : $token');
-      if(token!='')
-      {
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>homeBottom(token: token)));
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +40,7 @@ class _choiceScreenState extends State<choiceScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => logInScreenMentor(),)),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => signUpScreenStudent(),)),
                   child: Container(
                     height: MediaQuery.of(context).size.height/4,
                     width: double.infinity,
@@ -91,7 +73,7 @@ class _choiceScreenState extends State<choiceScreen> {
                   ),
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => logInScreenMentor(),));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => signUpScreenMentor(),));
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

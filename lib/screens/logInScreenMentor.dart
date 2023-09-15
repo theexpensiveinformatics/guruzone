@@ -102,6 +102,25 @@ class logInScreenMentor extends StatefulWidget {
 }
 
 class _logInScreenMentorState extends State<logInScreenMentor> {
+  String token = '';
+  @override
+  void initState() {
+    super.initState();
+    getToken(); // Call this method to retrieve the token when the widget initializes
+  }
+
+  Future<void> getToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    final storedToken = prefs.getString('token') ?? ''; // Use a default value if the token is not found
+    setState(() {
+      token = storedToken;
+      print('CHECKKKKKKKKKK : $token');
+      if(token!='')
+      {
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>homeBottom(token: token)));
+      }
+    });
+  }
 
 
 
@@ -266,7 +285,7 @@ class _logInScreenMentorState extends State<logInScreenMentor> {
                 onTap: (){
 
 
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>signUpScreenMentor()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>choiceScreen()));
                 },
                 child: Container(
                   margin: EdgeInsets.only(right: 25,left: 25),
