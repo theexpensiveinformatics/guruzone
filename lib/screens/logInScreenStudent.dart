@@ -207,7 +207,7 @@ class _logInScreenStudentState extends State<logInScreenStudent> {
                   {
                     print('$email $pass');
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Login Successful.',style: TextStyle(fontFamily: 'semibold'),),duration: Duration(seconds: 2),backgroundColor: Colors.blue,behavior: SnackBarBehavior.floating,));
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>homeBottom()));
+                    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>homeBottom()));
                   }
                   else
                   {

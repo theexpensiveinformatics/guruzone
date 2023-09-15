@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:guruzone/screens/choiceScreen.dart';
 import 'package:guruzone/screens/homeBottom.dart';
@@ -11,12 +13,87 @@ import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/texts/blueRegular.dart';
 import 'package:guruzone/styles/texts/d1.dart';
 import 'package:guruzone/styles/texts/d1Light.dart';
+import 'package:http/http.dart' as http;
 
+Future<void> loginUser(BuildContext context, String email, String password) async {
+  final url = Uri.parse('https://vadodara-hackthon-4-0.vercel.app/api/v1/auth/login');
+
+  try {
+    final response = await http.post(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'email': email,
+        'password': password,
+      }),
+    );
+
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      // Successful login
+      final Map<String, dynamic> responseData = json.decode(response.body);
+      final String token = responseData['accessToken'];
+      print(token);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Login Successful.',
+            style: TextStyle(fontFamily: 'semibold'),
+          ),
+          duration: Duration(seconds: 2),
+          backgroundColor: Colors.blue,
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => homeBottom(token: token),
+        ),
+      );
+
+    } else {
+      // Login failed
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Oops! Something went wrong.',
+            style: TextStyle(fontFamily: 'semibold'),
+          ),
+          duration: Duration(seconds: 2),
+          backgroundColor: Colors.red,
+          behavior: SnackBarBehavior.floating,
+        ),
+      );// Return an empty string when login fails
+    }
+  } catch (e) {
+    // Handle any exceptions that occur during the request
+    print('Error: $e');
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text(
+          'An error occurred while logging in.',
+          style: TextStyle(fontFamily: 'semibold'),
+        ),
+        duration: Duration(seconds: 2),
+        backgroundColor: Colors.red,
+        behavior: SnackBarBehavior.floating,
+      ),
+    );// Return an empty string in case of exceptions
+  }
+}
 class logInScreenMentor extends StatefulWidget {
   const logInScreenMentor({super.key});
 
+
   @override
   State<logInScreenMentor> createState() => _logInScreenMentorState();
+
+
 }
 
 class _logInScreenMentorState extends State<logInScreenMentor> {
@@ -195,14 +272,13 @@ class _logInScreenMentorState extends State<logInScreenMentor> {
 
               // Btn
               InkWell(
-                onTap: (){
+                onTap: () async {
                   String email = controllerEmail.text;
                   String pass = controllerPass.text;
                   if(email.isNotEmpty && pass.isNotEmpty)
                     {
                       print('$email $pass');
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Login Successful.',style: TextStyle(fontFamily: 'semibold'),),duration: Duration(seconds: 2),backgroundColor: Colors.blue,behavior: SnackBarBehavior.floating,));
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>homeBottom()));
+                      loginUser(context,email,pass);
                     }
                   else
                     {
