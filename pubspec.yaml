@@ -28,6 +28,8 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  upi_india: ^3.0.1
+  easy_upi_payment: ^0.1.5
   shared_preferences: ^2.2.1
   permission_handler: ^11.0.0
   multi_select_flutter: ^4.1.3
