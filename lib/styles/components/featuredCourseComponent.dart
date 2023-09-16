@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guruzone/screens/courseDetailsScreen.dart';
+import 'package:guruzone/screens/featuredCourseDetailsScreen.dart';
 import 'package:guruzone/styles/backgrounds/backgroundWhite.dart';
 import 'package:guruzone/styles/backgrounds/roundedBlue.dart';
 import 'package:guruzone/styles/colors.dart';
@@ -38,7 +39,7 @@ class featuredCourseComponent extends StatelessWidget
           InkWell(
             onTap: ()
             {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> courseDetailsScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> featuredCourseDetailsScreen()));
             },
             child: Container(
               padding: EdgeInsets.all(8),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:guruzone/screens/payment.dart';
 import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/texts/d1.dart';
 import 'package:guruzone/styles/texts/d1Blue.dart';
@@ -209,19 +210,22 @@ class _paymentScreenState extends State<paymentScreen> {
                                 ),
                               ),
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width/3,
-                              height: 36,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(color: Color(0xff0095FF)),
-                                  color: Color(0xff0095FF)
-                              ),
-                              alignment: Alignment.center,
-                              child: Text('Buy Now',
-                                style: TextStyle(
-                                    fontFamily: 'RegularFont',
-                                    color: Colors.white
+                            InkWell(
+                              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>payment()));},
+                              child: Container(
+                                width: MediaQuery.of(context).size.width/3,
+                                height: 36,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(color: Color(0xff0095FF)),
+                                    color: Color(0xff0095FF)
+                                ),
+                                alignment: Alignment.center,
+                                child: Text('Buy Now',
+                                  style: TextStyle(
+                                      fontFamily: 'RegularFont',
+                                      color: Colors.white
+                                  ),
                                 ),
                               ),
                             ),

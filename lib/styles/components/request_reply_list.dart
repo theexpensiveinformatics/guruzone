@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:guruzone/screens/payment.dart';
+import 'package:guruzone/screens/paymentScreen.dart';
 import 'package:guruzone/styles/texts/d1.dart';
 import 'package:guruzone/styles/texts/d2Light.dart';
 
@@ -223,19 +225,22 @@ class RequestReplyList extends StatelessWidget{
                         ),
                       ),
                     ),
-                    Container(
-                      width: 140,
-                      height: 36,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Color(0xff0095FF)),
-                          color: Color(0xff0095FF)
-                      ),
-                      alignment: Alignment.center,
-                      child: Text('Pay ₹'+price,
-                        style: TextStyle(
-                            fontFamily: 'RegularFont',
-                            color: Colors.white
+                    InkWell(
+                      onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>paymentScreen()));},
+                      child: Container(
+                        width: 140,
+                        height: 36,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Color(0xff0095FF)),
+                            color: Color(0xff0095FF)
+                        ),
+                        alignment: Alignment.center,
+                        child: Text('Pay ₹'+price,
+                          style: TextStyle(
+                              fontFamily: 'RegularFont',
+                              color: Colors.white
+                          ),
                         ),
                       ),
                     ),
