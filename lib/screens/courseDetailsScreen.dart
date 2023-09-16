@@ -30,7 +30,6 @@ class _courseDetailsScreenState extends State<courseDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.only(top: 20),
         width: double.infinity,
         height: double.infinity,
         color: background,
@@ -54,7 +53,7 @@ class _courseDetailsScreenState extends State<courseDetailsScreen> {
                           SizedBox(
                             width: 10,
                           ),
-                          Text('Ongoing Learning',
+                          Text('Course Details',
                           style: h1,)
                         ],
                       ),
@@ -152,7 +151,7 @@ class _courseDetailsScreenState extends State<courseDetailsScreen> {
                             child: Container(
                               width: 1,
                               height: 25,
-                              color: Colors.grey.shade300,
+                              color: Colors.grey,
                             ),
                           ),
                         ],
@@ -200,7 +199,7 @@ class _courseDetailsScreenState extends State<courseDetailsScreen> {
                             child: Container(
                               width: 1,
                               height: 120,
-                              color: Colors.grey.shade300,
+                              color: Colors.grey,
                             ),
                           ),
                           Padding(
@@ -224,14 +223,14 @@ class _courseDetailsScreenState extends State<courseDetailsScreen> {
                                     ),
                                     Container(
                                       width: MediaQuery.of(context).size.width/3,
-                                      height: 30,
+                                      height: 25,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius: BorderRadius.circular(4),
                                           border: Border.all(color: Color(0xff0095FF)),
                                           color: Color(0xff0095FF)
                                       ),
                                       alignment: Alignment.center,
-                                      child: Text('Payment Done',
+                                      child: Text('Payment',
                                         style: TextStyle(
                                             fontFamily: 'semiBold',
                                             color: Colors.white
@@ -288,7 +287,7 @@ class _courseDetailsScreenState extends State<courseDetailsScreen> {
                             child: Container(
                               width: 1,
                               height: 220,
-                              color: Colors.grey.shade300,
+                              color: Colors.grey,
                             ),
                           ),
                           Column(
@@ -330,7 +329,7 @@ class _courseDetailsScreenState extends State<courseDetailsScreen> {
                                       child: Container(
                                         decoration: BoxDecoration(
                                           image: DecorationImage(
-                                            image: AssetImage('assets/images/pdf.png'), // Replace with your image path
+                                            image: AssetImage('assets/images/background.png'), // Replace with your image path
                                             fit: BoxFit.cover, // You can choose how the image is fitted inside the container
                                           ),
                                         ),
@@ -349,7 +348,7 @@ class _courseDetailsScreenState extends State<courseDetailsScreen> {
                                         child: Container(
                                           decoration: BoxDecoration(
                                             image: DecorationImage(
-                                              image: AssetImage('assets/images/pdf.png'), // Replace with your image path
+                                              image: AssetImage('assets/images/background.png'), // Replace with your image path
                                               fit: BoxFit.cover, // You can choose how the image is fitted inside the container
                                             ),
                                           ),
@@ -368,7 +367,7 @@ class _courseDetailsScreenState extends State<courseDetailsScreen> {
                                         child: Container(
                                           decoration: BoxDecoration(
                                             image: DecorationImage(
-                                              image: AssetImage('assets/images/pdf.png'), // Replace with your image path
+                                              image: AssetImage('assets/images/background.png'), // Replace with your image path
                                               fit: BoxFit.cover, // You can choose how the image is fitted inside the container
                                             ),
                                           ),
@@ -404,7 +403,7 @@ class _courseDetailsScreenState extends State<courseDetailsScreen> {
                             SizedBox(
                               width: sidePadding,
                             ),
-                            Text('19th Sep 2023',
+                            Text('18th Sep 2023',
                               style: TextStyle(
                                 fontFamily: 'regular',
                                 color: darkText,
@@ -424,7 +423,7 @@ class _courseDetailsScreenState extends State<courseDetailsScreen> {
                             child: Container(
                               width: 1,
                               height: 120,
-                              color: Colors.grey.shade300,
+                              color: Colors.grey,
                             ),
                           ),
                           Padding(
@@ -448,9 +447,9 @@ class _courseDetailsScreenState extends State<courseDetailsScreen> {
                                     ),
                                     Container(
                                       width: MediaQuery.of(context).size.width/3,
-                                      height: 30,
+                                      height: 25,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius: BorderRadius.circular(4),
                                           border: Border.all(color: Color(0xff00D008)),
                                           color: Color(0xff00D008)
                                       ),

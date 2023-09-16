@@ -1,17 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:upi_india/upi_india.dart';
 
-void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Test UPI',
-      home: payment(),
-    );
-  }
-}
 
 class payment extends StatefulWidget {
   @override
