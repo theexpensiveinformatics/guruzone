@@ -77,8 +77,10 @@ class _homeBottomState extends State<homeBottom> {
 
   @override
   Widget build(BuildContext context) {
+    bool keyboardIsOpen = MediaQuery.of(context).viewInsets.bottom != 0;
 
     return Scaffold(
+
       appBar: AppBar(
         toolbarHeight: 0,
       systemOverlayStyle: SystemUiOverlayStyle(
@@ -94,22 +96,25 @@ class _homeBottomState extends State<homeBottom> {
           bucket: bucket,
         ),
       ),
-      floatingActionButton: SizedBox(
-        width: 74,
-        height: 74,
-        child: FloatingActionButton(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(100)
+      floatingActionButton: Visibility(
+        visible: !keyboardIsOpen,
+        child: SizedBox(
+          width: 74,
+          height: 74,
+          child: FloatingActionButton(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(100)
+            ),
+            onPressed: (){
+              setState(() {
+
+                Navigator.push(context, MaterialPageRoute(builder: (context) => guruScreen(),));
+
+              });
+            },
+            backgroundColor: blue,
+            child: Container(height:36,width:36,child: Image.asset('assets/images/guru_white.png')),
           ),
-          onPressed: (){
-            setState(() {
-
-              Navigator.push(context, MaterialPageRoute(builder: (context) => guruScreen(),));
-
-            });
-          },
-          backgroundColor: blue,
-          child: Container(height:36,width:36,child: Image.asset('assets/images/guru_white.png')),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

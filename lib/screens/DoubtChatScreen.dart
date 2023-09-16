@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:guruzone/screens/chatScreen.dart';
+import 'package:guruzone/screens/chatStudentScreen.dart';
 import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/components/doubt_list_tile.dart';
 import 'package:guruzone/styles/texts/h1.dart';
@@ -169,13 +171,13 @@ class DoubtChatScreen extends StatelessWidget{
                         SizedBox(
                           width: iconSide,
                           height: iconSide,
-                          child: Image.asset('assets/images/search_black.png',color: darkText),
+                          child: Icon(Icons.search_rounded,color:darkText,)
                         ),
                         SizedBox(width: 20,),
                         SizedBox(
                           width: iconSide,
                           height: iconSide,
-                          child: Image.asset('assets/images/plus.png',color:darkText),
+                          child: Icon(Icons.add,color: darkText,)
                         ),
                       ],
                     ),
@@ -186,15 +188,21 @@ class DoubtChatScreen extends StatelessWidget{
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
-                  child: ListView(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    children: chatData.map((e) => DoubtListTile(topic: e['topic'].toString(),
-                        message: e['message'].toString(),
-                        count: e['count'].toString(),
-                        time: e['time'].toString(),
-                    action: (){})
-                    ).toList(),
+                  child: InkWell(
+                    onTap: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>ChatScreen()));
+                    },
+                    child: ListView(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      children: chatData.map((e) => DoubtListTile(topic: e['topic'].toString(),
+                          message: e['message'].toString(),
+                          count: e['count'].toString(),
+                          time: e['time'].toString(),
+                      action: (){})
+                      ).toList(),
+                    ),
                   ),
                 ),
               ),
