@@ -43,6 +43,7 @@ class searchScreenCard extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     String typeCheck = "100% Personalized";
+    var imgUrl = 'https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcT102smwP3i_8JvPTdQLKx3s9FQl42bP6q5HIzKoWGMchz0s3EMOYAGCgPkz-QrQ4IOxARMChyDj0WBgQ4';
 
 
     TextEditingController _topic = TextEditingController();
@@ -78,14 +79,47 @@ class searchScreenCard extends StatelessWidget{
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>mentorProfileScreen()));
                     },
-                    child: Container(
+                    child:
+                    // Container(
+                    //   width: 90,
+                    //   height: 100,
+                    //   decoration: BoxDecoration(
+                    //       color: Color(0xffD9D9D9),
+                    //       borderRadius: BorderRadius.circular(10)
+                    //   ),
+                    // ),
+                    Container(
                       width: 90,
                       height: 100,
-                      decoration: BoxDecoration(
-                          color: Color(0xffD9D9D9),
-                          borderRadius: BorderRadius.circular(10)
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.network(
+                          fit: BoxFit.fitHeight,
+                          '$imgUrl',
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent? loadingProgress) {
+                            if (loadingProgress == null) {
+                              return child;
+                            }
+                            return Center(
+                              child: Container(
+                                width: 50,
+                                child: LinearProgressIndicator(
+                                  borderRadius: BorderRadius.circular(100),
+                                  color: blue,
+
+                                  value: loadingProgress.expectedTotalBytes != null
+                                      ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!
+                                      : null,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
+
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(13, 0, 16, 0),

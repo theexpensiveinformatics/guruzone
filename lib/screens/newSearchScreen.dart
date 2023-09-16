@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guruzone/screens/guruScreen.dart';
 import 'package:guruzone/styles/backgrounds/backgroundWhite.dart';
 import 'package:guruzone/styles/backgrounds/boxTextInput.dart';
 import 'package:guruzone/styles/backgrounds/choiceEnable.dart';
@@ -211,13 +212,16 @@ class _newSearchScreenState extends State<newSearchScreen> {
                               ),
                             ),
                           ),
-                          Container(
+                          InkWell(
+                            onTap: (){ Navigator.push(context, MaterialPageRoute(builder: (context)=>guruScreen()));},
+                            child: Container(
 
-                            width: MediaQuery.of(context).size.width/2,
+                              width: MediaQuery.of(context).size.width/2,
 
-                            child: Text('Send Request to all mentors',
-                              style: d1Light,
-                              textAlign: TextAlign.start,
+                              child: Text('Send Request to all mentors',
+                                style: d1Light,
+                                textAlign: TextAlign.start,
+                              ),
                             ),
                           ),
                           Padding(

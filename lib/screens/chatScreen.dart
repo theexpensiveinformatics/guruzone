@@ -49,7 +49,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chat App',style: h1),
+        title: Text('Mr. Prashant',style: h1),
       ),
       body: Column(
         children: <Widget>[

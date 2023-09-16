@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guruzone/screens/courseDetailsScreen.dart';
 import 'package:guruzone/styles/backgrounds/backgroundWhite.dart';
 import 'package:guruzone/styles/backgrounds/roundedBlue.dart';
 import 'package:guruzone/styles/colors.dart';
@@ -34,39 +35,45 @@ class featuredCourseComponent extends StatelessWidget
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            padding: EdgeInsets.all(8),
+          InkWell(
+            onTap: ()
+            {
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> courseDetailsScreen()));
+            },
             child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: background
-              ),
-              width: double.infinity,
-              height: 130,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  '$imgUrl',
-                  loadingBuilder: (BuildContext context, Widget child,
-                      ImageChunkEvent? loadingProgress) {
-                    if (loadingProgress == null) {
-                      return child;
-                    }
-                    return Center(
-                      child: Container(
-                        width: 50,
-                        child: LinearProgressIndicator(
-                          borderRadius: BorderRadius.circular(100),
-                          color: blue,
+              padding: EdgeInsets.all(8),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: background
+                ),
+                width: double.infinity,
+                height: 130,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    '$imgUrl',
+                    loadingBuilder: (BuildContext context, Widget child,
+                        ImageChunkEvent? loadingProgress) {
+                      if (loadingProgress == null) {
+                        return child;
+                      }
+                      return Center(
+                        child: Container(
+                          width: 50,
+                          child: LinearProgressIndicator(
+                            borderRadius: BorderRadius.circular(100),
+                            color: blue,
 
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded /
-                              loadingProgress.expectedTotalBytes!
-                              : null,
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                loadingProgress.expectedTotalBytes!
+                                : null,
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
             ),

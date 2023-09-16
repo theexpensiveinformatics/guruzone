@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:guruzone/screens/courseDetailsScreen.dart';
 import 'package:guruzone/screens/homeBottom.dart';
 import 'package:guruzone/styles/backgrounds/backgroundWhite.dart';
 import 'package:guruzone/styles/backgrounds/roundedBlue.dart';
@@ -186,7 +187,7 @@ class _homeScreenState extends State<homeScreen> {
                    Column(
                      crossAxisAlignment: CrossAxisAlignment.start,
                      children: [
-                       Text('Hi ',style: h1),
+                       Text('Hi Krushang👋',style: h1),
                        Text('$letsStart',style: d1,)
                      ],
                    ),
@@ -204,37 +205,37 @@ class _homeScreenState extends State<homeScreen> {
              SizedBox(height: 20,),
              Padding(
                padding: const EdgeInsets.only(right: 25,left: 25),
-               child: Container(
-                 width: double.infinity,
-                 height: 55,
-                 decoration: backgroundWhite,
-                 child: Row(
-                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   crossAxisAlignment: CrossAxisAlignment.center,
-                   children: [
-                     Row(
-
-                       children: [
-                         Padding(
-                           padding: const EdgeInsets.only(left: 25),
-                           child: Image.asset("assets/images/search.png",cacheHeight: 20,),
-                         ),
-
-                         Padding(
-                           padding: const EdgeInsets.only(left: 25.0),
-                           child: Text('$search',style: d1Light,),
-                         ),
-
-                       ],
-                     ),
-                     Padding(
-                       padding: const EdgeInsets.only(right: 20),
-                       child: Image.asset("assets/images/setting.png",cacheHeight: 15,),
-                     ),
-
-                   ],
-                 ),
-               ),
+               // child: Container(
+               //   width: double.infinity,
+               //   height: 55,
+               //   decoration: backgroundWhite,
+               //   child: Row(
+               //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+               //     crossAxisAlignment: CrossAxisAlignment.center,
+               //     children: [
+               //       Row(
+               //
+               //         children: [
+               //           Padding(
+               //             padding: const EdgeInsets.only(left: 25),
+               //             child: Image.asset("assets/images/search.png",cacheHeight: 20,),
+               //           ),
+               //
+               //           Padding(
+               //             padding: const EdgeInsets.only(left: 25.0),
+               //             child: Text('$search',style: d1Light,),
+               //           ),
+               //
+               //         ],
+               //       ),
+               //       Padding(
+               //         padding: const EdgeInsets.only(right: 20),
+               //         child: Image.asset("assets/images/setting.png",cacheHeight: 15,),
+               //       ),
+               //
+               //     ],
+               //   ),
+               // ),
              ),
 
              SizedBox(height: 25,),
@@ -245,51 +246,57 @@ class _homeScreenState extends State<homeScreen> {
              SizedBox(height: 15,),
 
 
-             Padding(
-               padding: const EdgeInsets.only(left: 25,right: 25),
-               child: Container(decoration: backgroundWhite,
-                 width: double.infinity,
+             InkWell(
+               onTap: (){
 
-                 child:boolOnGoing == false ? Padding(
-                   padding: const EdgeInsets.only(top: 40.0,bottom: 40),
-                   child: Column(
-                     crossAxisAlignment: CrossAxisAlignment.center,
-                     mainAxisAlignment: MainAxisAlignment.center,
-                     children: [
-                       Image.asset('assets/images/guru.png',cacheHeight: 45),
-                       Padding(
-                         padding: const EdgeInsets.all(12.0),
-                         child: Text('Find Your Guru',style: h2,),
-                       ),
+             Navigator.push(context, MaterialPageRoute(builder: (context)=> courseDetailsScreen()));
+               },
+               child: Padding(
+                 padding: const EdgeInsets.only(left: 25,right: 25),
+                 child: Container(decoration: backgroundWhite,
+                   width: double.infinity,
+
+                   child:boolOnGoing == false ? Padding(
+                     padding: const EdgeInsets.only(top: 40.0,bottom: 40),
+                     child: Column(
+                       crossAxisAlignment: CrossAxisAlignment.center,
+                       mainAxisAlignment: MainAxisAlignment.center,
+                       children: [
+                         Image.asset('assets/images/guru.png',cacheHeight: 45),
+                         Padding(
+                           padding: const EdgeInsets.all(12.0),
+                           child: Text('Find Your Guru',style: h2,),
+                         ),
+                       ],
+                     ),
+                   )  : Padding(
+                     padding: const EdgeInsets.only(top: 25,bottom:20 ,left: 25, right: 25),
+                     child: Column(
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                           mainAxisAlignment: MainAxisAlignment.start,
+                           children: [
+                             Text("$titleTopic",style: d1,),
+                             Text('$topic',style: h2,maxLines: 1,overflow: TextOverflow.ellipsis,),
+                             SizedBox(height: 15,),
+                             Text("$titleTutor",style: d1,),
+                             Text('$tutor',style: h2,maxLines: 1,overflow: TextOverflow.ellipsis,),
+                             SizedBox(height: 10,),
+                             Row(
+                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                               children: [
+                                 Text('$onGoingType',style: blueRegular,maxLines: 1,overflow: TextOverflow.ellipsis,),
+                                 Container(
+                                   width: 60,
+                                   height: 45,
+                                   decoration: roundedBlue,
+                                   child: Image.asset('assets/images/msg.png',cacheHeight: 25,),
+                                 )
+                               ],
+                             ),
                      ],
-                   ),
-                 )  : Padding(
-                   padding: const EdgeInsets.only(top: 25,bottom:20 ,left: 25, right: 25),
-                   child: Column(
-                         crossAxisAlignment: CrossAxisAlignment.start,
-                         mainAxisAlignment: MainAxisAlignment.start,
-                         children: [
-                           Text("$titleTopic",style: d1,),
-                           Text('$topic',style: h2,maxLines: 1,overflow: TextOverflow.ellipsis,),
-                           SizedBox(height: 15,),
-                           Text("$titleTutor",style: d1,),
-                           Text('$tutor',style: h2,maxLines: 1,overflow: TextOverflow.ellipsis,),
-                           SizedBox(height: 10,),
-                           Row(
-                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                             children: [
-                               Text('$onGoingType',style: blueRegular,maxLines: 1,overflow: TextOverflow.ellipsis,),
-                               Container(
-                                 width: 60,
-                                 height: 45,
-                                 decoration: roundedBlue,
-                                 child: Image.asset('assets/images/msg.png',cacheHeight: 25,),
-                               )
-                             ],
-                           ),
-                   ],
-               ),
-                 ) ,
+                 ),
+                   ) ,
+                 ),
                ),
              ),
 
