@@ -5,7 +5,7 @@ import 'package:guruzone/screens/DoubtChatScreen.dart';
 import 'package:guruzone/screens/RequestReplyScreen.dart';
 import 'package:guruzone/screens/chatScreen.dart';
 import 'package:guruzone/screens/choiceScreen.dart';
-import 'package:guruzone/screens/googlePayScreen.dart';
+
 import 'package:guruzone/screens/guruScreen.dart';
 import 'package:guruzone/screens/homeBottom.dart';
 import 'package:guruzone/screens/homeScreen.dart';
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
         )
       ),
 
-      home:payment(),
+      home:logInScreenMentor(),
 
 
     );
