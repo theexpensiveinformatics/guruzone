@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:guruzone/screens/DoubtChatScreen.dart';
-import 'package:guruzone/screens/RequestReplyScreen.dart';
 import 'package:guruzone/screens/choiceScreen.dart';
-import 'package:guruzone/screens/guruScreen.dart';
 import 'package:guruzone/screens/homeBottom.dart';
-import 'package:guruzone/screens/homeScreen.dart';
-import 'package:guruzone/screens/list.dart';
-import 'package:guruzone/screens/logInScreenMentor.dart';
-import 'package:guruzone/screens/mentorProfileScreen.dart';
-import 'package:guruzone/screens/signUpScreenMentor.dart';
+import 'package:guruzone/screens/paymentScreen.dart';
 import 'package:guruzone/styles/colors.dart';
-import 'package:guruzone/styles/components/mentorProfile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,7 +33,7 @@ class MyApp extends StatelessWidget {
         )
       ),
 
-      home:choiceScreen(),
+      home: paymentScreen(),
 
 
     );

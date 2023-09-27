@@ -18,10 +18,59 @@ class _mentorStudentRequestScreenState extends State<mentorStudentRequestScreen>
       'language' : 'English',
       'price' : 150,
     },
+    {'topic': 'Android App Development',
+      'name' : 'Riya Patel',
+      'profession' : 'IT Engineer',
+      'location' : 'Vadodara',
+      'personalization' : '100% personalized',
+      'language' : 'English',
+      'price' : 150,
+    },
+    {'topic': 'Android App Development',
+      'name' : 'Riya Patel',
+      'profession' : 'IT Engineer',
+      'location' : 'Vadodara',
+      'personalization' : '100% personalized',
+      'language' : 'English',
+      'price' : 150,
+    },
+    {'topic': 'Android App Development',
+      'name' : 'Riya Patel',
+      'profession' : 'IT Engineer',
+      'location' : 'Vadodara',
+      'personalization' : '100% personalized',
+      'language' : 'English',
+      'price' : 150,
+    },
+    {'topic': 'Android App Development',
+      'name' : 'Riya Patel',
+      'profession' : 'IT Engineer',
+      'location' : 'Vadodara',
+      'personalization' : '100% personalized',
+      'language' : 'English',
+      'price' : 150,
+    },
+    {'topic': 'Android App Development',
+      'name' : 'Riya Patel',
+      'profession' : 'IT Engineer',
+      'location' : 'Vadodara',
+      'personalization' : '100% personalized',
+      'language' : 'English',
+      'price' : 150,
+    },
+    {'topic': 'Android App Development',
+      'name' : 'Riya Patel',
+      'profession' : 'IT Engineer',
+      'location' : 'Vadodara',
+      'personalization' : '100% personalized',
+      'language' : 'English',
+      'price' : 150,
+    },
+
 
   ];
 
-  final double SearchHeight = 40.0;
+  final double SearchHeight = 42.0;
 
   final List<String> filterTags = ['All','Flutter','Android','Ui/Ux','M.L.'];
 
@@ -39,7 +88,7 @@ class _mentorStudentRequestScreenState extends State<mentorStudentRequestScreen>
                 width: double.infinity,
                 height: 150,
                 child: Padding(
-                  padding: const EdgeInsets.only(top:30.0,left: 15.0,right: 15.0),
+                  padding: const EdgeInsets.only(top:30.0,left: 25.0,right: 25.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -81,7 +130,7 @@ class _mentorStudentRequestScreenState extends State<mentorStudentRequestScreen>
                               height: SearchHeight,
                               width: SearchHeight,
                               child: Padding(
-                                padding: const EdgeInsets.all(9.0),
+                                padding: const EdgeInsets.all(10.0),
                                 child: Container(
                                   child: Image.asset('assets/images/search.png'),
                                 ),
@@ -89,7 +138,7 @@ class _mentorStudentRequestScreenState extends State<mentorStudentRequestScreen>
                             ),
                             Container(
                               height: 30,
-                              width: 245,
+                              width: MediaQuery.of(context).size.width/1.6,
                               child: TextField(
                                 decoration: InputDecoration(
                                     border: InputBorder.none,
@@ -113,7 +162,7 @@ class _mentorStudentRequestScreenState extends State<mentorStudentRequestScreen>
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Image.asset('assets/images/filter.png'),
+                                  child: Image.asset('assets/images/fliter.png'),
                                 ),
                               ),
                             ),
@@ -121,7 +170,7 @@ class _mentorStudentRequestScreenState extends State<mentorStudentRequestScreen>
                         ),
                       ),
                       Container(
-                        height: 30,
+                        height: 32,
                         child: ListView.builder(
                             scrollDirection: Axis.horizontal,
                             shrinkWrap: true,
@@ -134,7 +183,7 @@ class _mentorStudentRequestScreenState extends State<mentorStudentRequestScreen>
                                   child: Center(child: Text(filterTags[index])),
                                   decoration: BoxDecoration(
                                       color: Colors.white,
-                                      borderRadius: BorderRadius.circular(8),
+                                      borderRadius: BorderRadius.circular(9),
                                       border: Border.all(color: borderColor1)
                                   ),
                                 ),
@@ -155,7 +204,9 @@ class _mentorStudentRequestScreenState extends State<mentorStudentRequestScreen>
                       profession: e['profession'].toString(),
                       language: e['language'].toString(),
                       personalization: e['personalization'].toString(),
-                      price: e['price'].toString())
+                      price: e['price'].toString(),
+                    detailsData: e,
+                  )
                   ).toList()
               ),
             ],

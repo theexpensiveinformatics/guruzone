@@ -33,88 +33,88 @@ class RequestReplyTopContainer extends StatelessWidget{
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(25, 60, 25, 0),
-      // child: Container(
-      //   color: Colors.white,
-      //   height: 150,
-      //   width: double.infinity,
-      //   child: Column(
-      //     crossAxisAlignment: CrossAxisAlignment.start,
-      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //     children: [
-      //       Text('$topic',
-      //       style: h1),
-      //       Text('$description',
-      //       style: d1Light),
-      //       Text('This Request had been sent to ''$requestSent',
-      //       style: blueSmall,),
-      //       Row(
-      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //         children: [
-      //           Container(
-      //             width: boxWidth,
-      //             height: boxHeight,
-      //             decoration: topContainer,
-      //             child: Center(
-      //               child: Row(
-      //                 mainAxisAlignment: MainAxisAlignment.center,
-      //                 children: [
-      //                   Container(
-      //                     height: 18,
-      //                       width: 18,
-      //                       child: Image.asset('assets/images/global.png')
-      //                   ),
-      //                   SizedBox(
-      //                     width: 7,
-      //                   ),
-      //                   Text('$language',
-      //                   style: d1,)
-      //                 ],
-      //               ),
-      //             ),
-      //           ),
-      //           Container(
-      //             width: boxWidth,
-      //             height: boxHeight,
-      //             decoration: topContainer,
-      //             child: Center(
-      //               child: Text('$personalization',
-      //               style: d1,),
-      //             ),
-      //           )
-      //         ],
-      //       ),
-      //       Row(
-      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //         children: [
-      //           Container(
-      //             width: boxWidth,
-      //             height: boxHeight,
-      //             decoration: topContainer,
-      //             child: Center(
-      //               child: Text('$mode'' - ''$location',
-      //               style: d1,),
-      //             ),
-      //           ),
-      //           Container(
-      //             width: boxWidth,
-      //             height: boxHeight,
-      //             decoration: topContainer,
-      //             child: Center(
-      //               child: Text(gridData.first,
-      //               style: d1,),
-      //             ),
-      //           )
-      //         ],
-      //       ),
-      //       Text('Are you ready to pay Rs'+price+'/hour',
-      //       style: blueSmall,),
-      //       Container(
-      //         height: 35,
-      //         color: Color(0xFFF6F6FB),
-      //       )
-      //     ],
-      //   )
-      // ),
+      child: Container(
+        color: Colors.white,
+        height: 150,
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text('$topic',
+            style: h1),
+            Text('$description',
+            style: d1Light),
+            Text('This Request had been sent to ''$requestSent',
+            style: blueSmall,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: boxWidth,
+                  height: boxHeight,
+                  decoration: topContainer,
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 18,
+                            width: 18,
+                            child: Image.asset('assets/images/global.png')
+                        ),
+                        SizedBox(
+                          width: 7,
+                        ),
+                        Text('$language',
+                        style: d1,)
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  width: boxWidth,
+                  height: boxHeight,
+                  decoration: topContainer,
+                  child: Center(
+                    child: Text('$personalization',
+                    style: d1,),
+                  ),
+                )
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: boxWidth,
+                  height: boxHeight,
+                  decoration: topContainer,
+                  child: Center(
+                    child: Text('$mode'' - ''$location',
+                    style: d1,),
+                  ),
+                ),
+                Container(
+                  width: boxWidth,
+                  height: boxHeight,
+                  decoration: topContainer,
+                  child: Center(
+                    child: Text(gridData.first,
+                    style: d1,),
+                  ),
+                )
+              ],
+            ),
+            Text('Are you ready to pay Rs'+price+'/hour',
+            style: blueSmall,),
+            Container(
+              height: 35,
+              color: Color(0xFFF6F6FB),
+            )
+          ],
+        )
+      ),
     );
   }
 }

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:guruzone/screens/postList.dart';
 import 'package:guruzone/styles/backgrounds/backgroundWhite.dart';
@@ -90,8 +89,6 @@ class _guruScreenState extends State<guruScreen> {
                     postlists[selectedIndex].city=city;
                     postlists[selectedIndex].category=category;
                     selectedIndex = -1;
-
-
                   });
                 }
 
@@ -114,10 +111,8 @@ class _guruScreenState extends State<guruScreen> {
                     showDragHandle: true,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20),)
-
                     ),
                     elevation: 0,
-
                     isDismissible: false,
                     backgroundColor: background,
                     context: context,
@@ -429,9 +424,7 @@ class _guruScreenState extends State<guruScreen> {
 
                                         if(topic.isNotEmpty && desc.isNotEmpty && lang.isNotEmpty && amount.isNotEmpty && type.isNotEmpty && platform.isNotEmpty && city.isNotEmpty && category.isNotEmpty)
                                         {
-
                                           setState(() {
-
                                             _topic.text="";
                                             _desc.text="";
                                             _lang.text="";
@@ -443,23 +436,24 @@ class _guruScreenState extends State<guruScreen> {
                                             postlists.add(PostList(topic: topic, desc: desc, lang: lang, amount: amount, type: type, platform: platform, city: city, category: category));
                                           });
                                         }
-
                                         Navigator.of(context).pop();
-                                      }, child: Text("Post Requirement",style: TextStyle(color: Colors.white,fontFamily: 'bold'),)),
+                                      },
+                                          child: Text("Post Requirement",
+                                            style: TextStyle(color: Colors.white,fontFamily: 'bold'),
+                                          )
+                                      ),
                                     ),
 
                                   ),
                                   SizedBox(height: 20,),
-
-
-                                ],),
+                                ],
+                              ),
                             ),
                           ),
                         ),
                       );
-
-                    });
-
+                    }
+                    );
               },
               child: Container(
                 alignment: Alignment.center,
