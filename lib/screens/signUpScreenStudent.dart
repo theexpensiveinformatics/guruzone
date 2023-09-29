@@ -785,7 +785,7 @@ class _signUpScreenStudentState extends State<signUpScreenStudent> {
                       var signUpType = 'student';
 
                       if (
-                          skill.length > 1) {
+                      skill.length > 1) {
 
                         // Prepare the request body as a JSON object
                         Map<String, dynamic> requestBody = {

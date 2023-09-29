@@ -4,17 +4,18 @@ import 'package:guruzone/screens/homeBottom.dart';
 import 'package:guruzone/screens/homeScreen.dart';
 import 'package:guruzone/screens/logInScreenMentor.dart';
 import 'package:guruzone/styles/colors.dart';
+import 'package:guruzone/styles/components/studentProfileContainer.dart';
 import 'package:guruzone/styles/components/studentProfileLearningsCard.dart';
 import 'package:guruzone/styles/components/studentProfileSelfContainer.dart';
 import 'package:guruzone/styles/texts/h1.dart';
 import 'package:guruzone/styles/texts/h2.dart';
 
-class studentProfileSelf extends StatefulWidget{
+class studentProfileScreen extends StatefulWidget{
   @override
-  State<studentProfileSelf> createState() => _studentProfileSelfState();
+  State<studentProfileScreen> createState() => _studentProfileScreenState();
 }
 
-class _studentProfileSelfState extends State<studentProfileSelf> {
+class _studentProfileScreenState extends State<studentProfileScreen> {
   var cardData = {
     'mentorName' : 'Riya Patel',
     'profession' : 'IT Engineer',
@@ -26,15 +27,15 @@ class _studentProfileSelfState extends State<studentProfileSelf> {
   var skills = ['Flutter','Android','Java','M.L.','Node.js','Python'];
 
   var learningsData =[
-  {'topic': 'Android App Development',
-    'mentorName' : 'Riya Patel',
-    'language' : 'English',
-    'personalization' : '100% personalized',
-    'mode' : 'Offline',
-    'skill' : 'Development',
-    'location' : 'Vadodara',
-    'status' : 'Ongoing',
-  },
+    {'topic': 'Android App Development',
+      'mentorName' : 'Riya Patel',
+      'language' : 'English',
+      'personalization' : '100% personalized',
+      'mode' : 'Offline',
+      'skill' : 'Development',
+      'location' : 'Vadodara',
+      'status' : 'Ongoing',
+    },
     {'topic': 'Android App Development',
       'mentorName' : 'Riya Patel',
       'language' : 'English',
@@ -75,9 +76,9 @@ class _studentProfileSelfState extends State<studentProfileSelf> {
                     height: 80,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(27),bottomLeft: Radius.circular(27)
-                        ),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(bottomRight: Radius.circular(27),bottomLeft: Radius.circular(27)
+                      ),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(0.1), // Shadow color
@@ -112,7 +113,7 @@ class _studentProfileSelfState extends State<studentProfileSelf> {
                               width: 12,
                             ),
                             SizedBox(
-                              child: Text('Profile',
+                              child: Text('Student Profile',
                                 style: h1,
                               ),
                             ),
@@ -123,6 +124,7 @@ class _studentProfileSelfState extends State<studentProfileSelf> {
                         ),
                         InkWell(
                           onTap: (){
+                            // Navigate to the second screen when tapped
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) => logInScreenMentor(),
@@ -132,32 +134,32 @@ class _studentProfileSelfState extends State<studentProfileSelf> {
                           child: Container(
                               width: 90,
                               height: 30,
-                              decoration: BoxDecoration(
-                                border: Border.all(color: red,
-                                    width: 0.7),
-                                borderRadius: BorderRadius.circular(7),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    width: 17,
-                                    height: 17,
-                                    child: Icon(Icons.logout,color: red,size: 15),
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text('Logout',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      fontFamily: 'regular',
-                                      color: red,
-                                    ),
-                                  )
-                                ],
-                              )
+                              // decoration: BoxDecoration(
+                              //   border: Border.all(color: red,
+                              //       width: 0.7),
+                              //   borderRadius: BorderRadius.circular(7),
+                              // ),
+                              // child: Row(
+                              //   mainAxisAlignment: MainAxisAlignment.center,
+                              //   crossAxisAlignment: CrossAxisAlignment.center,
+                              //   children: [
+                              //     SizedBox(
+                              //       width: 17,
+                              //       height: 17,
+                              //       child: Icon(Icons.logout,color: red,size: 15),
+                              //     ),
+                              //     SizedBox(
+                              //       width: 5,
+                              //     ),
+                              //     Text('Logout',
+                              //       style: TextStyle(
+                              //         fontSize: 12,
+                              //         fontFamily: 'regular',
+                              //         color: red,
+                              //       ),
+                              //     )
+                              //   ],
+                              // )
                           ),
                         )
                       ],
@@ -171,7 +173,7 @@ class _studentProfileSelfState extends State<studentProfileSelf> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children:
-                  [studentProfileSelfContainer(name: cardData['mentorName'].toString(),
+                  [studentProfileContainer(name: cardData['mentorName'].toString(),
                     profession: cardData['profession'].toString(),
                     location: cardData['location'].toString(),
                     language: cardData['language'].toString(),
@@ -185,8 +187,8 @@ class _studentProfileSelfState extends State<studentProfileSelf> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('My Learnings',
-                            style: h2,),
+                            Text('Learnings',
+                              style: h2,),
                             ListView(
                               shrinkWrap: true,
                               physics: NeverScrollableScrollPhysics(),
@@ -197,7 +199,6 @@ class _studentProfileSelfState extends State<studentProfileSelf> {
                         ),
                       ),
                     ),
-
                   ],
                 ),
               ),

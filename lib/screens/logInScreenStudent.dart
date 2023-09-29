@@ -38,11 +38,8 @@ class _logInScreenStudentState extends State<logInScreenStudent> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-
-
               Container(width:double.infinity,
                   height: 260,
-
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(40),

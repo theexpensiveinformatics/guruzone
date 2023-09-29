@@ -163,7 +163,8 @@ class _chatStudentScreenState extends State<chatStudentScreen> {
                             color: Colors.white,
                             fontSize: 14,
                           ),
-                        ), borderRadius: borderRadiusContainer),
+                        ),
+                        borderRadius: borderRadiusContainer),
                     chatAnswerContainer(
                         child:  chatText(
                           text: mentorText['3'],
@@ -174,7 +175,6 @@ class _chatStudentScreenState extends State<chatStudentScreen> {
                 ),
               ),
             ),
-
             // Container(
             //   child: Row(
             //     children: [
@@ -198,7 +198,6 @@ class _chatStudentScreenState extends State<chatStudentScreen> {
             //     ],
             //   ),
             // ),
-
           ],
         ),
       ),

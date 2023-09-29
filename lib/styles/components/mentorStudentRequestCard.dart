@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guruzone/screens/mentorStudentRequestDetailsScreen.dart';
 import 'package:guruzone/styles/backgrounds/topContainer.dart';
 import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/texts/d1.dart';
@@ -15,6 +16,7 @@ class mentorStudentRequestCard extends StatelessWidget{
   final String language;
   final String personalization;
   final String price;
+  final Map detailsData;
 
   const mentorStudentRequestCard({super.key,
     required this.topic,
@@ -24,16 +26,17 @@ class mentorStudentRequestCard extends StatelessWidget{
     required this.language,
     required this.personalization,
     required this.price,
+    required this.detailsData,
    });
 
   static const double boxHeight=28.0;
-  static const double boxWidth=135.0;
+  static const double boxWidth=2.7;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+      padding: const EdgeInsets.fromLTRB(25, 0, 25, 20),
       child: Container(
-          height: 220,
+          height: 230,
           width: double.infinity,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -57,8 +60,19 @@ class mentorStudentRequestCard extends StatelessWidget{
                 fontWeight: FontWeight.bold
             )
           ),
-                    Text('View',
-                      style: d2Blue,)
+                    InkWell(
+                      child: Text('View',
+                        style: d2Blue,
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => mentorStudentRequestDeatilsScreen(arrTopContainer: detailsData),
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
                 Row(
@@ -78,7 +92,7 @@ class mentorStudentRequestCard extends StatelessWidget{
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: boxWidth,
+                      width: MediaQuery.of(context).size.width/boxWidth,
                       height: boxHeight,
                       decoration: topContainer,
                       child: Center(
@@ -88,8 +102,8 @@ class mentorStudentRequestCard extends StatelessWidget{
                             Container(
                                 height: 18,
                                 width: 18,
-                                child: Image.asset('assets/images/location_blue.png',
-                                color: darkText,)
+                                child: Image.asset('assets/images/location_black.png',
+                                  color: darkText,)
                             ),
                             SizedBox(
                               width: 7,
@@ -101,11 +115,11 @@ class mentorStudentRequestCard extends StatelessWidget{
                       ),
                     ),
                     Container(
-                      width: boxWidth,
+                      width: MediaQuery.of(context).size.width/boxWidth,
                       height: boxHeight,
                       decoration: topContainer,
                       child: Center(
-                        child: Text(personalization,
+                        child: Text('$personalization',
                           style: d1,),
                       ),
                     )
@@ -115,7 +129,7 @@ class mentorStudentRequestCard extends StatelessWidget{
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: boxWidth,
+                      width: MediaQuery.of(context).size.width/boxWidth,
                       height: boxHeight,
                       decoration: topContainer,
                       child: Center(
@@ -125,20 +139,20 @@ class mentorStudentRequestCard extends StatelessWidget{
                             Container(
                                 height: 18,
                                 width: 18,
-                                child: Image.asset('assets/images/global_blue.png',
+                                child: Image.asset('assets/images/global.png',
                                   color: darkText,)
                             ),
                             SizedBox(
                               width: 7,
                             ),
-                            Text(language,
+                            Text('$language',
                               style: d1,)
                           ],
                         ),
                       ),
                     ),
                     Container(
-                      width: boxWidth,
+                      width: MediaQuery.of(context).size.width/boxWidth,
                       height: boxHeight,
                       decoration: topContainer,
                       child: Center(
@@ -154,8 +168,8 @@ class mentorStudentRequestCard extends StatelessWidget{
                             SizedBox(
                               width: 7,
                             ),
-                            Text('₹'+price+'/hour',
-                              style: d1,)
+                            Text('₹'+price+'/hr',
+                              style: d1,),
                           ],
                         ),
                       ),
@@ -166,8 +180,8 @@ class mentorStudentRequestCard extends StatelessWidget{
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: MediaQuery.of(context).size.width/2.5,
-                      height: 30,
+                      width: MediaQuery.of(context).size.width/2.7,
+                      height: 36,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(color: red),
@@ -183,8 +197,8 @@ class mentorStudentRequestCard extends StatelessWidget{
                       ),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width/2.5,
-                      height: 30,
+                      width: MediaQuery.of(context).size.width/2.7,
+                      height: 36,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(color: Color(0xff0095FF)),

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:guruzone/screens/homeBottom.dart';
+import 'package:guruzone/screens/homeScreen.dart';
 import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/texts/d1.dart';
 import 'package:guruzone/styles/texts/d1Light.dart';
