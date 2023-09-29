@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:guruzone/screens/chatScreen.dart';
 import 'package:guruzone/screens/chatStudentScreen.dart';
+import 'package:guruzone/screens/homeBottom.dart';
+import 'package:guruzone/screens/homeScreen.dart';
 import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/components/doubt_list_tile.dart';
 import 'package:guruzone/styles/texts/h1.dart';
@@ -105,10 +107,6 @@ class DoubtChatScreen extends StatelessWidget{
       'time' : '12:30pm',
       'action' : 'onPressed',
     },
-
-
-
-
   ];
 
   final double iconSide = 20.0;
@@ -145,10 +143,20 @@ class DoubtChatScreen extends StatelessWidget{
                   children: [
                     Row(
                       children: [
-                        SizedBox(
-                          width: iconSide,
-                          height: iconSide,
-                          child: Image.asset('assets/images/arrow.png',color: darkText,),
+                        InkWell(
+                          onTap: (){
+                            // Navigate to the second screen when tapped
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => homeBottom(isStudent: true),
+                              ),
+                            );
+                          },
+                          child: SizedBox(
+                            width: iconSide,
+                            height: iconSide,
+                            child: Image.asset('assets/images/arrow.png',color: darkText,),
+                          ),
                         ),
                         SizedBox(
                           width: 15,

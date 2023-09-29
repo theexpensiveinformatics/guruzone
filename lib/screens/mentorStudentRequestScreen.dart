@@ -194,6 +194,9 @@ class _mentorStudentRequestScreenState extends State<mentorStudentRequestScreen>
                   ),
                 ),
               ),
+              SizedBox(
+                height: 10,
+              ),
               ListView(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),

@@ -7,6 +7,9 @@ import 'package:guruzone/screens/ItemListScreen.dart';
 import 'package:guruzone/screens/RequestReplyScreen.dart';
 import 'package:guruzone/screens/guruScreen.dart';
 import 'package:guruzone/screens/homeScreen.dart';
+import 'package:guruzone/screens/mentorHomeScreen.dart';
+import 'package:guruzone/screens/mentorProfileSelfScreen.dart';
+import 'package:guruzone/screens/mentorStudentRequestScreen.dart';
 import 'package:guruzone/screens/newSearchScreen.dart';
 import 'package:guruzone/screens/profileScreen.dart';
 import 'package:guruzone/screens/searchScreen.dart';
@@ -44,8 +47,12 @@ Future<void> fetchUserData(String token) async {
 
 //statefull
 class homeBottom extends StatefulWidget {
-  final String token;
-  homeBottom({required this.token});
+  // final String token;
+  final bool isStudent;
+
+  homeBottom({
+    // required this.token,
+  required this.isStudent});
 
   @override
   State<homeBottom> createState() => _homeBottomState();
@@ -56,27 +63,35 @@ class homeBottom extends StatefulWidget {
 class _homeBottomState extends State<homeBottom> {
 
   int currentTab = 0;
-  final List<Widget> screens = [
+  final List<Widget> studentScreens = [
     homeScreen(username: '$username',),
     newSearchScreen(),
     DoubtChatScreen(),
-    profileScreen()
+    studentProfileSelf(),
   ];
 
-  @override
-  void initState() {
-    super.initState();
-    // Call fetchUserData in the initState method
-    fetchUserData(widget.token);
-  }
+  final List<Widget> mentorScreens = [
+    mentorHomeScreen(),
+    mentorStudentRequestScreen(),
+    DoubtChatScreen(),
+    mentorProfileSelfScreen(),
+  ];
+
+  List<Widget> get screens => widget.isStudent ? studentScreens : mentorScreens;
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   // Call fetchUserData in the initState method
+  //   fetchUserData(widget.token);
+  // }
 
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen =homeScreen(username: '$username');
-
 
   @override
   Widget build(BuildContext context) {
     bool keyboardIsOpen = MediaQuery.of(context).viewInsets.bottom != 0;
+    Widget currentScreen =screens[0];
 
     return Scaffold(
 
@@ -138,7 +153,7 @@ class _homeBottomState extends State<homeBottom> {
                       shape: CircleBorder(eccentricity: 0),
                       onPressed: (){
                         setState(() {
-                          currentScreen=homeScreen(username: '$username');
+                          currentScreen=screens[0];
                           currentTab = 0;
                         });
                       },
@@ -151,7 +166,7 @@ class _homeBottomState extends State<homeBottom> {
                       shape: CircleBorder(eccentricity: 0),
                       onPressed: (){
                         setState(() {
-                          currentScreen=newSearchScreen();
+                          currentScreen=screens[1];
                           currentTab = 1;
                         });
                       },
@@ -169,7 +184,7 @@ class _homeBottomState extends State<homeBottom> {
                       shape: CircleBorder(eccentricity: 0),
                       onPressed: (){
                         setState(() {
-                          currentScreen=DoubtChatScreen();
+                          currentScreen=screens[2];
                           currentTab = 2;
                         });
                       },
@@ -182,7 +197,7 @@ class _homeBottomState extends State<homeBottom> {
                       shape: CircleBorder(eccentricity: 0),
                       onPressed: (){
                         setState(() {
-                          currentScreen=studentProfileSelf();
+                          currentScreen=screens[3];
                           currentTab = 3;
                         });
                       },

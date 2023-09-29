@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:guruzone/screens/choiceScreen.dart';
 import 'package:guruzone/screens/homeBottom.dart';
@@ -57,7 +56,10 @@ Future<void> loginUser(BuildContext context, String email, String password) asyn
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => homeBottom(token: token),
+          builder: (context) => homeBottom(
+              // token: token,
+              isStudent: false
+          ),
         ),
       );
 
@@ -117,7 +119,9 @@ class _logInScreenMentorState extends State<logInScreenMentor> {
       print('CHECKKKKKKKKKK : $token');
       if(token!='')
       {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>homeBottom(token: token)));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>homeBottom(
+            // token: token,
+            isStudent: false)));
       }
     });
   }
@@ -158,7 +162,7 @@ class _logInScreenMentorState extends State<logInScreenMentor> {
                   child: Hero(tag:'tutor',child: Image.asset('assets/images/mentor.png',cacheHeight: 160,))),
               SizedBox(height: 20,),
               Text('Welcome Back',style: TextStyle(fontFamily: 'bold',fontSize: 25,color: darkText),),
-              Text('Let\'s ready to serve knowledge!',style: TextStyle(fontFamily: 'regular',fontSize: 16,color: darkText),),
+              Text('Ready to serve knowledge!',style: TextStyle(fontFamily: 'regular',fontSize: 16,color: darkText),),
 
 
               //email
@@ -210,11 +214,8 @@ class _logInScreenMentorState extends State<logInScreenMentor> {
                           ),
 
                         ),
-                      ),),
-
-
-
-
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -269,11 +270,8 @@ class _logInScreenMentorState extends State<logInScreenMentor> {
                           ),
 
                         ),
-                      ),),
-
-
-
-
+                      ),
+                    ),
                   ],
                 ),
               ),

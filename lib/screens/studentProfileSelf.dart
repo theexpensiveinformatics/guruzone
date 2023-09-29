@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:guruzone/screens/homeBottom.dart';
+import 'package:guruzone/screens/homeScreen.dart';
+import 'package:guruzone/screens/logInScreenMentor.dart';
 import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/components/studentProfileLearningsCard.dart';
 import 'package:guruzone/styles/components/studentProfileSelfContainer.dart';
@@ -67,22 +70,22 @@ class _studentProfileSelfState extends State<studentProfileSelf> {
                 left: 0,
                 right: 0,
                 child: Padding(
-                  padding: const EdgeInsets.only(top:10),
+                  padding: const EdgeInsets.only(top:0),
                   child: Container(
-                    height: 75,
+                    height: 80,
                     width: double.infinity,
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(15),bottomLeft: Radius.circular(15)
+                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(27),bottomLeft: Radius.circular(27)
                         ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0xffD9D9D9),
-                            blurRadius: 9.0, // Blur radius of the shadow
-                            spreadRadius: 2.0, // Spread of the shadow
-                            offset: Offset(2.0, 2.0),
-                          )
-                        ]
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.1), // Shadow color
+                          offset: Offset(0, 5), // Offset of the shadow
+                          blurRadius: 10, // Blur radius of the shadow
+                          spreadRadius: 2, // Spread radius of the shadow
+                        ),
+                      ],
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -90,16 +93,26 @@ class _studentProfileSelfState extends State<studentProfileSelf> {
                       children: [
                         Row(
                           children: [
-                            SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: Image.asset('assets/images/arrow.png'),
+                            InkWell(
+                              onTap: (){
+                                // Navigate to the second screen when tapped
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => homeBottom(isStudent: true),
+                                  ),
+                                );
+                              },
+                              child: SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: Image.asset('assets/images/arrow.png'),
+                              ),
                             ),
                             SizedBox(
                               width: 12,
                             ),
                             SizedBox(
-                              child: Text('Student Profile',
+                              child: Text('Profile',
                                 style: h1,
                               ),
                             ),
@@ -108,35 +121,44 @@ class _studentProfileSelfState extends State<studentProfileSelf> {
                         SizedBox(
                           width: 1,
                         ),
-                        Container(
-                            width: 90,
-                            height: 30,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: red,
-                                  width: 0.7),
-                              borderRadius: BorderRadius.circular(7),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  width: 17,
-                                  height: 17,
-                                  child: Icon(Icons.logout,color: red,size: 15),
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text('Logout',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontFamily: 'regular',
-                                    color: red,
+                        InkWell(
+                          onTap: (){
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => logInScreenMentor(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                              width: 90,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: red,
+                                    width: 0.7),
+                                borderRadius: BorderRadius.circular(7),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    width: 17,
+                                    height: 17,
+                                    child: Icon(Icons.logout,color: red,size: 15),
                                   ),
-                                )
-                              ],
-                            )
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text('Logout',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontFamily: 'regular',
+                                      color: red,
+                                    ),
+                                  )
+                                ],
+                              )
+                          ),
                         )
                       ],
                     ),
