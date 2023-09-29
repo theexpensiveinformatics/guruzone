@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:guruzone/screens/homeBottom.dart';
+import 'package:guruzone/screens/homeScreen.dart';
 import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/texts/d1.dart';
 import 'package:guruzone/styles/texts/d1Light.dart';
@@ -45,10 +47,20 @@ class _courseDetailsScreenState extends State<courseDetailsScreen> {
                     children: [
                       Row(
                         children: [
-                          Container(
-                            width: 20,
-                            height: 20,
-                            child: Image.asset('assets/images/arrow.png'),
+                          InkWell(
+                            onTap: (){
+                              // Navigate to the second screen when tapped
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => homeBottom(isStudent: true),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              width: 20,
+                              height: 20,
+                              child: Image.asset('assets/images/arrow.png'),
+                            ),
                           ),
                           SizedBox(
                             width: 10,
@@ -131,14 +143,6 @@ class _courseDetailsScreenState extends State<courseDetailsScreen> {
                 ),
 
               ),
-
-
-
-
-
-
-
-
               Container(
                 width: double.infinity,
                 height: 1,

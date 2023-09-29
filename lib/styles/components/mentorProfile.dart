@@ -133,7 +133,7 @@ class mentorProfile extends StatelessWidget{
                             SizedBox(
                               width: iconSide,
                               height: iconSide,
-                              child: Image.asset('assets/images/location_blue.png'),
+                              child: Icon(Icons.location_on_outlined,color: blue,size: 18),
                             ),
                             SizedBox(width: iconText,),
                             Text(location,
@@ -157,7 +157,7 @@ class mentorProfile extends StatelessWidget{
                             SizedBox(
                               width: iconSide,
                               height: iconSide,
-                              child: Image.asset('assets/images/calendar_blue.png'),
+                              child: Icon(Icons.book_outlined,color: blue,size: 18),
                             ),
                             SizedBox(width: iconText,),
                             Text(personalization,
@@ -169,7 +169,7 @@ class mentorProfile extends StatelessWidget{
                             SizedBox(
                               width: iconSide,
                               height: iconSide,
-                              child: Image.asset('assets/images/dollar_blue.png'),
+                              child: Icon(Icons.currency_rupee_outlined,color: blue,size: 18,),
                             ),
                             SizedBox(width: iconText,),
                             Text('Starts from ₹'+price+'/hour',
@@ -241,7 +241,7 @@ class mentorProfile extends StatelessWidget{
                                 SizedBox(
                               width: starSide,
                                     height: starSide,
-                                    child: Image.asset('assets/images/star_grey.png'),
+                                    child: Icon(Icons.star,color: darkText,size: 15,),
                                 ),
                                 Text('5',
                                   style: d1Light,
@@ -263,7 +263,7 @@ class mentorProfile extends StatelessWidget{
                                 SizedBox(
                                   width: starSide,
                                   height: starSide,
-                                  child: Image.asset('assets/images/star_grey.png'),
+                                  child: Icon(Icons.star,color: darkText,size: 15,),
                                 ),
                                 Text('4',
                                   style: d1Light,
@@ -285,7 +285,7 @@ class mentorProfile extends StatelessWidget{
                                 SizedBox(
                                   width: starSide,
                                   height: starSide,
-                                  child: Image.asset('assets/images/star_grey.png'),
+                                  child: Icon(Icons.star,color: darkText,size: 15,),
                                 ),
                                 Text('3',
                                   style: d1Light,
@@ -307,7 +307,7 @@ class mentorProfile extends StatelessWidget{
                                 SizedBox(
                                   width: starSide,
                                   height: starSide,
-                                  child: Image.asset('assets/images/star_grey.png'),
+                                  child: Icon(Icons.star,color: darkText,size: 15,),
                                 ),
                                 Text('2',
                                   style: d1Light,
@@ -329,7 +329,7 @@ class mentorProfile extends StatelessWidget{
                                 SizedBox(
                                   width: starSide,
                                   height: starSide,
-                                  child: Image.asset('assets/images/star_grey.png'),
+                                  child: Icon(Icons.star,color: darkText,size: 15,),
                                 ),
                                 Text('1',
                                   style: d1Light,

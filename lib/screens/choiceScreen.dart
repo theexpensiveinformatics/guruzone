@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guruzone/screens/homeBottom.dart';
 import 'package:guruzone/screens/homeScreen.dart';
 import 'package:guruzone/screens/logInScreenMentor.dart';
 import 'package:guruzone/screens/logInScreenStudent.dart';
@@ -8,6 +9,7 @@ import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/texts/d1.dart';
 import 'package:guruzone/styles/texts/h1.dart';
 import 'package:guruzone/styles/texts/h2.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class choiceScreen extends StatefulWidget {
   const choiceScreen({super.key});
@@ -17,6 +19,8 @@ class choiceScreen extends StatefulWidget {
 }
 
 class _choiceScreenState extends State<choiceScreen> {
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +40,7 @@ class _choiceScreenState extends State<choiceScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => logInScreenMentor(),)),
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => signUpScreenStudent(),)),
                   child: Container(
                     height: MediaQuery.of(context).size.height/4,
                     width: double.infinity,
@@ -69,7 +73,7 @@ class _choiceScreenState extends State<choiceScreen> {
                   ),
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => logInScreenMentor(),));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => signUpScreenMentor(),));
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

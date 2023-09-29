@@ -3,16 +3,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:guruzone/screens/DoubtChatScreen.dart';
+import 'package:guruzone/screens/ItemListScreen.dart';
 import 'package:guruzone/screens/RequestReplyScreen.dart';
 import 'package:guruzone/screens/guruScreen.dart';
 import 'package:guruzone/screens/homeScreen.dart';
 import 'package:guruzone/screens/newSearchScreen.dart';
 import 'package:guruzone/screens/profileScreen.dart';
 import 'package:guruzone/screens/searchScreen.dart';
+import 'package:guruzone/screens/studentProfileSelf.dart';
 import 'package:guruzone/styles/colors.dart';
 import 'package:http/http.dart' as http;
 
-late String username;
+String? username;
 Future<void> fetchUserData(String token) async {
   final url = Uri.parse('https://vadodara-hackthon-4-0.vercel.app/api/v1/auth/user');
 
@@ -29,6 +31,7 @@ Future<void> fetchUserData(String token) async {
       final Map<String, dynamic> userData = json.decode(response.body);
       print('User Data: $userData');
       username = userData['username'];
+      print('///////////////////                $username');
     } else {
       // Request failed
       print('Request failed with status: ${response.statusCode}');
@@ -54,7 +57,7 @@ class _homeBottomState extends State<homeBottom> {
 
   int currentTab = 0;
   final List<Widget> screens = [
-    homeScreen(),
+    homeScreen(username: '$username',),
     newSearchScreen(),
     DoubtChatScreen(),
     profileScreen()
@@ -68,13 +71,15 @@ class _homeBottomState extends State<homeBottom> {
   }
 
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen =homeScreen();
+  Widget currentScreen =homeScreen(username: '$username');
 
 
   @override
   Widget build(BuildContext context) {
+    bool keyboardIsOpen = MediaQuery.of(context).viewInsets.bottom != 0;
 
     return Scaffold(
+
       appBar: AppBar(
         toolbarHeight: 0,
       systemOverlayStyle: SystemUiOverlayStyle(
@@ -90,22 +95,25 @@ class _homeBottomState extends State<homeBottom> {
           bucket: bucket,
         ),
       ),
-      floatingActionButton: SizedBox(
-        width: 74,
-        height: 74,
-        child: FloatingActionButton(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(100)
+      floatingActionButton: Visibility(
+        visible: !keyboardIsOpen,
+        child: SizedBox(
+          width: 74,
+          height: 74,
+          child: FloatingActionButton(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(100)
+            ),
+            onPressed: (){
+              setState(() {
+
+                Navigator.push(context, MaterialPageRoute(builder: (context) => guruScreen(),));
+
+              });
+            },
+            backgroundColor: blue,
+            child: Container(height:36,width:36,child: Image.asset('assets/images/guru_white.png')),
           ),
-          onPressed: (){
-            setState(() {
-
-              Navigator.push(context, MaterialPageRoute(builder: (context) => guruScreen(),));
-
-            });
-          },
-          backgroundColor: blue,
-          child: Container(height:36,width:36,child: Image.asset('assets/images/guru_white.png')),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -130,7 +138,7 @@ class _homeBottomState extends State<homeBottom> {
                       shape: CircleBorder(eccentricity: 0),
                       onPressed: (){
                         setState(() {
-                          currentScreen=homeScreen();
+                          currentScreen=homeScreen(username: '$username');
                           currentTab = 0;
                         });
                       },
@@ -174,7 +182,7 @@ class _homeBottomState extends State<homeBottom> {
                       shape: CircleBorder(eccentricity: 0),
                       onPressed: (){
                         setState(() {
-                          currentScreen=profileScreen();
+                          currentScreen=studentProfileSelf();
                           currentTab = 3;
                         });
                       },

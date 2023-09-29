@@ -1,12 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:guruzone/screens/mentorProfileScreen.dart';
+import 'package:guruzone/screens/postList.dart';
+import 'package:guruzone/styles/backgrounds/backgroundWhite.dart';
 import 'package:guruzone/styles/backgrounds/boxTextInput.dart';
+import 'package:guruzone/styles/backgrounds/choiceDisable.dart';
+import 'package:guruzone/styles/backgrounds/choiceEnable.dart';
+import 'package:guruzone/styles/backgrounds/roundedBlue.dart';
 import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/texts/blueRegular.dart';
 import 'package:guruzone/styles/texts/blueSmall.dart';
 import 'package:guruzone/styles/texts/d1.dart';
 import 'package:guruzone/styles/texts/d1Light.dart';
 import 'package:guruzone/styles/texts/h2.dart';
+import 'package:guruzone/styles/texts/inputFieldSheet.dart';
 import 'package:guruzone/styles/texts/r1.dart';
 
 class searchScreenCard extends StatelessWidget{
@@ -19,7 +26,7 @@ class searchScreenCard extends StatelessWidget{
   final String language;
   final String personalization;
   final String price;
-  final List<String> skills;
+  final List<dynamic> skills;
 
   const searchScreenCard({super.key,
     required this.name,
@@ -35,6 +42,25 @@ class searchScreenCard extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    String typeCheck = "100% Personalized";
+    var imgUrl = 'https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcT102smwP3i_8JvPTdQLKx3s9FQl42bP6q5HIzKoWGMchz0s3EMOYAGCgPkz-QrQ4IOxARMChyDj0WBgQ4';
+
+
+    TextEditingController _topic = TextEditingController();
+    TextEditingController _desc = TextEditingController();
+    TextEditingController _lang = TextEditingController();
+    TextEditingController _amount = TextEditingController();
+    String _type= 'empty';
+    TextEditingController _platform = TextEditingController();
+    TextEditingController _city = TextEditingController();
+    TextEditingController _category = TextEditingController();
+
+
+
+    List<PostList> postlists =List.empty(growable: true);
+
+    int selectedIndex= -1;
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(15, 9, 15, 9),
       child: Container(
@@ -49,13 +75,51 @@ class searchScreenCard extends StatelessWidget{
             children: [
               Row(
                 children: [
-                  Container(
-                    width: 90,
-                    height: 100,
-                    decoration: BoxDecoration(
-                        color: Color(0xffD9D9D9),
-                        borderRadius: BorderRadius.circular(10)
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>mentorProfileScreen()));
+                    },
+                    child:
+                    // Container(
+                    //   width: 90,
+                    //   height: 100,
+                    //   decoration: BoxDecoration(
+                    //       color: Color(0xffD9D9D9),
+                    //       borderRadius: BorderRadius.circular(10)
+                    //   ),
+                    // ),
+                    Container(
+                      width: 90,
+                      height: 100,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.network(
+                          fit: BoxFit.fitHeight,
+                          '$imgUrl',
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent? loadingProgress) {
+                            if (loadingProgress == null) {
+                              return child;
+                            }
+                            return Center(
+                              child: Container(
+                                width: 50,
+                                child: LinearProgressIndicator(
+                                  borderRadius: BorderRadius.circular(100),
+                                  color: blue,
+
+                                  value: loadingProgress.expectedTotalBytes != null
+                                      ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!
+                                      : null,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
                     ),
+
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(13, 0, 16, 0),
@@ -66,8 +130,11 @@ class searchScreenCard extends StatelessWidget{
                         Text(name,
                           style: h2
                         ),
-                        Text(profession,
-                          style: d1Light
+                        Container(
+                          width: 150,
+                          child: Text(profession,
+                            style: d1Light,overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                         Row(
                           children: [
@@ -225,19 +292,371 @@ class searchScreenCard extends StatelessWidget{
                         ),
                       ),
                     ),
-                    Container(
-                      width:  MediaQuery.of(context).size.width/3,
-                      height: 36,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Color(0xff0095FF)),
-                          color: Color(0xff0095FF)
-                      ),
-                      alignment: Alignment.center,
-                      child: Text('Pull Request',
-                        style: TextStyle(
-                            fontFamily: 'semibold',
-                            color: Colors.white
+                    InkWell(
+                        onTap: (){
+                          showModalBottomSheet<dynamic>(
+                              isScrollControlled: true,
+                              showDragHandle: true,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20),)
+
+                              ),
+                              elevation: 0,
+
+                              isDismissible: false,
+                              backgroundColor: background,
+                              context: context,
+                              builder:( context){
+                                return SingleChildScrollView(
+                                  child: Container(
+                                    height: 700,
+                                    padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                                    child: SingleChildScrollView(
+                                      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                                      child: Container(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            ListTile(
+                                              title: Text("*The request will be sent to all mentors.",style: blueRegular),
+                                            ),
+                                            ListTile(
+                                              title: Text("What do you want to learn?",style: h2,),
+                                              subtitle: TextField(autofocus:true,
+                                                controller: _topic,
+                                                style: inputFieldSheet,
+                                                decoration: InputDecoration(
+                                                  hintText: "Android App Development",
+                                                  hintStyle: inputFieldSheet,
+                                                  border: OutlineInputBorder(
+                                                    borderSide: BorderSide(color: borderColor),
+
+                                                    borderRadius: BorderRadius.all(
+                                                      Radius.circular(10),
+                                                    ),
+                                                  ),enabledBorder: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(10),
+                                                    borderSide: BorderSide(color: borderColor)
+                                                ),
+                                                  focusedBorder: OutlineInputBorder(
+                                                      borderRadius: BorderRadius.circular(10),
+                                                      borderSide: BorderSide(color: blue)
+                                                  ),
+
+                                                ),
+
+                                              ),
+                                            ),
+                                            ListTile(
+                                              title: Text("Description",style: h2,),
+                                              subtitle: TextField(autofocus:true,
+                                                controller: _desc,
+                                                maxLength: 200,
+                                                style: inputFieldSheet,
+                                                decoration: InputDecoration(
+                                                  hintText: "I want to learn Backend in Android App Development",
+                                                  hintStyle: inputFieldSheet,border: OutlineInputBorder(
+                                                  borderSide: BorderSide(color: borderColor),
+
+                                                  borderRadius: BorderRadius.all(
+                                                    Radius.circular(10),
+                                                  ),
+                                                ),enabledBorder: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(10),
+                                                    borderSide: BorderSide(color: borderColor)
+                                                ),
+                                                  focusedBorder: OutlineInputBorder(
+                                                      borderRadius: BorderRadius.circular(10),
+                                                      borderSide: BorderSide(color: blue)
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            ListTile(
+                                              title: Text("Language",style: h2,),
+                                              subtitle: TextField(autofocus:true,
+                                                style: inputFieldSheet,
+                                                controller: _lang,
+                                                decoration: InputDecoration(
+                                                  hintText: "English",
+                                                  hintStyle: inputFieldSheet,
+                                                  border: OutlineInputBorder(
+                                                    borderSide: BorderSide(color: borderColor),
+
+                                                    borderRadius: BorderRadius.all(
+                                                      Radius.circular(10),
+                                                    ),
+                                                  ),enabledBorder: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(10),
+                                                    borderSide: BorderSide(color: borderColor)
+                                                ),
+                                                  focusedBorder: OutlineInputBorder(
+                                                      borderRadius: BorderRadius.circular(10),
+                                                      borderSide: BorderSide(color: blue)
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            ListTile(
+                                              title: Text("How much you can pay per hour?",style: h2,),
+                                              subtitle: TextField(autofocus:true,
+                                                style: inputFieldSheet,
+                                                controller: _amount,
+                                                keyboardType: TextInputType.number,
+                                                decoration: InputDecoration(
+                                                  hintText: "200",
+                                                  hintStyle: inputFieldSheet,border: OutlineInputBorder(
+                                                  borderSide: BorderSide(color: borderColor),
+
+                                                  borderRadius: BorderRadius.all(
+                                                    Radius.circular(10),
+                                                  ),
+                                                ),enabledBorder: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(10),
+                                                    borderSide: BorderSide(color: borderColor)
+                                                ),
+                                                  focusedBorder: OutlineInputBorder(
+                                                      borderRadius: BorderRadius.circular(10),
+                                                      borderSide: BorderSide(color: blue)
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+
+                                            //type by smita
+                                            // ListTile(
+                                            //   title: Text("Type",style: h2,),
+                                            //   subtitle: TextField(autofocus:true,
+                                            //     style: inputFieldSheet,
+                                            //     controller: _type,
+                                            //     decoration: InputDecoration(
+                                            //       hintText: "100% Personalized",
+                                            //       hintStyle: inputFieldSheet,
+                                            //     ),
+                                            //   ),
+                                            // ),
+
+
+
+                                            //type try to toggle
+                                            Container(
+                                                alignment: Alignment.topLeft,
+                                                width: double.infinity,
+                                                margin: EdgeInsets.only(top: 10,left: 15),
+                                                child: Text('Type',style: h2,)),
+
+                                            Container(
+                                              margin: EdgeInsets.only(top: 10,left: 15,right: 15),
+                                              width: double.infinity,
+                                              height: 60,
+                                              decoration: backgroundWhite,
+                                              padding: EdgeInsets.all(5),
+                                              child: Row(
+                                                children: [
+                                                  InkWell(
+                                                    onTap: (){
+                                                      _type='100% Personalized';
+                                                      print('object');
+
+                                                      typeCheck='100% Personalized';
+
+
+
+                                                    },
+
+                                                    child: Container(
+                                                      width: MediaQuery.of(context).size.width/2-30,
+                                                      padding: EdgeInsets.only(top: 5,bottom: 5),
+                                                      alignment: Alignment.center,
+                                                      decoration: typeCheck == '100% Personalized' ? choiceEnable:choiceDisable,
+                                                      child: Text('100%\nPersonalized',
+                                                        textAlign: TextAlign.center,
+                                                        style: TextStyle(
+                                                          fontFamily: 'semibold',
+                                                          fontSize: 14,
+                                                          color: typeCheck == '100% Personalized'?Colors.white:darkText,
+                                                        ),
+                                                      ),
+                                                    ),
+
+
+
+
+
+                                                  ),
+                                                  SizedBox(width: 5,),
+
+                                                  InkWell(
+                                                    onTap: ()
+                                                    {
+                                                      print('2df');
+                                                      // setState(() {
+                                                      //   print(typeCheck);
+                                                      //   print('set state');
+                                                      //   _type='100% Personalized';
+                                                      //   typeCheck='Partially Personalized';
+                                                      // });
+                                                    }
+                                                    ,child: Container(
+                                                    width: MediaQuery.of(context).size.width/2-30,
+                                                    padding: EdgeInsets.only(top: 5,bottom: 5),
+                                                    alignment: Alignment.center,
+                                                    decoration: typeCheck == 'Partially Personalized' ? choiceEnable:choiceDisable,
+                                                    child: Text('Partially\nPersonalized',
+                                                      textAlign: TextAlign.center,
+                                                      style: TextStyle(
+                                                        fontFamily: 'semibold',
+                                                        fontSize: 14,
+                                                        color: typeCheck == 'Partially Personalized' ?Colors.white:darkText,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  )
+
+
+                                                ],
+                                              ),
+                                            ),
+
+
+                                            ListTile(
+                                              title: Text("Offline/Online/Both",style: h2,),
+                                              subtitle: TextField(autofocus:true,
+                                                style: inputFieldSheet,
+                                                controller: _platform,
+                                                decoration: InputDecoration(
+                                                  hintText: "Online",
+                                                  hintStyle: inputFieldSheet,border: OutlineInputBorder(
+                                                  borderSide: BorderSide(color: borderColor),
+
+                                                  borderRadius: BorderRadius.all(
+                                                    Radius.circular(10),
+                                                  ),
+                                                ),enabledBorder: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(10),
+                                                    borderSide: BorderSide(color: borderColor)
+                                                ),
+                                                  focusedBorder: OutlineInputBorder(
+                                                      borderRadius: BorderRadius.circular(10),
+                                                      borderSide: BorderSide(color: blue)
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            ListTile(
+                                              title: Text("City",style: h2,),
+                                              subtitle: TextField(autofocus:true,
+                                                style: inputFieldSheet,
+                                                controller: _city,
+
+                                                decoration: InputDecoration(
+                                                  hintText: "Vadodara",
+                                                  hintStyle: inputFieldSheet,border: OutlineInputBorder(
+                                                  borderSide: BorderSide(color: borderColor),
+
+                                                  borderRadius: BorderRadius.all(
+                                                    Radius.circular(10),
+                                                  ),
+                                                ),enabledBorder: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(10),
+                                                    borderSide: BorderSide(color: borderColor)
+                                                ),
+                                                  focusedBorder: OutlineInputBorder(
+                                                      borderRadius: BorderRadius.circular(10),
+                                                      borderSide: BorderSide(color: blue)
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            ListTile(
+                                              title: Text("Category",style: h2,),
+                                              subtitle: TextField(autofocus:true,
+                                                style: inputFieldSheet,
+                                                controller: _category,
+
+                                                decoration: InputDecoration(
+                                                  hintText: "Select",
+                                                  hintStyle: inputFieldSheet,border: OutlineInputBorder(
+                                                  borderSide: BorderSide(color: borderColor),
+
+                                                  borderRadius: BorderRadius.all(
+                                                    Radius.circular(10),
+                                                  ),
+                                                ),enabledBorder: OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(10),
+                                                    borderSide: BorderSide(color: borderColor)
+                                                ),
+                                                  focusedBorder: OutlineInputBorder(
+                                                      borderRadius: BorderRadius.circular(10),
+                                                      borderSide: BorderSide(color: blue)
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Center(
+                                              child: Container(
+                                                height: 50,
+                                                width: double.infinity,
+                                                margin: EdgeInsets.only(right: 15,left: 15,top: 20,bottom: 20),
+                                                decoration: roundedBlue,
+                                                child: TextButton(onPressed: (){
+                                                  String topic= _topic.text.trim();
+                                                  String desc= _desc.text.trim();
+                                                  String lang= _lang.text.trim();
+                                                  String amount= _amount.text.trim();
+                                                  String type= _type.toString().trim();
+                                                  String platform= _platform.text.trim();
+                                                  String city= _city.text.trim();
+                                                  String category= _category.text.trim();
+
+                                                  if(topic.isNotEmpty && desc.isNotEmpty && lang.isNotEmpty && amount.isNotEmpty && type.isNotEmpty && platform.isNotEmpty && city.isNotEmpty && category.isNotEmpty)
+                                                  {
+
+                                                    // setState(() {
+                                                    //
+                                                    //   _topic.text="";
+                                                    //   _desc.text="";
+                                                    //   _lang.text="";
+                                                    //   _amount.text="";
+                                                    //   _type="";
+                                                    //   _platform.text="";
+                                                    //   _city.text="";
+                                                    //   _category.text="";
+                                                    //   postlists.add(PostList(topic: topic, desc: desc, lang: lang, amount: amount, type: type, platform: platform, city: city, category: category));
+                                                    // });
+                                                  }
+
+                                                  Navigator.of(context).pop();
+                                                }, child: Text("Post Requirement",style: TextStyle(color: Colors.white,fontFamily: 'bold'),)),
+                                              ),
+
+                                            ),
+                                            SizedBox(height: 20,),
+
+
+                                          ],),
+                                      ),
+                                    ),
+                                  ),
+                                );
+
+                              });
+
+                        },
+                      child: Container(
+                        width:  MediaQuery.of(context).size.width/3,
+                        height: 36,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Color(0xff0095FF)),
+                            color: Color(0xff0095FF)
+                        ),
+                        alignment: Alignment.center,
+                        child: Text('Pull Request',
+                          style: TextStyle(
+                              fontFamily: 'semibold',
+                              color: Colors.white
+                          ),
                         ),
                       ),
                     ),

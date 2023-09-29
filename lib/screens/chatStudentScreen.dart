@@ -102,8 +102,7 @@ class _chatStudentScreenState extends State<chatStudentScreen> {
                         Container(
                           width: iconSide,
                           height: iconSide,
-                          child: Image.asset('assets/images/contact.png',
-                            color: darkText,),
+                          child: Icon(Icons.search_rounded,color: darkText,)
                         ),
                         SizedBox(
                           width: 7,
@@ -111,8 +110,7 @@ class _chatStudentScreenState extends State<chatStudentScreen> {
                         Container(
                           width: iconSide,
                           height: iconSide,
-                          child: Image.asset('assets/images/more_three_dots.png',
-                            color: darkText,),
+                          child: Icon(Icons.more_vert,color: darkText,)
                         ),
                       ],
                     )

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:guruzone/screens/homeBottom.dart';
+import 'package:guruzone/screens/homeScreen.dart';
 import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/texts/d1.dart';
 import 'package:guruzone/styles/texts/d1Blue.dart';
@@ -61,10 +63,20 @@ class _featuredCourseDetailsScreenState extends State<featuredCourseDetailsScree
                     children: [
                       Row(
                         children: [
-                          Container(
-                            width: 20,
-                            height: 20,
-                            child: Image.asset('assets/images/arrow.png'),
+                          InkWell(
+                            onTap: (){
+                              // Navigate to the second screen when tapped
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => homeBottom(isStudent: true),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              width: 20,
+                              height: 20,
+                              child: Image.asset('assets/images/arrow.png'),
+                            ),
                           ),
                           SizedBox(
                             width: 10,
@@ -431,7 +443,7 @@ class _featuredCourseDetailsScreenState extends State<featuredCourseDetailsScree
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('Topic 4 : Activities & Intents',
+                                      Text('Topic 4 : Activities and Intents',
                                         style: h2,),
                                       Text('- Creating interactive layouts',
                                         style: d1,),

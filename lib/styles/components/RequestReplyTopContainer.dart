@@ -13,7 +13,7 @@ class RequestReplyTopContainer extends StatelessWidget{
   final String personalization;
   final String mode;
   final String location;
-  final List<String> gridData;
+  // final List<String> gridData;
   final String price;
 
   const RequestReplyTopContainer({super.key,
@@ -24,8 +24,7 @@ class RequestReplyTopContainer extends StatelessWidget{
     required this.personalization,
   required this.mode,
     required this.location,
-  required this.price,
-    required this.gridData});
+  required this.price,});
 
   static const double boxHeight=32.0;
   static const double boxWidth=160.0;
@@ -100,7 +99,7 @@ class RequestReplyTopContainer extends StatelessWidget{
                   height: boxHeight,
                   decoration: topContainer,
                   child: Center(
-                    child: Text(gridData.first,
+                    child: Text('Development',
                     style: d1,),
                   ),
                 )

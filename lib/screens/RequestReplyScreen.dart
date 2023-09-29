@@ -23,6 +23,7 @@ class _RequestReplyScreenState extends State<RequestReplyScreen> {
       'location' : 'Vadodara',
   'skill' : 'Development',
   'price' : '100',
+
 };
 
   var cardData = [
@@ -36,6 +37,7 @@ class _RequestReplyScreenState extends State<RequestReplyScreen> {
       'duration': 35,
       'advance': '3 hours',
       'price' : 300,
+
     },
     {
       'mentorName' : 'Riya Patel',
@@ -47,6 +49,7 @@ class _RequestReplyScreenState extends State<RequestReplyScreen> {
       'duration': 35,
       'advance': '3 hours',
       'price' : 5,
+
     },
     {
       'mentorName' : 'Riya Patel',
@@ -139,7 +142,7 @@ Widget build(BuildContext context) {
                       personalization: arrTopContainer['personalization'].toString(),
                       mode: arrTopContainer['mode'].toString(),
                       location: arrTopContainer['location'].toString(),
-                      gridData: arrTopContainer['gridView'] as List<String>,
+                      // gridData: arrTopContainer['gridView'] as List<String>,
                       price: arrTopContainer['price'].toString()
                   ),
                 ),

@@ -32,7 +32,8 @@ class DoubtListTile extends StatelessWidget{
               Container(
                 child: CircleAvatar(
                   radius: 30,
-                  backgroundColor: Color(0xffC4C4C4),
+                  child: Icon(Icons.account_circle_outlined,color: blue),
+                  backgroundColor: Color(0xffFFFFFF),
                 ),
               ),
               Container(

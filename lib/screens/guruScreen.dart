@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guruzone/screens/RequestReplyScreen.dart';
 import 'package:guruzone/screens/postList.dart';
 import 'package:guruzone/styles/backgrounds/backgroundWhite.dart';
 import 'package:guruzone/styles/backgrounds/boxTextInput.dart';
@@ -494,113 +495,116 @@ class _guruScreenState extends State<guruScreen> {
     decoration: backgroundWhite,
     margin: EdgeInsets.only(top: 10,left: 25,right: 25),
 
-    child: ListTile(
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+    child: InkWell(
+      onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=>RequestReplyScreen())),
+      child: ListTile(
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
 
+              Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+
+                      InkWell(
+                        onTap: (){
+
+                          _topic.text =postlists[index].topic;
+                          _desc.text =postlists[index].desc;
+                          _lang.text =postlists[index].lang;
+                          _amount.text =postlists[index].amount;
+                          _type =postlists[index].type;
+                          _platform.text =postlists[index].platform;
+                          _city.text =postlists[index].city;
+                          _category.text =postlists[index].category;
+
+                          setState(() {
+                            selectedIndex =index;
+                          });
+
+
+
+
+                        },
+
+                          child: const Icon(Icons.edit)),
+                      SizedBox(width: 20.0),
+                      InkWell(
+                        onTap: (){
+
+                          setState(() {
+
+                            postlists.removeAt(index);
+                          });
+
+                        },
+
+                          child:  const Icon(Icons.delete_outline_rounded)),
+                  ],
+            ),
+
+
+            Text(postlists[index].topic, style: h1,overflow: TextOverflow.ellipsis,maxLines: 1,),
+            Text(postlists[index].desc,style: d1Light,overflow: TextOverflow.ellipsis,maxLines: 1,),
+            SizedBox(height: 5,),
+            Text("This Request sent to All Mentor", style: blueRegular,),
+            SizedBox(height: 5,),
             Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-
-                    InkWell(
-                      onTap: (){
-
-                        _topic.text =postlists[index].topic;
-                        _desc.text =postlists[index].desc;
-                        _lang.text =postlists[index].lang;
-                        _amount.text =postlists[index].amount;
-                        _type =postlists[index].type;
-                        _platform.text =postlists[index].platform;
-                        _city.text =postlists[index].city;
-                        _category.text =postlists[index].category;
-
-                        setState(() {
-                          selectedIndex =index;
-                        });
-
-
-
-
-                      },
-
-                        child: const Icon(Icons.edit)),
-                    SizedBox(width: 20.0),
-                    InkWell(
-                      onTap: (){
-
-                        setState(() {
-
-                          postlists.removeAt(index);
-                        });
-
-                      },
-
-                        child:  const Icon(Icons.delete_outline_rounded)),
-                ],
-          ),
-
-
-          Text(postlists[index].topic, style: h1,overflow: TextOverflow.ellipsis,maxLines: 1,),
-          Text(postlists[index].desc,style: d1Light,overflow: TextOverflow.ellipsis,maxLines: 1,),
-          SizedBox(height: 5,),
-          Text("This Request sent to All Mentor", style: blueRegular,),
-          SizedBox(height: 5,),
-          Row(
-            children: [
-              Container(
-                alignment: Alignment.center,
-                  padding: EdgeInsets.only(top: 4,bottom: 4,left: 15,right: 15),
-                  decoration: backgroundWhite,child: Text(postlists[index].lang,style: d1,overflow: TextOverflow.ellipsis,)),
-
-              SizedBox(width: 5),
-              Container(
-                alignment: Alignment.center,
-                  padding: EdgeInsets.only(top: 4,bottom: 4,left: 15,right: 15),
-                  decoration: backgroundWhite,child: Text(postlists[index].type,style: d1,overflow: TextOverflow.ellipsis,)),
-            ],
-          ),
-          SizedBox(height: 5,),
-          Row(
-            children: [
-              Container(
+              children: [
+                Container(
                   alignment: Alignment.center,
-                  padding: EdgeInsets.only(top: 4,bottom: 4,left: 15,right: 15),
-                  decoration: backgroundWhite,child: Text(postlists[index].category,style: d1,overflow: TextOverflow.ellipsis,)),
+                    padding: EdgeInsets.only(top: 4,bottom: 4,left: 15,right: 15),
+                    decoration: backgroundWhite,child: Text(postlists[index].lang,style: d1,overflow: TextOverflow.ellipsis,)),
 
-              SizedBox(width: 5),
-              Container(
+                SizedBox(width: 5),
+                Container(
                   alignment: Alignment.center,
-                  padding: EdgeInsets.only(top: 4,bottom: 4,left: 15,right: 15),
-                  decoration: backgroundWhite,child: Text(postlists[index].city,style: d1,overflow: TextOverflow.ellipsis,)),
-            ],
-          ),
+                    padding: EdgeInsets.only(top: 4,bottom: 4,left: 15,right: 15),
+                    decoration: backgroundWhite,child: Text(postlists[index].type,style: d1,overflow: TextOverflow.ellipsis,)),
+              ],
+            ),
+            SizedBox(height: 5,),
+            Row(
+              children: [
+                Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.only(top: 4,bottom: 4,left: 15,right: 15),
+                    decoration: backgroundWhite,child: Text(postlists[index].category,style: d1,overflow: TextOverflow.ellipsis,)),
 
-          SizedBox(height: 5,),
-          Row(
-            children: [
-              Container(
+                SizedBox(width: 5),
+                Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.only(top: 4,bottom: 4,left: 15,right: 15),
+                    decoration: backgroundWhite,child: Text(postlists[index].city,style: d1,overflow: TextOverflow.ellipsis,)),
+              ],
+            ),
 
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.only(top: 4,bottom: 4,left: 15,right: 15),
-                  decoration: backgroundWhite,child: Text(postlists[index].platform,style: d1,overflow: TextOverflow.ellipsis,)),
+            SizedBox(height: 5,),
+            Row(
+              children: [
+                Container(
 
-
-              SizedBox(width: 5,),
-              Expanded(child: Container(alignment: Alignment.center,margin: EdgeInsets.only(right: 15),decoration: backgroundWhite,padding: EdgeInsets.only(top: 4,bottom: 4,left: 14,right: 14),child: Text('You are ready to pay ${postlists[index].amount}',style: blueSmall,overflow: TextOverflow.ellipsis,maxLines: 1,))),
-
-            ],
-          ),
-
-
-
-          SizedBox(height: 20,)
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.only(top: 4,bottom: 4,left: 15,right: 15),
+                    decoration: backgroundWhite,child: Text(postlists[index].platform,style: d1,overflow: TextOverflow.ellipsis,)),
 
 
-        ],
+                SizedBox(width: 5,),
+                Expanded(child: Container(alignment: Alignment.center,margin: EdgeInsets.only(right: 15),decoration: backgroundWhite,padding: EdgeInsets.only(top: 4,bottom: 4,left: 14,right: 14),child: Text('You are ready to pay ${postlists[index].amount}',style: blueSmall,overflow: TextOverflow.ellipsis,maxLines: 1,))),
 
+              ],
+            ),
+
+
+
+            SizedBox(height: 20,)
+
+
+          ],
+
+      ),
+            ),
     ),
-          ),
     );
 
 

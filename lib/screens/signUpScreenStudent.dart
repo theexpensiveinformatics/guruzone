@@ -702,7 +702,7 @@ class _signUpScreenStudentState extends State<signUpScreenStudent> {
                   //login Btn
                   InkWell(
                     onTap: (){
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>logInScreenStudent()));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>logInScreenMentor()));
                     },
                     child: Container(
                       alignment: Alignment.topRight,

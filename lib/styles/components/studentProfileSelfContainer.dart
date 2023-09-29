@@ -46,9 +46,13 @@ class studentProfileSelfContainer extends StatelessWidget{
               Container(
                 width: 80,
                 height: 80,
+                child: Icon(Icons.account_circle_outlined,color: blue,size: 30),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Color(0xffD9D9D9),
+                  color: Color(0xffffffff),
+                  boxShadow: [
+                    BoxShadow(color: Colors.grey.shade200,offset: Offset(0.0,5.0),blurRadius: 10)
+                  ]
                 ),
               ),
               Column(
@@ -120,11 +124,12 @@ class studentProfileSelfContainer extends StatelessWidget{
                     Column(
                       children: [
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             SizedBox(
                               width: iconSide,
                               height: iconSide,
-                              child: Image.asset('assets/images/location_blue.png'),
+                              child: Icon(Icons.location_on_outlined,color: blue,size: 18),
                             ),
                             SizedBox(width: iconText,),
                             Text(location,
