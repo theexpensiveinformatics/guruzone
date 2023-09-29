@@ -10,7 +10,6 @@ import 'package:guruzone/styles/texts/h2.dart';
 
 class searchCard extends StatelessWidget {
 
-
   final String name;
   final String profession;
   final String location;

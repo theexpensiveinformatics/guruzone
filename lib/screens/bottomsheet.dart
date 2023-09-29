@@ -27,6 +27,8 @@ class BottomSheetwidget extends StatelessWidget{
                 isDismissible: false,
                 enableDrag: true,
                 context: context,
+
+
                 builder:( context){
                   return Column(
                     mainAxisSize: MainAxisSize.min,

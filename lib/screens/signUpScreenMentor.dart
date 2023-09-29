@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:guruzone/screens/logInScreenMentor.dart';
 import 'package:guruzone/styles/backgrounds/backgroundWhite.dart';
@@ -6,6 +8,7 @@ import 'package:guruzone/styles/backgrounds/choiceDisable.dart';
 import 'package:guruzone/styles/backgrounds/choiceEnable.dart';
 import 'package:guruzone/styles/backgrounds/roundedBlue.dart';
 import 'package:guruzone/styles/colors.dart';
+import 'package:http/http.dart' as http;
 import 'package:guruzone/styles/texts/blueRegular.dart';
 import 'package:guruzone/styles/texts/d1.dart';
 import 'package:guruzone/styles/texts/d1Light.dart';
@@ -26,10 +29,28 @@ class signUpScreenMentor extends StatefulWidget {
   State<signUpScreenMentor> createState() => _signUpScreenMentorState();
 }
 class SkillSet {
+
   final int id;
   final String name;
 
   SkillSet({
+    required this.id,
+    required this.name,
+  });
+
+  @override
+  String toString() {
+    // TODO: implement toString
+    return name;
+  }
+}
+
+class languageSet {
+
+  final int id;
+  final String name;
+
+  languageSet({
     required this.id,
     required this.name,
   });
@@ -72,15 +93,52 @@ class _signUpScreenMentorState extends State<signUpScreenMentor> {
     SkillSet(id: 26, name: "Krushang"),
 
   ];
+
+
+  static List<languageSet> _languages = [
+    languageSet(id: 1, name: "Hindi"),
+    languageSet(id: 2, name: "Bengali"),
+    languageSet(id: 3, name: "Telugu"),
+    languageSet(id: 4, name: "Marathi"),
+    languageSet(id: 5, name: "Tamil"),
+    languageSet(id: 6, name: "Urdu"),
+    languageSet(id: 7, name: "Gujarati"),
+    languageSet(id: 8, name: "Kannada"),
+    languageSet(id: 9, name: "Odia"),
+    languageSet(id: 10, name: "Punjabi"),
+    languageSet(id: 11, name: "Malayalam"),
+    languageSet(id: 12, name: "Assamese"),
+    languageSet(id: 13, name: "Maithili"),
+    languageSet(id: 14, name: "Santali"),
+    languageSet(id: 15, name: "Kashmiri"),
+    languageSet(id: 16, name: "Nepali"),
+    languageSet(id: 17, name: "Konkani"),
+    languageSet(id: 18, name: "Sindhi"),
+    languageSet(id: 19, name: "Sanskrit"),
+    languageSet(id: 20, name: "Bodo"),
+    languageSet(id: 21, name: "Dogri"),
+    languageSet(id: 22, name: "Manipuri"),
+    languageSet(id: 23, name: "Khasi"),
+    languageSet(id: 24, name: "Mizo"),
+    languageSet(id: 25, name: "Garo"),
+    languageSet(id: 26, name: "Kokborok"),
+  ];
+
   final _items = _skills
       .map((skill) => MultiSelectItem<SkillSet>(skill, skill.name))
       .toList();
 
+  final _langitems = _languages
+      .map((languages) => MultiSelectItem<languageSet>(languages, languages.name))
+      .toList();
+
   List<SkillSet> _selectedSkillSets2 = [];
   List<SkillSet> _selectedSkillSets3 = [];
-  
+  List<languageSet> _selectedLanguagesSet = [];
+
   List<SkillSet> _selectedSkillSets5 = [];
   final _multiSelectKey = GlobalKey<FormFieldState>();
+  final _multiSelectKey2 = GlobalKey<FormFieldState>();
 
 
   @override
@@ -88,6 +146,7 @@ class _signUpScreenMentorState extends State<signUpScreenMentor> {
     _selectedSkillSets5 = _skills;
     super.initState();
   }
+
 
   var controllerName = TextEditingController();
   var controllerQualification = TextEditingController();
@@ -116,15 +175,11 @@ class _signUpScreenMentorState extends State<signUpScreenMentor> {
           child: SingleChildScrollView(
             child: Container(
               child: Column(
-
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
-
                   SizedBox(height: 50,),
                   Text('GuruZone',style: TextStyle(fontFamily: 'bold',fontSize: 25,color: darkText),),
                   Text('Let\'s ready to serve knowledge!',style: TextStyle(fontFamily: 'regular',fontSize: 16,color: darkText),),
-
                   SizedBox(height: 20,),
 
                   //name i
@@ -698,6 +753,76 @@ class _signUpScreenMentorState extends State<signUpScreenMentor> {
                     ),
                   ),
 
+
+                  //langauges
+                  //skills
+                  SizedBox(height: 10,),
+                  Container(
+                    decoration: boxTextInput,
+                    width: double.infinity,
+                    padding: EdgeInsets.only(bottom: 10),
+                    child: Column(
+                      children: [
+                        Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(width: 20,),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 15),
+                                child: Icon(Icons.stacked_line_chart,color: darkText,),
+                              ),
+                              SizedBox(width: 20,),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 18),
+                                child: Container(width: 1,color: borderColor,height: 25,),
+                              ),
+                              SizedBox(width: 10,),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 15),
+                                child:Container(
+                                  width: MediaQuery.of(context).size.width/1.5,
+                                  child: MultiSelectDialogField(
+                                    buttonIcon: Icon(Icons.arrow_circle_down,color: darkText),
+                                    title: Text('Languages',style: TextStyle(fontSize: 16,fontFamily: 'regular',color: Color(0xFF6a6a6a))),
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10)
+                                    ),
+                                    buttonText: Text('Select languages',style: TextStyle(fontSize: 16,fontFamily: 'regular',color: Color(0xFF6a6a6a)),overflow: TextOverflow.ellipsis),
+                                    items: _languages.map((e) => MultiSelectItem(e, e.name)).toList(),
+                                    listType: MultiSelectListType.CHIP,
+                                    unselectedColor: Colors.white,
+                                    itemsTextStyle: TextStyle(fontFamily: 'regular',color: darkText),
+                                    searchTextStyle: TextStyle(fontFamily: 'regular'),
+                                    confirmText: Text('Select',style: TextStyle(fontFamily: 'semibold',color: blue,fontSize: 18)),
+                                    cancelText: Text('Cancel',style: TextStyle(fontFamily: 'semibold',color: blue,fontSize: 18)),
+                                    // selectedColor: Colors.blue,
+                                    backgroundColor: background,
+                                    onConfirm: (values) {
+                                      _selectedLanguagesSet = values;
+                                      List<String> selectedLang = _selectedLanguagesSet.map((languagesSet) => languagesSet.name).toList();
+                                      print("Selected items: $selectedLang");
+
+                                    },
+                                  ),
+                                ),
+                              )
+
+                            ],
+                          ),
+                        ),
+
+
+
+
+
+
+                      ],
+                    ),
+                  ),
+
                   //Location Permission
                   SizedBox(height: 8,),
                   InkWell(
@@ -765,53 +890,141 @@ class _signUpScreenMentorState extends State<signUpScreenMentor> {
                   ),
 
                   //signUp Btn
+                  // InkWell(
+                  //   onTap: (){
+                  //
+                  //     setState(()  {
+                  //       String name = controllerName.text;
+                  //       String qualification = controllerQualification.text;
+                  //       String des=controllersmallDes.text;
+                  //       String email=controllerEmail.text;
+                  //       String phone=controllerNum.text;
+                  //       String linkedin=controllerLinkedIn.text;
+                  //       String pass=controllerPass.text;
+                  //       String teachType =teachingType.toString();
+                  //       var skill = _selectedSkillSets2.toString();
+                  //
+                  //
+                  //
+                  //           if( pass.length >6 && locationPermission==true && name != null && name.isNotEmpty && qualification !=null && qualification.isNotEmpty && des!=null && des.isNotEmpty && email!=null && email.isNotEmpty && phone!=null && phone.isNotEmpty && linkedin!=null && linkedin.isNotEmpty && teachingType!='empty' && skill.length>1)
+                  //           {
+                  //
+                  //
+                  //             print('$name + $qualification + $des+ $email+ $phone+ $linkedin + $teachType + $skill +$pass ');
+                  //             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Account Created Successfully, Please Login.',style: TextStyle(fontFamily: 'semibold'),),duration: Duration(seconds: 4),backgroundColor: Colors.blue,behavior: SnackBarBehavior.floating,));
+                  //             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>logInScreenMentor()));
+                  //           }
+                  //           else
+                  //           {
+                  //             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Something went wrong.',style: TextStyle(fontFamily: 'semibold'),),duration: Duration(seconds: 2),backgroundColor: Colors.red,behavior: SnackBarBehavior.floating,));
+                  //
+                  //           }
+                  //         }
+                  //
+                  //
+                  //
+                  //     );
+                  //
+                  //
+                  //
+                  //
+                  //     },
+                  //   child: Container(
+                  //     decoration: roundedBlue,
+                  //     height: 55,
+                  //     alignment: Alignment.center,
+                  //     child: Text('SignUp',style: TextStyle(color: Colors.white,fontSize: 17,fontFamily: 'semibold')),
+                  //
+                  //   ),
+                  // ),
+
+
+                  //sign new btn
                   InkWell(
-                    onTap: (){
+                    onTap: () async {
+                      String name = controllerName.text;
+                      String qualification = controllerQualification.text;
+                      String des = controllersmallDes.text;
+                      String email = controllerEmail.text;
+                      String phone = controllerNum.text;
 
-                      setState(()  {
-                        String name = controllerName.text;
-                        String qualification = controllerQualification.text;
-                        String des=controllersmallDes.text;
-                        String email=controllerEmail.text;
-                        String phone=controllerNum.text;
-                        String linkedin=controllerLinkedIn.text;
-                        String pass=controllerPass.text;
-                        String teachType =teachingType.toString();
-                        var skill = _selectedSkillSets2.toString();
+                      String pass = controllerPass.text;
+                      String teachType = teachingType.toString();
+                      var skill = _selectedSkillSets2.toString();
+                      var languages = _selectedLanguagesSet.toString();
+                      print(languages);
+                      var signUpType = 'teacher';
 
+                      if (name.isNotEmpty) {
 
+                        // Prepare the request body as a JSON object
+                        Map<String, dynamic> requestBody = {
+                          'username': name,
+                          'background': qualification,
+                          'about_me': des,
+                          'email': email,
+                          'number': phone,
+                          'password': pass,
+                          'type_of_learning': teachType,
+                          'skill_set': skill,
+                          'role': signUpType,
+                          'language': languages,
+                        };
 
-                            if( pass.length >6 && locationPermission==true && name != null && name.isNotEmpty && qualification !=null && qualification.isNotEmpty && des!=null && des.isNotEmpty && email!=null && email.isNotEmpty && phone!=null && phone.isNotEmpty && linkedin!=null && linkedin.isNotEmpty && teachingType!='empty' && skill.length>1)
-                            {
+                        // Send a POST request to the API endpoint
+                        final response = await http.post(
+                          Uri.parse('https://vadodara-hackthon-4-0.vercel.app/api/v1/auth/register'),
+                          headers: <String, String>{
+                            'Content-Type': 'application/json',
+                          },
+                          body: jsonEncode(requestBody),
+                        );
 
-
-                              print('$name + $qualification + $des+ $email+ $phone+ $linkedin + $teachType + $skill +$pass ');
-                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Account Created Successfully, Please Login.',style: TextStyle(fontFamily: 'semibold'),),duration: Duration(seconds: 4),backgroundColor: Colors.blue,behavior: SnackBarBehavior.floating,));
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>logInScreenMentor()));
-                            }
-                            else
-                            {
-                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Something went wrong.',style: TextStyle(fontFamily: 'semibold'),),duration: Duration(seconds: 2),backgroundColor: Colors.red,behavior: SnackBarBehavior.floating,));
-
-                            }
-                          }
-
-
-
-                      );
-
-
-
-
-                      },
+                        if (response.statusCode == 201) {
+                          // Successful response, you can handle it here
+                          print('Account Created Successfully');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Account Created Successfully, Please Login.', style: TextStyle(fontFamily: 'semibold')),
+                              duration: Duration(seconds: 4),
+                              backgroundColor: Colors.blue,
+                              behavior: SnackBarBehavior.floating,
+                            ),
+                          );
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => logInScreenMentor()));
+                        } else {
+                          // Handle the error response here
+                          print('Error: ${response.statusCode}');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Something went wrong.', style: TextStyle(fontFamily: 'semibold')),
+                              duration: Duration(seconds: 2),
+                              backgroundColor: Colors.red,
+                              behavior: SnackBarBehavior.floating,
+                            ),
+                          );
+                        }
+                      }
+                      else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Something went wrong 2.', style: TextStyle(fontFamily: 'semibold')),
+                            duration: Duration(seconds: 2),
+                            backgroundColor: Colors.red,
+                            behavior: SnackBarBehavior.floating,
+                          ),
+                        );
+                      }
+                    },
                     child: Container(
                       decoration: roundedBlue,
                       height: 55,
                       alignment: Alignment.center,
-                      child: Text('SignUp',style: TextStyle(color: Colors.white,fontSize: 17,fontFamily: 'semibold')),
-
+                      child: Text('SignUp', style: TextStyle(color: Colors.white, fontSize: 17, fontFamily: 'semibold')),
                     ),
                   ),
+
+
                   SizedBox(height: 50,),
                   Center(child: Text('@All Right Resversed 2023\n            GuruZone ©',style: d1Light,)),
                   SizedBox(height: 150,),
