@@ -53,38 +53,20 @@ import 'package:flutter/material.dart';
           print(data);
           setState(() {
             items = teacherProfiles.map((profile) {
-              List<String> flattenedList = profile['skill_set'].expand((list) => list).toList();
+
 
               print('// // // // // // //');
-              print('$flattenedList');
               print("           ksdfksd          ");
               print(profile['skill_set']);
-              // Parse skill_set as List<dynamic>
-              final skillSetList = profile['skill_set'] as List<dynamic>;
 
-
-              // Initialize an empty list to store skill set as strings
-              final skillSet = <String>[];
-
-              // Iterate through the skillSetList and add individual skills as strings
-              for (final skills in skillSetList) {
-                if (skills is List<dynamic>) {
-                  for (final skill in skills) {
-                    skillSet.add(skill.toString());
-
-                  }
-                } else {
-                  skillSet.add(skills.toString());
-                }
-              }
 
               return Item(
                 name: profile['username'] ?? '', // Use an empty string if 'username' is null
                 role: profile['background'] ?? '', // Use an empty string if 'background' is null
                 rate: int.tryParse(profile['rating'].toString()) ?? 0, // Use 0 if 'rating' is null or not an int
                 // skill_set: skillSet, // Use the flattened skillSet list as strings
-                // skill_set: profile['skill_set'] ,
-                skill_set: flattenedList,
+                // skill_set:skillSet ,
+                skill_set: profile['skill_set'] ?? [],
                 location: profile['location'] ?? '', // Use an empty string if 'location' is null
                 language: profile['language'] ?? '', // Use an empty string if 'language' is null
                 typeOfLearning: profile['type_of_learning'] ?? '',
