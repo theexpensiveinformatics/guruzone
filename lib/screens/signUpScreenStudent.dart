@@ -678,10 +678,10 @@ class _signUpScreenStudentState extends State<signUpScreenStudent> {
                                   child: Container(width: 1,color: borderColor,height: 25,),
                                 ),
                                 SizedBox(width: 10,),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 15,left: 10),
-                                  child: Text('Allow Location Permission',style: TextStyle(fontSize: 16,fontFamily: 'regular',color: darkText),),
-                                )
+                                // Padding(
+                                //   padding: const EdgeInsets.only(top: 15,left: 10),
+                                //   child: Text('Allow Location Permission',style: TextStyle(fontSize: 16,fontFamily: 'regular',color: darkText),),
+                                // )
 
                               ],
                             ),
@@ -720,7 +720,7 @@ class _signUpScreenStudentState extends State<signUpScreenStudent> {
 
                       setState(()  {
                         String name = controllerName.text;
-                        String qualification = controllerQualification.text;
+                        // String qualification = controllerQualification.text;
                         String des=controllersmallDes.text;
                         String email=controllerEmail.text;
                         String phone=controllerNum.text;
@@ -731,11 +731,17 @@ class _signUpScreenStudentState extends State<signUpScreenStudent> {
 
 
 
-                        if( pass.length >6 && locationPermission==true && name != null && name.isNotEmpty && qualification !=null && qualification.isNotEmpty && des!=null && des.isNotEmpty && email!=null && email.isNotEmpty && phone!=null && phone.isNotEmpty && linkedin!=null && linkedin.isNotEmpty && teachingType!='empty' && skill.length>1)
+                        if( pass.length >6
+                            // && locationPermission==true
+                            && name != null && name.isNotEmpty &&
+                            // qualification !=null && qualification.isNotEmpty &&
+                            des!=null && des.isNotEmpty && email!=null && email.isNotEmpty && phone!=null && phone.isNotEmpty && linkedin!=null && linkedin.isNotEmpty && teachingType!='empty' && skill.length>1)
                         {
 
 
-                          print('$name + $qualification + $des+ $email+ $phone+ $linkedin + $teachType + $skill +$pass ');
+                          print('$name + '
+                              // '$qualification + '
+                              '$des+ $email+ $phone+ $linkedin + $teachType + $skill +$pass ');
                           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Account Created Successfully, Please Login.',style: TextStyle(fontFamily: 'semibold'),),duration: Duration(seconds: 4),backgroundColor: Colors.blue,behavior: SnackBarBehavior.floating,));
                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>logInScreenStudent()));
                         }

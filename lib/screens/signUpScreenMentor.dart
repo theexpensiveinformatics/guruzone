@@ -728,10 +728,10 @@ class _signUpScreenMentorState extends State<signUpScreenMentor> {
                                   child: Container(width: 1,color: borderColor,height: 25,),
                                 ),
                                 SizedBox(width: 10,),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 15,left: 10),
-                                  child: Text('Allow Location Permission',style: TextStyle(fontSize: 16,fontFamily: 'regular',color: darkText),),
-                                )
+                                // Padding(
+                                //   padding: const EdgeInsets.only(top: 15,left: 10),
+                                //   child: Text('Allow Location Permission',style: TextStyle(fontSize: 16,fontFamily: 'regular',color: darkText),),
+                                // )
 
                               ],
                             ),
@@ -781,7 +781,9 @@ class _signUpScreenMentorState extends State<signUpScreenMentor> {
 
 
 
-                            if( pass.length >6 && locationPermission==true && name != null && name.isNotEmpty && qualification !=null && qualification.isNotEmpty && des!=null && des.isNotEmpty && email!=null && email.isNotEmpty && phone!=null && phone.isNotEmpty && linkedin!=null && linkedin.isNotEmpty && teachingType!='empty' && skill.length>1)
+                            if( pass.length >6 &&
+                                // locationPermission==true &&
+                                name != null && name.isNotEmpty && qualification !=null && qualification.isNotEmpty && des!=null && des.isNotEmpty && email!=null && email.isNotEmpty && phone!=null && phone.isNotEmpty && linkedin!=null && linkedin.isNotEmpty && teachingType!='empty' && skill.length>1)
                             {
 
 
