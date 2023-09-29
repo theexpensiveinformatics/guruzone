@@ -57,7 +57,7 @@ Future<void> loginUser(BuildContext context, String email, String password) asyn
         context,
         MaterialPageRoute(
           builder: (context) => homeBottom(
-              // token: token,
+              token: token,
               isStudent: false
           ),
         ),
@@ -120,7 +120,7 @@ class _logInScreenMentorState extends State<logInScreenMentor> {
       if(token!='')
       {
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>homeBottom(
-            // token: token,
+            token: token,
             isStudent: false)));
       }
     });

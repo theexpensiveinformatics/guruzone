@@ -30,6 +30,7 @@ class homeScreen extends StatefulWidget {
 class _homeScreenState extends State<homeScreen> {
 
   String token = '';
+  bool isTokenLoading = true; // Add a loading indicator variable
   @override
   void initState() {
     super.initState();
@@ -41,12 +42,13 @@ class _homeScreenState extends State<homeScreen> {
     final storedToken = prefs.getString('token') ?? ''; // Use a default value if the token is not found
     setState(() {
       token = storedToken;
+      isTokenLoading = false;
       print('CHECKKKKKKKKKK : $token');
 
     });
   }
 
-  // var username =  👋"; // username
+
   var letsStart = "Let's start learning";
   var search="Search Mentors";
   var ongoing = "Ongoing Learning";
@@ -179,6 +181,8 @@ class _homeScreenState extends State<homeScreen> {
          child: Column(
            crossAxisAlignment: CrossAxisAlignment.start,
            children: [
+
+
              Padding(
                padding: const EdgeInsets.only(top:25,left: 25,right: 25),
                child: Row(
@@ -187,7 +191,7 @@ class _homeScreenState extends State<homeScreen> {
                    Column(
                      crossAxisAlignment: CrossAxisAlignment.start,
                      children: [
-                       Text('Hi Krushang👋',style: h1),
+                       Text('Hi $username👋',style: h1),
                        Text('$letsStart',style: d1,)
                      ],
                    ),

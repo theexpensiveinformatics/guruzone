@@ -57,6 +57,7 @@ class searchScreenCard extends StatelessWidget{
 
 
 
+
     List<PostList> postlists =List.empty(growable: true);
 
     int selectedIndex= -1;
@@ -80,14 +81,7 @@ class searchScreenCard extends StatelessWidget{
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>mentorProfileScreen()));
                     },
                     child:
-                    // Container(
-                    //   width: 90,
-                    //   height: 100,
-                    //   decoration: BoxDecoration(
-                    //       color: Color(0xffD9D9D9),
-                    //       borderRadius: BorderRadius.circular(10)
-                    //   ),
-                    // ),
+
                     Container(
                       width: 90,
                       height: 100,
@@ -214,25 +208,29 @@ class searchScreenCard extends StatelessWidget{
                 child: Row(
 
                   children: [
-                    Container(
-                      alignment: Alignment.center,
-                      padding: EdgeInsets.only(top: 4,bottom: 4,left: 10,right: 10),
-                      decoration: boxTextInput,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            child: Image.asset('assets/images/global_blue.png'),
-                            width: 15,
-                            height: 15,
-                          ),
-                          SizedBox(
-                            width: 4,
-                          ),
-                          Text(language,
-                            style:blueSmall
-                          ),
-                        ],
+                    Expanded(
+                      child: Container(
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.only(top: 4,bottom: 4,left: 10,right: 10),
+                        decoration: boxTextInput,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              child: Image.asset('assets/images/global_blue.png'),
+                              width: 15,
+                              height: 15,
+                            ),
+                            SizedBox(
+                              width: 4,
+                            ),
+                            Expanded(
+                              child: Text(language,
+                                style:blueSmall
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(width: MediaQuery.of(context).size.width/60,),
@@ -262,6 +260,7 @@ class searchScreenCard extends StatelessWidget{
                               border: Border.all(color: borderColor),
                               borderRadius: BorderRadius.circular(8)
                           ),
+
                           child: Text(skills[index],
                             style: d1,
                             overflow: TextOverflow.ellipsis,
@@ -302,7 +301,6 @@ class searchScreenCard extends StatelessWidget{
 
                               ),
                               elevation: 0,
-
                               isDismissible: false,
                               backgroundColor: background,
                               context: context,

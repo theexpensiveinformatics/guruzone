@@ -143,20 +143,10 @@ class DoubtChatScreen extends StatelessWidget{
                   children: [
                     Row(
                       children: [
-                        InkWell(
-                          onTap: (){
-                            // Navigate to the second screen when tapped
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => homeBottom(isStudent: true),
-                              ),
-                            );
-                          },
-                          child: SizedBox(
-                            width: iconSide,
-                            height: iconSide,
-                            child: Image.asset('assets/images/arrow.png',color: darkText,),
-                          ),
+                        SizedBox(
+                          width: iconSide,
+                          height: iconSide,
+                          child: Image.asset('assets/images/arrow.png',color: darkText,),
                         ),
                         SizedBox(
                           width: 15,

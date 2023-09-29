@@ -95,14 +95,14 @@ class _studentProfileScreenState extends State<studentProfileScreen> {
                         Row(
                           children: [
                             InkWell(
-                              onTap: (){
-                                // Navigate to the second screen when tapped
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => homeBottom(isStudent: true),
-                                  ),
-                                );
-                              },
+                              // onTap: (){
+                              //   // Navigate to the second screen when tapped
+                              //   Navigator.of(context).push(
+                              //     MaterialPageRoute(
+                              //       builder: (context) => homeBottom(isStudent: true),
+                              //     ),
+                              //   );
+                              // },
                               child: SizedBox(
                                 width: 20,
                                 height: 20,

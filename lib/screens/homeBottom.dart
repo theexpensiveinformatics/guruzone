@@ -47,11 +47,11 @@ Future<void> fetchUserData(String token) async {
 
 //statefull
 class homeBottom extends StatefulWidget {
-  // final String token;
+  final String token;
   final bool isStudent;
 
   homeBottom({
-    // required this.token,
+    required this.token,
   required this.isStudent});
 
   @override

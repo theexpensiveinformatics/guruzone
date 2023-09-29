@@ -51,7 +51,8 @@ class MyApp extends StatelessWidget {
       ),
 
 
-      home: homeBottom(isStudent: false),
+      home: choiceScreen(),
+
 
     );
   }

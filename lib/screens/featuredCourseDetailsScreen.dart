@@ -63,20 +63,10 @@ class _featuredCourseDetailsScreenState extends State<featuredCourseDetailsScree
                     children: [
                       Row(
                         children: [
-                          InkWell(
-                            onTap: (){
-                              // Navigate to the second screen when tapped
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => homeBottom(isStudent: true),
-                                ),
-                              );
-                            },
-                            child: Container(
-                              width: 20,
-                              height: 20,
-                              child: Image.asset('assets/images/arrow.png'),
-                            ),
+                          Container(
+                            width: 20,
+                            height: 20,
+                            child: Image.asset('assets/images/arrow.png'),
                           ),
                           SizedBox(
                             width: 10,

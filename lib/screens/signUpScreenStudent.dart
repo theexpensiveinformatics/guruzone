@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:guruzone/screens/logInScreenMentor.dart';
 import 'package:guruzone/screens/logInScreenStudent.dart';
@@ -9,6 +11,7 @@ import 'package:guruzone/styles/backgrounds/roundedBlue.dart';
 import 'package:guruzone/styles/colors.dart';
 import 'package:guruzone/styles/texts/blueRegular.dart';
 import 'package:guruzone/styles/texts/d1.dart';
+import 'package:http/http.dart' as http;
 import 'package:guruzone/styles/texts/d1Light.dart';
 import 'package:guruzone/styles/texts/d2Light.dart';
 import 'package:guruzone/styles/texts/h1.dart';
@@ -89,6 +92,7 @@ class _signUpScreenStudentState extends State<signUpScreenStudent> {
     _selectedSkillSets5 = _skills;
     super.initState();
   }
+
 
   var controllerName = TextEditingController();
   var controllerQualification = TextEditingController();
@@ -207,7 +211,7 @@ class _signUpScreenStudentState extends State<signUpScreenStudent> {
                           alignment: Alignment.topLeft,
                           child: TextField(
                             keyboardType: TextInputType.name,
-                            controller: controllersmallDes,
+                            controller: controllerQualification,
                             style:TextStyle(fontFamily: 'regular',fontSize: 16,overflow:TextOverflow.ellipsis),
                             textAlignVertical: TextAlignVertical.top,
                             maxLines: 5,
@@ -426,62 +430,62 @@ class _signUpScreenStudentState extends State<signUpScreenStudent> {
 
                   //linkedIn profile
                   SizedBox(height: 8,),
-                  Container(
-                    decoration: boxTextInput,
-                    height: 55,width: double.infinity,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(width: 20,),
-                        Icon(Icons.numbers,color: darkText,),
-                        SizedBox(width: 20,),
-                        Container(width: 1,color: borderColor,height: 25,),
-                        SizedBox(width: 10,),
-
-
-                        Container(width: MediaQuery.of(context).size.width/2,height: 50,
-                          alignment: Alignment.center,
-                          child: TextField(
-
-                            controller: controllerLinkedIn,
-                            style:TextStyle(fontFamily: 'regular',fontSize: 16,overflow:TextOverflow.ellipsis),
-                            textAlignVertical: TextAlignVertical.bottom,
-                            decoration: InputDecoration(border: OutlineInputBorder(borderSide: BorderSide(color: borderColor,width: 1)),
-                              hintText: 'LinkedIn Profile Link',hintStyle: TextStyle(fontFamily: 'regular'),
-                              filled: true,
-                              fillColor: _focusNode.hasFocus ? Colors.white : Colors.white,
-                              disabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(14),
-                                  borderSide: const BorderSide(
-                                      color: Colors.white,
-                                      width: 1,
-                                      style: BorderStyle.solid
-                                  )
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(14),
-                                  borderSide:  BorderSide(
-                                    color: Colors.white,
-                                  )
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(14),
-                                  borderSide:  BorderSide(
-                                    width: 1,
-                                    color: Colors.white,
-                                  )
-                              ),
-
-                            ),
-                          ),),
-
-
-
-
-                      ],
-                    ),
-                  ),
+                  // Container(
+                  //   decoration: boxTextInput,
+                  //   height: 55,width: double.infinity,
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.start,
+                  //     crossAxisAlignment: CrossAxisAlignment.center,
+                  //     children: [
+                  //       SizedBox(width: 20,),
+                  //       Icon(Icons.numbers,color: darkText,),
+                  //       SizedBox(width: 20,),
+                  //       Container(width: 1,color: borderColor,height: 25,),
+                  //       SizedBox(width: 10,),
+                  //
+                  //
+                  //       Container(width: MediaQuery.of(context).size.width/2,height: 50,
+                  //         alignment: Alignment.center,
+                  //         child: TextField(
+                  //
+                  //           controller: controllerLinkedIn,
+                  //           style:TextStyle(fontFamily: 'regular',fontSize: 16,overflow:TextOverflow.ellipsis),
+                  //           textAlignVertical: TextAlignVertical.bottom,
+                  //           decoration: InputDecoration(border: OutlineInputBorder(borderSide: BorderSide(color: borderColor,width: 1)),
+                  //             hintText: 'LinkedIn Profile Link',hintStyle: TextStyle(fontFamily: 'regular'),
+                  //             filled: true,
+                  //             fillColor: _focusNode.hasFocus ? Colors.white : Colors.white,
+                  //             disabledBorder: OutlineInputBorder(
+                  //                 borderRadius: BorderRadius.circular(14),
+                  //                 borderSide: const BorderSide(
+                  //                     color: Colors.white,
+                  //                     width: 1,
+                  //                     style: BorderStyle.solid
+                  //                 )
+                  //             ),
+                  //             focusedBorder: OutlineInputBorder(
+                  //                 borderRadius: BorderRadius.circular(14),
+                  //                 borderSide:  BorderSide(
+                  //                   color: Colors.white,
+                  //                 )
+                  //             ),
+                  //             enabledBorder: OutlineInputBorder(
+                  //                 borderRadius: BorderRadius.circular(14),
+                  //                 borderSide:  BorderSide(
+                  //                   width: 1,
+                  //                   color: Colors.white,
+                  //                 )
+                  //             ),
+                  //
+                  //           ),
+                  //         ),),
+                  //
+                  //
+                  //
+                  //
+                  //     ],
+                  //   ),
+                  // ),
 
                   //teachingType
                   SizedBox(height: 8,),
@@ -615,7 +619,7 @@ class _signUpScreenStudentState extends State<signUpScreenStudent> {
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(10)
                                     ),
-                                    buttonText: Text('Touch here to Select Skills',style: TextStyle(fontSize: 16,fontFamily: 'regular',color: Color(0xFF6a6a6a)),overflow: TextOverflow.ellipsis),
+                                    buttonText: Text('Select Interest',style: TextStyle(fontSize: 16,fontFamily: 'regular',color: Color(0xFF6a6a6a)),overflow: TextOverflow.ellipsis),
                                     items: _skills.map((e) => MultiSelectItem(e, e.name)).toList(),
                                     listType: MultiSelectListType.CHIP,
                                     unselectedColor: Colors.white,
@@ -678,10 +682,10 @@ class _signUpScreenStudentState extends State<signUpScreenStudent> {
                                   child: Container(width: 1,color: borderColor,height: 25,),
                                 ),
                                 SizedBox(width: 10,),
-                                // Padding(
-                                //   padding: const EdgeInsets.only(top: 15,left: 10),
-                                //   child: Text('Allow Location Permission',style: TextStyle(fontSize: 16,fontFamily: 'regular',color: darkText),),
-                                // )
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 15,left: 10),
+                                  child: Text('Allow Location Permission',style: TextStyle(fontSize: 16,fontFamily: 'regular',color: darkText),),
+                                )
 
                               ],
                             ),
@@ -715,58 +719,140 @@ class _signUpScreenStudentState extends State<signUpScreenStudent> {
                   ),
 
                   //signUp Btn
+                  // InkWell(
+                  //   onTap: (){
+                  //
+                  //     setState(()  {
+                  //       String name = controllerName.text;
+                  //       String qualification = controllerQualification.text;
+                  //       String des=controllersmallDes.text;
+                  //       String email=controllerEmail.text;
+                  //       String phone=controllerNum.text;
+                  //       String linkedin=controllerLinkedIn.text;
+                  //       String pass=controllerPass.text;
+                  //       String teachType =teachingType.toString();
+                  //       var skill = _selectedSkillSets2.toString();
+                  //       var signUpType = 'student';
+                  //
+                  //
+                  //       if( pass.length >6 && locationPermission==true && name != null && name.isNotEmpty && qualification !=null && qualification.isNotEmpty && des!=null && des.isNotEmpty && email!=null && email.isNotEmpty && phone!=null && phone.isNotEmpty   && teachingType!='empty' && skill.length>1)
+                  //       {
+                  //
+                  //
+                  //
+                  //
+                  //         print('$name + $qualification + $des+ $email+ $phone+ $linkedin + $teachType + $skill +$pass ');
+                  //         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Account Created Successfully, Please Login.',style: TextStyle(fontFamily: 'semibold'),),duration: Duration(seconds: 4),backgroundColor: Colors.blue,behavior: SnackBarBehavior.floating,));
+                  //         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>logInScreenStudent()));
+                  //       }
+                  //       else
+                  //       {
+                  //         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Something went wrong.',style: TextStyle(fontFamily: 'semibold'),),duration: Duration(seconds: 2),backgroundColor: Colors.red,behavior: SnackBarBehavior.floating,));
+                  //       }
+                  //     }
+                  //
+                  //
+                  //
+                  //     );
+                  //
+                  //
+                  //
+                  //
+                  //   },
+                  //   child: Container(
+                  //     decoration: roundedBlue,
+                  //     height: 55,
+                  //     alignment: Alignment.center,
+                  //     child: Text('SignUp',style: TextStyle(color: Colors.white,fontSize: 17,fontFamily: 'semibold')),
+                  //
+                  //   ),
+                  // ),
+
+
+
+
                   InkWell(
-                    onTap: (){
+                    onTap: () async {
+                      String name = controllerName.text;
+                      String qualification = controllerQualification.text;
+                      String des = controllersmallDes.text;
+                      String email = controllerEmail.text;
+                      String phone = controllerNum.text;
 
-                      setState(()  {
-                        String name = controllerName.text;
-                        // String qualification = controllerQualification.text;
-                        String des=controllersmallDes.text;
-                        String email=controllerEmail.text;
-                        String phone=controllerNum.text;
-                        String linkedin=controllerLinkedIn.text;
-                        String pass=controllerPass.text;
-                        String teachType =teachingType.toString();
-                        var skill = _selectedSkillSets2.toString();
+                      String pass = controllerPass.text;
+                      String teachType = teachingType.toString();
+                      var skill = _selectedSkillSets2.toString();
+                      var signUpType = 'student';
 
+                      if (
+                      skill.length > 1) {
 
+                        // Prepare the request body as a JSON object
+                        Map<String, dynamic> requestBody = {
+                          'username': name,
+                          'about_me': qualification,
+                          'des': des,
+                          'email': email,
+                          'number': phone,
+                          'password': pass,
+                          'type_of_learning': teachType,
+                          'interests': skill,
+                          'role': signUpType,
+                        };
 
-                        if( pass.length >6
-                            // && locationPermission==true
-                            && name != null && name.isNotEmpty &&
-                            // qualification !=null && qualification.isNotEmpty &&
-                            des!=null && des.isNotEmpty && email!=null && email.isNotEmpty && phone!=null && phone.isNotEmpty && linkedin!=null && linkedin.isNotEmpty && teachingType!='empty' && skill.length>1)
-                        {
+                        // Send a POST request to the API endpoint
+                        final response = await http.post(
+                          Uri.parse('https://vadodara-hackthon-4-0.vercel.app/api/v1/auth/register'),
+                          headers: <String, String>{
+                            'Content-Type': 'application/json',
+                          },
+                          body: jsonEncode(requestBody),
+                        );
 
-
-                          print('$name + '
-                              // '$qualification + '
-                              '$des+ $email+ $phone+ $linkedin + $teachType + $skill +$pass ');
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Account Created Successfully, Please Login.',style: TextStyle(fontFamily: 'semibold'),),duration: Duration(seconds: 4),backgroundColor: Colors.blue,behavior: SnackBarBehavior.floating,));
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>logInScreenStudent()));
-                        }
-                        else
-                        {
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Something went wrong.',style: TextStyle(fontFamily: 'semibold'),),duration: Duration(seconds: 2),backgroundColor: Colors.red,behavior: SnackBarBehavior.floating,));
+                        if (response.statusCode == 201) {
+                          // Successful response, you can handle it here
+                          print('Account Created Successfully');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Account Created Successfully, Please Login.', style: TextStyle(fontFamily: 'semibold')),
+                              duration: Duration(seconds: 4),
+                              backgroundColor: Colors.blue,
+                              behavior: SnackBarBehavior.floating,
+                            ),
+                          );
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => logInScreenMentor()));
+                        } else {
+                          // Handle the error response here
+                          print('Error: ${response.body}');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Something went wrong.', style: TextStyle(fontFamily: 'semibold')),
+                              duration: Duration(seconds: 2),
+                              backgroundColor: Colors.red,
+                              behavior: SnackBarBehavior.floating,
+                            ),
+                          );
                         }
                       }
-
-
-
-                      );
-
-
-
-
+                      else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Something went wrong 2.', style: TextStyle(fontFamily: 'semibold')),
+                            duration: Duration(seconds: 2),
+                            backgroundColor: Colors.red,
+                            behavior: SnackBarBehavior.floating,
+                          ),
+                        );
+                      }
                     },
                     child: Container(
                       decoration: roundedBlue,
                       height: 55,
                       alignment: Alignment.center,
-                      child: Text('SignUp',style: TextStyle(color: Colors.white,fontSize: 17,fontFamily: 'semibold')),
-
+                      child: Text('SignUp', style: TextStyle(color: Colors.white, fontSize: 17, fontFamily: 'semibold')),
                     ),
                   ),
+
                   SizedBox(height: 50,),
 
 
@@ -774,9 +860,6 @@ class _signUpScreenStudentState extends State<signUpScreenStudent> {
 
                   Center(child: Text('@All Right Resversed 2023\n            GuruZone ©',style: d1Light,)),
                   SizedBox(height: 150,),
-
-
-
 
 
                 ],
